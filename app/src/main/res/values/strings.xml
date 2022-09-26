@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Bible Quiz</string>
+    <string name="Start_Button_Text">Start</string>
+    <string name="Title_Text">Bible Quiz</string>
+    <string name="Answer_Btn_Text_4">Answer 4</string>
+    <string name="Answer_Btn_Text_3">Answer 3</string>
+    <string name="Answer_Btn_Text_2">Answer 2</string>
+    <string name="Answer_Btn_Text_1">Answer 1</string>
+    <string name="Sample_long_Text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit augue in libero posuere, nec sagittis ante pulvinar. Suspendisse potenti. Maecenas in erat at arcu vestibulum rhoncus interdum sit amet magna. Quisque sollicitudin blandit ligula, a vestibulum ante fermentum at. Cras suscipit accumsan luctus. Quisque vestibulum vitae odio dictum tristique. Vestibulum ac porta lorem. Curabitur id dictum turpis. Integer suscipit, velit ac gravida congue, tellus ligula rhoncus lacus, sed scelerisque ipsum turpis vel ante. Nulla enim turpis, hendrerit ac odio in, laoreet pharetra erat. Maecenas sagittis mi vitae pulvinar dictum. Sed iaculis mi ex, laoreet tincidunt augue lobortis nec. Nunc tincidunt pretium metus, eu pharetra arcu ullamcorper eu. Donec ornare urna vel quam tempus, quis facilisis purus mollis. Nullam a fringilla ligula. Nam lacus dolor, luctus at tempor et, fringilla vitae nibh.</string>
+    <string name="Question_Number_Text">Question 1</string>
+    <string name="Button_Next_Text">Next</string>
+</resources>
