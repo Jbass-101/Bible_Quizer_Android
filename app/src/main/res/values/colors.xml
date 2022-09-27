@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="_splashBackground">#DDFAD6</color>
+    <color name="_Main_Background">#10332D</color>
+    <color name="_button_Background">#fae4ac</color>
+    <color name="_button_Next">#C6B27C</color>
+
+    <!-- Light Theme Colors -->
+    <color name="_color_primary_light">#FF5CB08C</color>
+    <color name="_color_on_primary_light">#FFFFFF</color>
+    <color name="_window_background_light">#FFFFFF</color>
+    <color name="_text_color_light">#000000</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="_color_primary_dark">#286761</color>
+    <color name="_color_on_primary_dark">#fae4ac</color>
+    <color name="_window_background_dark">#10332D</color>
+    <color name="_text_color_dark">#EDE6CC</color>
 </resources>
