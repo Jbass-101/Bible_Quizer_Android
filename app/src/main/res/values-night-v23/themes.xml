@@ -1,5 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
     <style name="Theme.BibleQuiz" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/_color_primary_dark</item>
@@ -18,8 +19,9 @@
             @android:color/transparent
         </item>
 
+        <item name="android:windowLightStatusBar">
+            false
+        </item>
 
     </style>
-
-
 </resources>
