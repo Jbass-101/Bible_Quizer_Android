@@ -1,4 +1,4 @@
-package com.jbaloji.biblequiz.domain.questions.use_case
+package com.jbaloji.biblequiz.domain.use_case
 
 data class UseCases (
     val getQuestions : GetQuestions

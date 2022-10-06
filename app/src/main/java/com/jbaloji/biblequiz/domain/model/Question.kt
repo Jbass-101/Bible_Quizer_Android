@@ -1,4 +1,4 @@
-package com.jbaloji.biblequiz.domain.questions.model
+package com.jbaloji.biblequiz.domain.model
 
 data class Question (
 

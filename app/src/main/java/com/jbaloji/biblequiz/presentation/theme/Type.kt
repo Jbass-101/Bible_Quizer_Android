@@ -1,4 +1,4 @@
-package com.jbaloji.biblequiz.ui.theme
+package com.jbaloji.biblequiz.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

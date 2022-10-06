@@ -1,4 +1,4 @@
-package com.jbaloji.biblequiz.Presentation.Components
+package com.jbaloji.biblequiz.presentation.questions.Components
 
 import android.content.res.Configuration
 import androidx.compose.material.MaterialTheme
@@ -7,9 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.jbaloji.biblequiz.Greeting
 import com.jbaloji.biblequiz.R
-import com.jbaloji.biblequiz.ui.theme.BibleQuizTheme
+import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 
 @Composable
 fun TitleText(){

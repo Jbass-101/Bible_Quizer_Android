@@ -1,4 +1,4 @@
-package com.jbaloji.biblequiz.ui.theme
+package com.jbaloji.biblequiz.presentation.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
