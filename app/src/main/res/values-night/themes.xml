@@ -11,8 +11,9 @@
         </item>
 
         <item name="android:windowLightStatusBar">
-            true
+            false
         </item>
+
 
 
     </style>

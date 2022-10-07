@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.jbaloji.biblequiz.presentation.questions.Components.DefaultButton
-import com.jbaloji.biblequiz.presentation.questions.Components.TitleText
+import com.jbaloji.biblequiz.presentation.questions.components.DefaultButton
+import com.jbaloji.biblequiz.presentation.questions.components.TitleText
 
 @Composable
 fun HomeScreen(){

@@ -9,7 +9,7 @@
     <string name="Sample_Answer_1">This is a short answer</string>
     <string name="Sample_Answer_2">This is not a short answer, but close</string>
     <string name="Sample_Answer_3">This answer is a bit long, but we are testing</string>
-    <string name="Sample_Answer_4">So this answer is ridiculously long, want to see ho it looks on the button</string>
+    <string name="Sample_Answer_4">So this answer is ridiculously long, I want to see how it looks on the button</string>
 
-    <string name="sampleQuestion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit augue in libero posuere, nec sagittis ante pulvinar. Suspendisse potenti. Maecenas in erat at arcu vestibulum rhoncus interdum sit amet magna. Quisque sollicitudin blandit ligula, a vestibulum ante fermentum at. Cras suscipit accumsan luctus. Quisque vestibulum vitae odio dictum tristique. Vestibulum ac porta lorem. Curabitur id dictum turpis. Integer suscipit, velit ac gravida congue, tellus ligula rhoncus lacus, sed scelerisque ipsum turpis vel ante. Nulla enim turpis, hendrerit ac odio in, laoreet pharetra erat. Maecenas sagittis mi vitae pulvinar dictum. Sed iaculis mi ex, laoreet tincidunt augue lobortis nec. Nunc tincidunt pretium metus, eu pharetra arcu ullamcorper eu. Donec ornare urna vel quam tempus, quis facilisis purus mollis. Nullam a fringilla ligula. Nam lacus dolor, luctus at tempor et, fringilla vitae nibh.</string>
+    <string name="sampleQuestion">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.jbaloji.biblequiz.presentation.questions.Components
+package com.jbaloji.biblequiz.presentation.questions.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.shape.RoundedCornerShape
