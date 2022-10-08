@@ -19,16 +19,22 @@ import androidx.compose.ui.unit.sp
 import com.jbaloji.biblequiz.R
 
 @Composable
-fun QuestionNumberText(){
-
+fun CountDown()  {
     Row(
         horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxHeight(0.05f)
-            .fillMaxWidth(1f),) {
-        Text(
-            fontSize = 20.sp,
-            text = "Question 1/20")
+            .fillMaxWidth(1f)
+
+
+    ) {
+        Icon(painter = painterResource(id = R.drawable.ic_timer),
+            contentDescription = "Count Down Timer")
+        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+        LinearProgressIndicator(
+            progress = 0.5f)
+
     }
 
 }
