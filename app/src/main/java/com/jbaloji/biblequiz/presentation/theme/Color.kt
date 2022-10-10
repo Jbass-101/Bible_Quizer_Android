@@ -13,7 +13,9 @@ val Button_Border = Color(0x7DEDE6CC)
 
 val Background_Dark = Color(0xFF10332D)
 val Primary_Dark = Color(0xFFEDE6CC)
+val Surface_Dark = Color(0xFF3A5D56)
 
 
 val Background_Light = Color(0xFFFFFFFF)
 val Primary_Light = Color(0xFF000000)
+val Surface_Light = Color(0xFFEDEDED)

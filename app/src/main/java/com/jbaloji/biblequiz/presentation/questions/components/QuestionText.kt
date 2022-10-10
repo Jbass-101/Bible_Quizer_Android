@@ -17,15 +17,23 @@ import androidx.compose.ui.unit.sp
 import com.jbaloji.biblequiz.R
 
 @Composable
-fun QuestionText() {
+fun QuestionText(
+    question: String
+
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth(1f)
-            .fillMaxHeight(0.4f),) {
-        Text(
-            fontSize = 19.sp,
-            textAlign = TextAlign.Center,
-            text = stringResource(id = R.string.sampleQuestion)
-        )
+            .fillMaxHeight(0.3f),) {
+        Column(
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                fontSize = 19.sp,
+                textAlign = TextAlign.Center,
+                text = question
+            )
+
+        }
     }
 }

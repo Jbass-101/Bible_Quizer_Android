@@ -1,20 +1,18 @@
 package com.jbaloji.biblequiz.presentation.questions.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import com.jbaloji.biblequiz.R
+import java.util.Collections.shuffle
 
 @Composable
-fun AnswerButtonContainer(){
+fun AnswerButtonContainer(
+    options: List<String>, answer: String,hasAnswered: Boolean,
+    answerQuestion: (option: String,answer: String) -> Boolean
+){
 
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
@@ -24,13 +22,19 @@ fun AnswerButtonContainer(){
 
     ) {
 
-        AnswerButton(stringResource(id = R.string.Sample_Answer_1))
+        for(option in options){
+            AnswerButton(
+                option = option,
+                answer = answer,
+                hasAnswered = hasAnswered,
+                answerQuestion = {
+                    option: String, answer: String ->
+                    answerQuestion(option,answer)
 
-        AnswerButton(stringResource(id = R.string.Sample_Answer_2))
+                }
+            )
+        }
 
-        AnswerButton(stringResource(id = R.string.Sample_Answer_3))
-
-        AnswerButton(stringResource(id = R.string.Sample_Answer_4))
     }
 
 

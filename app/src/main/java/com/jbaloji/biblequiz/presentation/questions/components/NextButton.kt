@@ -12,14 +12,4 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun NextButton(){
 
-    Button(
-
-        modifier = Modifier
-            .width(100.dp)
-            .height(50.dp),
-
-        onClick = { /*TODO*/ }) {
-        Text(text = "next")
-
-    }
 }

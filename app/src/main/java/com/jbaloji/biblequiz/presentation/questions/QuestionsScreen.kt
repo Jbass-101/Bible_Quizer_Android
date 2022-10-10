@@ -21,16 +21,59 @@ fun QuestionsScreen(
             backgroundColor = MaterialTheme.colors.background,
             content = {paddingValues ->
 
+                Box(modifier = Modifier.padding(paddingValues))
                 Column(
-                    modifier = Modifier.padding(paddingValues)
+                    modifier = Modifier.padding(20.dp,30.dp)
 
                 ) {
+                    
+                    Questions { currentIndex, maxQuestions, currentQuestion, hint,
+                                explanation,answer,options ->
+
+                        viewModel.totalQuestions = maxQuestions
+
+
+                        QuestionNumberText(
+                            currentQuestion = currentIndex + 1,
+                            totalQuestions = maxQuestions,
+                            maxHints = viewModel.maxHints,
+                            totalScore = viewModel.totalScore
+                        )
+                        CountDown()
+                        QuestionText(currentQuestion)
+                        HintAndExplanationText(
+                            isHint = viewModel.isHint,
+                            hintText = hint,
+                            explanation = explanation,
+                            showHint = {
+                                viewModel.showHint()
+                            })
+                        AnswerButtonContainer(
+                            options = options,
+                            answer = answer,
+                            hasAnswered = viewModel.hasAnswered,
+                            answerQuestion = { option: String, answer: String ->
+                                viewModel.answerQuestion(option, answer)
+                            }
+                        )
+                        MiscButtonContainer(
+                            hasAnswered = viewModel.hasAnswered,
+                            nextQuestion = { viewModel.nextQuestion()
+                            }, quitGame = {
+                                viewModel.quitGame()
+                            })
+
+
+                    }
+
+                    /**
                     QuestionNumberText()
                     CountDown()
                     QuestionText()
                     HintAndExplanationText()
                     AnswerButtonContainer()
                     MiscButtonContainer()
+                     */
 
                 }
 
@@ -61,15 +104,15 @@ fun DefaultPreview() {
             content = {paddingValues ->
 
                 Column(
-                    modifier = Modifier.padding(20.dp,30.dp)
+                    modifier = Modifier.padding(paddingValues)
 
                 ) {
-                    QuestionNumberText()
-                    CountDown()
-                    QuestionText()
-                    HintAndExplanationText()
-                    AnswerButtonContainer()
-                    MiscButtonContainer()
+                   // QuestionNumberText()
+                  //  CountDown()
+                  //  QuestionText()
+                  //  HintAndExplanationText()
+                  //  AnswerButtonContainer()
+                  //  MiscButtonContainer()
 
                 }
 

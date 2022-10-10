@@ -5,8 +5,8 @@ import com.jbaloji.biblequiz.domain.model.Response
 import kotlinx.coroutines.flow.Flow
 
 typealias Questions = List<Question>
-typealias BooksRespose = Response<Questions>
+typealias QuestionsResponse = Response<Questions>
 
 interface QuestionsRepository {
-    fun getQuestions() : Flow<BooksRespose>
+    fun getQuestions() : Flow<QuestionsResponse>
 }

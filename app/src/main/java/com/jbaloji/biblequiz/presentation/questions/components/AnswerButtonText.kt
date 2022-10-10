@@ -7,12 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 
 @Composable
-fun AnswerButtonText(text: String){
+fun AnswerButtonText(text: String, answer: String,
+                     answerQuestion: () -> Unit){
 
-    Text(
-        modifier = Modifier
-            .fillMaxWidth(1f),
-        text = text,
-        textAlign = TextAlign.Start
-    )
+
 }

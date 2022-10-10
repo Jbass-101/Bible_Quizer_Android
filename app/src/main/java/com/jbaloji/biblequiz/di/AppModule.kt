@@ -4,6 +4,9 @@ import android.util.Log
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.jbaloji.biblequiz.data.repository.QuestionsRepositoryimpl
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
 import com.jbaloji.biblequiz.domain.use_case.GetQuestions
@@ -20,16 +23,12 @@ import javax.inject.Singleton
 object AppModule {
 
 
+
     @Provides
-    @Singleton
-    fun providesFirebaseFirestore() = FirebaseFirestore.getInstance().apply {
-        try {
-            useEmulator("localhost",8080)
-        }catch (e: java.lang.IllegalStateException){
-            Log.e("App Module","Emulator not ready", e)
-        }
-        firestoreSettings = FirebaseFirestoreSettings.Builder().setPersistenceEnabled(false).build()
+    fun provideFirebaseFirestore() = FirebaseFirestore.getInstance().apply {
+        useEmulator("10.0.2.2",8080)
     }
+
 
     @Provides
     fun providesQuestionRef(
@@ -38,8 +37,8 @@ object AppModule {
 
     @Provides
     fun providesQuestionRepository(
-        questionRef : CollectionReference
-    ) : QuestionsRepository = QuestionsRepositoryimpl(questionRef)
+        collRef : CollectionReference
+    ) : QuestionsRepository = QuestionsRepositoryimpl(collRef)
 
     @Provides
     fun provideUseCases(
