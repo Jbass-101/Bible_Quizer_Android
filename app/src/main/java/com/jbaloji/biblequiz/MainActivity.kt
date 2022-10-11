@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import android.view.WindowInsets
+import android.view.WindowInsetsAnimationController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -18,12 +19,23 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.jbaloji.biblequiz.core.Utils
+import com.jbaloji.biblequiz.navigation.initNavGraph
 import com.jbaloji.biblequiz.presentation.questions.QuestionsScreen
 import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    lateinit var navController: NavHostController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,7 +43,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             BibleQuizTheme {
-                QuestionsScreen()
+                navController = rememberNavController()
+                initNavGraph(navController = navController)
             }
         }
     }
@@ -49,24 +62,4 @@ class MainActivity : ComponentActivity() {
         windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
     }
 
-}
-
-@Composable
-fun Greeting() {
-}
-
-
-
-@Preview(
-    name = "light mode",
-    showBackground = true)
-@Preview(
-    name = "Dark Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-)
-@Composable
-fun DefaultPreview() {
-    BibleQuizTheme {
-        QuestionsScreen()
-    }
 }

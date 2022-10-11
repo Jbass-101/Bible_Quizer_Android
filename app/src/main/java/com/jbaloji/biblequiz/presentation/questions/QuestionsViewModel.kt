@@ -44,6 +44,7 @@ class QuestionsViewModel @Inject constructor(
             questionResponse = response
 
         }
+
     }
 
     fun answerQuestion (option:String, answer: String ) : Boolean {
@@ -73,8 +74,6 @@ class QuestionsViewModel @Inject constructor(
     }
 
     fun quitGame() {
-
-
 
 
     }

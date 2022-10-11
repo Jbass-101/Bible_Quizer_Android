@@ -9,4 +9,5 @@ typealias QuestionsResponse = Response<Questions>
 
 interface QuestionsRepository {
     fun getQuestions() : Flow<QuestionsResponse>
+
 }

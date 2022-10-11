@@ -66,15 +66,6 @@ fun QuestionsScreen(
 
                     }
 
-                    /**
-                    QuestionNumberText()
-                    CountDown()
-                    QuestionText()
-                    HintAndExplanationText()
-                    AnswerButtonContainer()
-                    MiscButtonContainer()
-                     */
-
                 }
 
 
@@ -85,77 +76,3 @@ fun QuestionsScreen(
 
 }
 
-
-@Preview(
-    name = "light mode",
-    showBackground = true)
-@Preview(
-    name = "Dark Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-)
-
-
-@Composable
-fun DefaultPreview() {
-    BibleQuizTheme {
-        Scaffold(
-            modifier = Modifier.fillMaxSize(),
-            backgroundColor = MaterialTheme.colors.background,
-            content = {paddingValues ->
-
-                Column(
-                    modifier = Modifier.padding(paddingValues)
-
-                ) {
-                   // QuestionNumberText()
-                  //  CountDown()
-                  //  QuestionText()
-                  //  HintAndExplanationText()
-                  //  AnswerButtonContainer()
-                  //  MiscButtonContainer()
-
-                }
-
-
-            }
-
-        )
-    }
-}
-
-//
-//@Composable
-//fun DefaultPreview() {
-//    BibleQuizTheme {
-//        Scaffold(
-//            backgroundColor = MaterialTheme.colors.background,
-//            content = {paddingValues ->
-//                Column(
-//                    Modifier
-//                        .fillMaxSize(1f)
-//                        .padding(10.dp,25.dp),
-//                    verticalArrangement = Arrangement.Center
-//                ) {
-//                    Box
-//
-//
-//
-//
-//                    /*
-//                    QuestionNumberText()
-//                   // MySpacer()
-//                    QuestionText()
-//                    //MySpacer()
-//                    HintAndExplanationText()
-//                    //MySpacer()
-//                    AnswerButtonContainer()
-//                   // MySpacer()
-//                    MiscButtonContainer()
-//*/
-//                }
-//
-//            }
-//
-//        )
-//    }
-//}

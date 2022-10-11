@@ -8,7 +8,9 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.jbaloji.biblequiz.data.repository.QuestionsRepositoryimpl
+import com.jbaloji.biblequiz.data.repository.UsersRepositoryImpl
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
+import com.jbaloji.biblequiz.domain.repository.UserRepository
 import com.jbaloji.biblequiz.domain.use_case.GetQuestions
 import com.jbaloji.biblequiz.domain.use_case.UseCases
 import dagger.Module
@@ -16,11 +18,20 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Named
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class QuestionRef
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class UsersRef
 
 
 
@@ -30,14 +41,17 @@ object AppModule {
     }
 
 
+    ////Questions
+    @QuestionRef
     @Provides
     fun providesQuestionRef(
         db: FirebaseFirestore
     ) = db.collection("Questions")
 
+
     @Provides
     fun providesQuestionRepository(
-        collRef : CollectionReference
+        @QuestionRef collRef :  CollectionReference
     ) : QuestionsRepository = QuestionsRepositoryimpl(collRef)
 
     @Provides
@@ -46,4 +60,19 @@ object AppModule {
     ) = UseCases(
         getQuestions = GetQuestions(repo)
     )
+
+    // ------------Users
+    @UsersRef
+    @Provides
+    fun providesUsersRef(
+        db:FirebaseFirestore
+    ) = db.collection("Users")
+
+
+    @Provides
+    fun providesUsersRepository(
+        @UsersRef   collRef: CollectionReference
+    ) : UserRepository = UsersRepositoryImpl(collRef)
+
+
 }

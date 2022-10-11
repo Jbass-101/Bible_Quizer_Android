@@ -1,7 +1,9 @@
 package com.jbaloji.biblequiz.data.repository
 
-import android.util.Log
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.jbaloji.biblequiz.core.Utils
+import com.jbaloji.biblequiz.di.AppModule
 import com.jbaloji.biblequiz.domain.model.Question
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
@@ -11,7 +13,7 @@ import javax.inject.Inject
 
 
 class QuestionsRepositoryimpl @Inject constructor(
-    private val collRef: CollectionReference
+    private val collRef:  CollectionReference
 ) : QuestionsRepository {
 
     override fun getQuestions() = callbackFlow {
@@ -28,5 +30,6 @@ class QuestionsRepositoryimpl @Inject constructor(
             snapshotListener.remove()
         }
     }
+
 
 }
