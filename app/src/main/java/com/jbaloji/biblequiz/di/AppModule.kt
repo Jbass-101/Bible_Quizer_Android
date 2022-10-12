@@ -36,6 +36,7 @@ object AppModule {
 
 
     @Provides
+    @Singleton
     fun provideFirebaseFirestore() = FirebaseFirestore.getInstance().apply {
         useEmulator("10.0.2.2",8080)
     }

@@ -4,20 +4,26 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.jbaloji.biblequiz.presentation.splash.SplashScreen
+import com.jbaloji.biblequiz.presentation.home.HomeScreen
+import com.jbaloji.biblequiz.presentation.questions.QuestionsScreen
 
 @Composable
-fun initNavGraph(
+fun InitGraph(
     navController: NavHostController
 ) {
     NavHost(
         navController =navController,
-        startDestination = Screens.Splash.route,
+        startDestination = Screens.Home.route,
     ){
         composable(
-            route = Screens.Splash.route
+            route = Screens.Home.route
         ){
-            SplashScreen()
+            HomeScreen(navController)
+        }
+        composable(
+            route = Screens.Questions.route
+        ){
+            QuestionsScreen()
         }
     }
 
