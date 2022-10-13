@@ -42,19 +42,12 @@ fun QuestionsScreen(
                         CountDown()
                         QuestionText(currentQuestion)
                         HintAndExplanationText(
-                            isHint = viewModel.isHint,
                             hintText = hint,
                             explanation = explanation,
-                            showHint = {
-                                viewModel.showHint()
-                            })
+                            )
                         AnswerButtonContainer(
                             options = options,
                             answer = answer,
-                            hasAnswered = viewModel.hasAnswered,
-                            answerQuestion = { option: String, answer: String ->
-                                viewModel.answerQuestion(option, answer)
-                            }
                         )
                         MiscButtonContainer(
                             hasAnswered = viewModel.hasAnswered,

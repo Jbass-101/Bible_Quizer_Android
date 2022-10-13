@@ -10,8 +10,7 @@ import java.util.Collections.shuffle
 
 @Composable
 fun AnswerButtonContainer(
-    options: List<String>, answer: String,hasAnswered: Boolean,
-    answerQuestion: (option: String,answer: String) -> Boolean
+    options: List<String>, answer: String
 ){
 
     Column(
@@ -26,12 +25,6 @@ fun AnswerButtonContainer(
             AnswerButton(
                 option = option,
                 answer = answer,
-                hasAnswered = hasAnswered,
-                answerQuestion = {
-                    option: String, answer: String ->
-                    answerQuestion(option,answer)
-
-                }
             )
         }
 

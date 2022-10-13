@@ -21,17 +21,3 @@ fun TitleText(){
 
 }
 
-
-@Preview(
-    name = "light mode",
-    showBackground = true)
-@Preview(
-    name = "Dark Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-)
-@Composable
-fun TitlePreview() {
-    BibleQuizTheme {
-        TitleText()
-    }
-}

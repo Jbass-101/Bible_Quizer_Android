@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.compose.rememberNavController
 import com.jbaloji.biblequiz.domain.model.Response.Loading
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import com.jbaloji.biblequiz.domain.use_case.UseCases
@@ -18,6 +19,7 @@ import javax.inject.Inject
 class QuestionsViewModel @Inject constructor(
     private val useCases : UseCases
 ) : ViewModel() {
+
     var questionResponse by mutableStateOf<QuestionsResponse>(Loading)
     var options by mutableStateOf(listOf<String>())
 
@@ -47,26 +49,24 @@ class QuestionsViewModel @Inject constructor(
 
     }
 
-    fun answerQuestion (option:String, answer: String ) : Boolean {
-        return if(option == answer){
-            totalScore++
-            true
-        } else {
-            false
-        }
-
+    fun answerQuestion (correctAnswer: Boolean) {
+        hasAnswered = true
+        if (correctAnswer) totalScore++
     }
 
     fun showHint(){
         if (!isHint && maxHints > 0){
             maxHints--
             isHint = true
-
         }
+
     }
 
 
     fun nextQuestion(){
+        hasAnswered = false
+        isHint = false
+
         if (currentIndex < totalQuestions - 1){
             isHint = false;
             currentIndex++
@@ -74,6 +74,7 @@ class QuestionsViewModel @Inject constructor(
     }
 
     fun quitGame() {
+
 
 
     }

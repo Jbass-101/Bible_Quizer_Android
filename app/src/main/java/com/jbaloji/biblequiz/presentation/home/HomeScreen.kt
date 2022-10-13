@@ -1,5 +1,6 @@
 package com.jbaloji.biblequiz.presentation.home
 
+import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,6 +23,7 @@ import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.navigation.Screens
 import com.jbaloji.biblequiz.presentation.home.components.HomeContents
 import com.jbaloji.biblequiz.presentation.home.components.HomeScreenContents
+import com.jbaloji.biblequiz.presentation.questions.components.TitleText
 import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 
 @Composable
@@ -49,12 +51,10 @@ fun HomeScreen(
                                 .padding(paddingValues)
                                 .fillMaxSize()
 
-
-
                         ) {
                             HomeScreenContents (
                                 contents = {
-                                    Text(text = "Bible Quiz!")
+                                    TitleText()
                                     Button(onClick = {
                                         navController.navigate(Screens.Questions.route)
                                     }) {
@@ -89,12 +89,16 @@ fun HomeScreen(
 }
 
 @Preview(
-    name = "Dark Theme",
-    uiMode = UI_MODE_NIGHT_YES
+    name = "light mode",
+    showBackground = true)
+@Preview(
+    name = "Dark Mode",
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
 )
 @Composable
-fun MyPreview(){
-    HomeScreen(
-        navController = rememberNavController()
-    )
+fun ButtonPreview() {
+    BibleQuizTheme {
+        HomeScreen(navController = rememberNavController())
+    }
 }
+
