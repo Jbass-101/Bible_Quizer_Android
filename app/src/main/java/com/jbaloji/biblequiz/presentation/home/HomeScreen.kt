@@ -24,6 +24,7 @@ import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.navigation.Screen
 import com.jbaloji.biblequiz.navigation.Screens
+import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 import com.jbaloji.biblequiz.presentation.home.components.HomeContents
 import com.jbaloji.biblequiz.presentation.home.components.HomeScreenContents
 import com.jbaloji.biblequiz.presentation.questions.QuestionsScreen
@@ -42,12 +43,12 @@ fun HomeScreen(
             content = {paddingValues ->
 
                 Box(){
-                    Image(
-                        painter = painterResource(id = R.drawable.background ),
-                        contentDescription = "background",
-                        contentScale = ContentScale.FillHeight,
-                        modifier = Modifier.fillMaxSize()
-                    )
+//                    Image(
+//                        painter = painterResource(id = R.drawable.background ),
+//                        contentDescription = "background",
+//                        contentScale = ContentScale.FillHeight,
+//                        modifier = Modifier.fillMaxSize()
+//                    )
                     Box() {
                         Column(
                             verticalArrangement = Arrangement.Center,
@@ -60,20 +61,12 @@ fun HomeScreen(
                             HomeScreenContents (
                                 contents = {
                                     TitleText()
-                                    Button(onClick = {
-                                        navController.navigate(Screen.Question)
-                                    }) {
-                                        Text(text = "Start")
-                                    }
-                                    Button(onClick = { /*TODO*/ }) {
-                                        Text(text = "Feature 1")
-                                    }
-                                    Button(onClick = { /*TODO*/ }) {
-                                        Text(text = "Feature 2")
-                                    }
-                                    Button(onClick = { /*TODO*/ }) {
-                                        Text(text = "Feature 3")
-                                    }
+                                    GenericButton(
+                                        text = "Start Quiz",
+                                        navigation = {
+                                            navController.navigate(Screen.Question)
+                                        }
+                                    )
 
 
                                 }
@@ -96,14 +89,8 @@ fun HomeScreen(
 @Preview(
     name = "light mode",
     showBackground = true)
-@Preview(
-    name = "Dark Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-)
 @Composable
-fun ButtonPreview() {
-    BibleQuizTheme {
-        QuestionsScreen()
-    }
+fun DefaultPreview() {
+    HomeScreen(navController = rememberNavController())
 }
 

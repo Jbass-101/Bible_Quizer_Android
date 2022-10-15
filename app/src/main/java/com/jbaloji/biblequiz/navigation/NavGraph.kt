@@ -13,7 +13,7 @@ fun InitGraph(
 ) {
     NavHost(
         navController =navController,
-        startDestination = Screen.Question,
+        startDestination = Screen.Home,
     ){
         composable(
             route = Screen.Home

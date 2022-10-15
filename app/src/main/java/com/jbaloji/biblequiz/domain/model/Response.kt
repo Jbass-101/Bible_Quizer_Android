@@ -1,8 +1,6 @@
 package com.jbaloji.biblequiz.domain.model
 
-import com.jbaloji.biblequiz.core.FileResponse
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.FlowCollector
+
 
 /*Generic of sub type to a generic of supertype
 * Producer values of type T through functions but not consume them
@@ -13,11 +11,7 @@ sealed class Response<out T> {
 
     data class Success<out T>(
         val data: T
-    ) : Response<T>(), Flow<T> {
-        override suspend fun collect(collector: FlowCollector<T>) {
-            TODO("Not yet implemented")
-        }
-    }
+    ) : Response<T>()
 
     data class Failure(
         val e: Exception?

@@ -11,5 +11,4 @@ data class Question (
     var book: String = "",
     var options: List<String> = listOf()
 
-
     )
