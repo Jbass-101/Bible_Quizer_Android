@@ -15,7 +15,8 @@ fun HomeScreenContents(
 ) {
     when(val response = viewModel.questionResponse){
         is Response.Loading -> ProgressBar()
-        is Response.Success -> contents()
+        is Response.Success -> contents(
+        )
         is Response.Failure -> Utils.print(response.e)
     }
 }

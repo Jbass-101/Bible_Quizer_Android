@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeScreenViewModel @Inject constructor(
-    private val useCases: UseCases
+    private val useCases: UseCases,
 ) : ViewModel() {
 
     var questionResponse by mutableStateOf<QuestionsResponse>(Response.Loading)

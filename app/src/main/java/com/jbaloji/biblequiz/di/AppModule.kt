@@ -1,23 +1,15 @@
 package com.jbaloji.biblequiz.di
 
-import android.util.Log
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.jbaloji.biblequiz.data.repository.QuestionsRepositoryimpl
-import com.jbaloji.biblequiz.data.repository.UsersRepositoryImpl
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
-import com.jbaloji.biblequiz.domain.repository.UserRepository
 import com.jbaloji.biblequiz.domain.use_case.GetQuestions
 import com.jbaloji.biblequiz.domain.use_case.UseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
@@ -35,11 +27,15 @@ object AppModule {
 
 
 
+//    @Provides
+//    @Singleton
+//    fun provideFirebaseFirestore() = FirebaseFirestore.getInstance().apply {
+//        useEmulator("10.0.2.2",8080)
+//    }
+
     @Provides
     @Singleton
-    fun provideFirebaseFirestore() = FirebaseFirestore.getInstance().apply {
-        useEmulator("10.0.2.2",8080)
-    }
+    fun provideFirebaseFirestore() = FirebaseFirestore.getInstance()
 
 
     ////Questions
@@ -47,7 +43,7 @@ object AppModule {
     @Provides
     fun providesQuestionRef(
         db: FirebaseFirestore
-    ) = db.collection("Questions")
+    ) = db.collection("Questions").document("Levels").collection("Level_1")
 
 
     @Provides
@@ -62,18 +58,12 @@ object AppModule {
         getQuestions = GetQuestions(repo)
     )
 
-    // ------------Users
-    @UsersRef
-    @Provides
-    fun providesUsersRef(
-        db:FirebaseFirestore
-    ) = db.collection("Users")
 
 
-    @Provides
-    fun providesUsersRepository(
-        @UsersRef   collRef: CollectionReference
-    ) : UserRepository = UsersRepositoryImpl(collRef)
+
+
+
+
 
 
 }

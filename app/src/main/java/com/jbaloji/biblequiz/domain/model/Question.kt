@@ -7,9 +7,8 @@ data class Question (
 
     var question: String = "",
     var answer: String = "",
-    var difficulty: Int = -1,
-    var explanation: String = "",
     var hint: String = "",
+    var book: String = "",
     var options: List<String> = listOf()
 
 

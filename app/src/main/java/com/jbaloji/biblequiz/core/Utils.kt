@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.util.Log
+import androidx.core.app.ComponentActivity
 import com.jbaloji.biblequiz.MainActivity
 import java.io.File
 import java.io.FileInputStream
@@ -11,8 +12,9 @@ import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.FileReader
 import java.io.FileWriter
+import javax.inject.Inject
 
-class Utils {
+class Utils  {
     companion object {
 
         fun print(e: Exception?) {
@@ -30,7 +32,9 @@ class Utils {
         }
 
 
-
     }
+
+
+
 
 }

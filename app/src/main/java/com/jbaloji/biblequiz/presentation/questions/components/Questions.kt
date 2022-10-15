@@ -13,7 +13,7 @@ fun Questions (
     viewModel: QuestionsViewModel = hiltViewModel(),
     content: @Composable (currentIndex: Int,maxQuestions: Int,
                           currentQuestion: String, hint: String,
-                          explanation: String, answer: String, options: List<String>) -> Unit
+                           answer: String, options: List<String>) -> Unit
 ){
     when(val questionResponse = viewModel.questionResponse){
         is Response.Loading -> ProgressBar()
@@ -23,7 +23,6 @@ fun Questions (
             maxQuestions = questionResponse.data.size,
             currentQuestion = questionResponse.data[viewModel.currentIndex].question,
             hint = questionResponse.data[viewModel.currentIndex].hint,
-            explanation = questionResponse.data[viewModel.currentIndex].explanation,
             answer = questionResponse.data[viewModel.currentIndex].answer,
             options = viewModel.randomise(questionResponse.data[viewModel.currentIndex].options)
         )

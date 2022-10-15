@@ -1,11 +1,9 @@
 package com.jbaloji.biblequiz.presentation.questions
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.presentation.questions.components.*
@@ -28,7 +26,7 @@ fun QuestionsScreen(
                 ) {
                     
                     Questions { currentIndex, maxQuestions, currentQuestion, hint,
-                                explanation,answer,options ->
+                               answer,options ->
 
                         viewModel.totalQuestions = maxQuestions
 
@@ -39,11 +37,13 @@ fun QuestionsScreen(
                             maxHints = viewModel.maxHints,
                             totalScore = viewModel.totalScore
                         )
-                        CountDown()
+                        CountDown(
+                            time = viewModel.currentTime,
+                            progress = viewModel.currentProgress
+                        )
                         QuestionText(currentQuestion)
-                        HintAndExplanationText(
+                        HintText(
                             hintText = hint,
-                            explanation = explanation,
                             )
                         AnswerButtonContainer(
                             options = options,

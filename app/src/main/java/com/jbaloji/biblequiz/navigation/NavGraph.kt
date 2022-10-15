@@ -13,15 +13,15 @@ fun InitGraph(
 ) {
     NavHost(
         navController =navController,
-        startDestination = Screens.Questions.route,
+        startDestination = Screen.Question,
     ){
         composable(
-            route = Screens.Home.route
+            route = Screen.Home
         ){
             HomeScreen(navController)
         }
         composable(
-            route = Screens.Questions.route
+            route = Screen.Question
         ){
             QuestionsScreen()
         }
