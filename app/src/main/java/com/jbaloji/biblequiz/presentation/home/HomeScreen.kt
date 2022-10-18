@@ -33,7 +33,7 @@ import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 
 @Composable
 fun HomeScreen(
-    navController: NavController,
+    onNavigateToQuestions: () -> Unit
 
 )  {
     BibleQuizTheme {
@@ -63,9 +63,7 @@ fun HomeScreen(
                                     TitleText()
                                     GenericButton(
                                         text = "Start Quiz",
-                                        navigation = {
-                                            navController.navigate(Screen.Question)
-                                        }
+                                        navigation = onNavigateToQuestions
                                     )
 
 
@@ -86,11 +84,4 @@ fun HomeScreen(
     
 }
 
-@Preview(
-    name = "light mode",
-    showBackground = true)
-@Composable
-fun DefaultPreview() {
-    HomeScreen(navController = rememberNavController())
-}
 

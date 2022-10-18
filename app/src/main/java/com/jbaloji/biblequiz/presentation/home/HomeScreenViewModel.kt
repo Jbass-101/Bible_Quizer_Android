@@ -9,6 +9,7 @@ import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import com.jbaloji.biblequiz.domain.use_case.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,6 +28,9 @@ class HomeScreenViewModel @Inject constructor(
         useCases.getQuestions().collect{ response ->
             questionResponse = response
         }
+    }
+
+    fun quitGame(){
     }
 
 

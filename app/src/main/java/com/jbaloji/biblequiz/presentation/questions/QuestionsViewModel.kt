@@ -17,8 +17,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class QuestionsViewModel @Inject constructor(
-    private val useCases : UseCases
+    private val useCases : UseCases,
 ) : ViewModel() {
+
 
     //Question Feature
     var questionResponse by mutableStateOf<QuestionsResponse>(Loading)
@@ -37,6 +38,9 @@ class QuestionsViewModel @Inject constructor(
     var currentTime by mutableStateOf(0)
     var currentProgress by mutableStateOf(1f)
     private var totalTime by mutableStateOf(60)
+
+    //Quit menu
+    var showQuitMenu by mutableStateOf(false)
 
 
 
@@ -104,7 +108,8 @@ class QuestionsViewModel @Inject constructor(
         }
     }
 
-    fun quitGame() {
+    fun toggleQuitMenu() {
+        showQuitMenu = !showQuitMenu
 
     }
 

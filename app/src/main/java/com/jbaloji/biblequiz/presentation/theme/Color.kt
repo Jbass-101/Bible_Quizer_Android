@@ -9,6 +9,8 @@ val Teal200 = Color(0xFF03DAC5)
 
 val Button_Border = Color(0x7DEDE6CC)
 
+val Overlay = Color(0x7DC1C1C1)
+
 
 
 val Background_Dark = Color(0xFF10332D)

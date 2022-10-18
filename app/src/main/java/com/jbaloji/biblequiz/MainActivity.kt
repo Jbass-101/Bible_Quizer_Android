@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.jbaloji.biblequiz.core.Constatnts
 import com.jbaloji.biblequiz.core.Utils
 import com.jbaloji.biblequiz.navigation.InitGraph
+import com.jbaloji.biblequiz.navigation.Screen
 import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,13 +29,9 @@ import dagger.hilt.android.AndroidEntryPoint
         hideSystemBars()
 
         setContent {
-            BibleQuizTheme {
-                navController = rememberNavController()
-                InitGraph(
-                    navController = navController
-                )
-
-            }
+            InitGraph(
+                startDestination = Screen.Home
+            )
         }
 
 
