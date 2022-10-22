@@ -12,8 +12,10 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MiscButtonContainer(
     hasAnswered: Boolean,
-    nextQuestion: () ->  Unit,
-    toggleQuitMenu: ( ) -> Unit
+    isLastQuestion: Boolean,
+    nextOrFinish: () ->  Unit,
+    toggleQuitMenu: () -> Unit,
+    onNavigateToScore: () -> Unit
 ){
         Row (
             horizontalArrangement = Arrangement.SpaceAround,
@@ -35,9 +37,18 @@ fun MiscButtonContainer(
                     .height(50.dp),
                 enabled = hasAnswered,
 
-                onClick = nextQuestion
+                onClick = if (isLastQuestion){
+                    onNavigateToScore
+                }else {
+                    nextOrFinish
+                }
             ) {
-                Text(text = "next")
+                if (isLastQuestion){
+                    Text(text = "Finish")
+                } else {
+                    Text(text = "Next")
+
+                }
 
             }
         }

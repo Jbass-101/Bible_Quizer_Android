@@ -18,14 +18,17 @@ fun Questions (
     when(val questionResponse = viewModel.questionResponse){
         is Response.Loading -> ProgressBar()
         is Response.Success -> content(
-
             currentIndex = viewModel.currentIndex,
             maxQuestions = questionResponse.data.size,
             currentQuestion = questionResponse.data[viewModel.currentIndex].question,
             hint = questionResponse.data[viewModel.currentIndex].hint,
             answer = questionResponse.data[viewModel.currentIndex].answer,
             options = viewModel.randomise(questionResponse.data[viewModel.currentIndex].options)
-        )
+        ).also {
+
+                viewModel.randomiseQuestions(questionResponse.data)
+
+        }
         is Response.Failure -> Utils.print(questionResponse.e)
     }
 

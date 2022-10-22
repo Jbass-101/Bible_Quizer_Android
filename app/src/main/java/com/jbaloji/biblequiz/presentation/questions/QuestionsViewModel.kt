@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jbaloji.biblequiz.domain.model.Response.Loading
+import com.jbaloji.biblequiz.domain.repository.Questions
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import com.jbaloji.biblequiz.domain.use_case.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,6 +30,7 @@ class QuestionsViewModel @Inject constructor(
     //Answer Feature
     var hasAnswered by mutableStateOf(false)
     var totalScore by mutableStateOf(0)
+    var isLastQuestion by mutableStateOf(false)
 
     //Hint Feature
     var maxHints by mutableStateOf(5)
@@ -83,7 +85,6 @@ class QuestionsViewModel @Inject constructor(
     }
 
 
-
      fun answerQuestion (correctAnswer: Boolean) {
         hasAnswered = true
         if (correctAnswer) totalScore++
@@ -98,13 +99,18 @@ class QuestionsViewModel @Inject constructor(
     }
 
 
-    fun nextQuestion(){
+    fun nextOrFinish(){
         hasAnswered = false
         isHint = false
+
         if (currentIndex < totalQuestions - 1){
             startCountDown()
             isHint = false;
             currentIndex++
+
+            if(currentIndex == totalQuestions - 1){
+                isLastQuestion = true
+            }
         }
     }
 
@@ -126,6 +132,26 @@ class QuestionsViewModel @Inject constructor(
 
         return myList
 
+    }
+
+    fun randomiseQuestions(options: Questions) : Questions{
+        var myArr = listOf<Int>()
+
+        for (i in 0 until (options.size)){
+
+          //  Log.i("TEST", "$i")
+        }
+//        myArr.to
+//        var myList = mutableListOf<Questions>()
+//
+//        shuffle(myArr)
+//
+//        for (i in myArr){
+//            myList.add(options[i])
+//
+//        }
+
+        return  options
     }
 
 

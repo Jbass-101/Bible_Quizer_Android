@@ -13,6 +13,7 @@ import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 @Composable
 fun QuestionsScreen(
     onNavigateToHome: () -> Unit,
+    onNavigateToScore: () -> Unit,
     viewModel: QuestionsViewModel = hiltViewModel()
 ) {
     BibleQuizTheme {
@@ -34,9 +35,6 @@ fun QuestionsScreen(
 
 
 
-
-
-
                     Box() {
                         Column(
                             modifier = Modifier.padding(20.dp,30.dp)
@@ -46,7 +44,7 @@ fun QuestionsScreen(
                             Questions { currentIndex, maxQuestions, currentQuestion, hint,
                                         answer,options ->
 
-                                viewModel.totalQuestions = maxQuestions
+                                viewModel.totalQuestions = 3
 
 
                                 QuestionNumberText(
@@ -69,10 +67,14 @@ fun QuestionsScreen(
                                 )
                                 MiscButtonContainer(
                                     hasAnswered = viewModel.hasAnswered,
-                                    nextQuestion = { viewModel.nextQuestion()
-                                    }, toggleQuitMenu = {
+                                    isLastQuestion = viewModel.isLastQuestion,
+                                    nextOrFinish = { viewModel.nextOrFinish()
+                                    },
+                                    toggleQuitMenu = {
                                         viewModel.toggleQuitMenu()
-                                    })
+                                    },
+                                    onNavigateToScore = onNavigateToScore
+                                )
                             }
 
                         }
