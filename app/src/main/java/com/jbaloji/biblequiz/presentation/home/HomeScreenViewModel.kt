@@ -21,7 +21,7 @@ class HomeScreenViewModel @Inject constructor(
     var questionResponse by mutableStateOf<QuestionsResponse>(Response.Loading)
 
     init {
-        getQuestions()
+      //  getQuestions()
     }
 
     private fun getQuestions() = viewModelScope.launch {

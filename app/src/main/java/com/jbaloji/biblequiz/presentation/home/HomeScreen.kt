@@ -3,17 +3,19 @@ package com.jbaloji.biblequiz.presentation.home
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 import com.jbaloji.biblequiz.presentation.home.components.HomeScreenContents
-import com.jbaloji.biblequiz.presentation.questions.components.TitleText
+import com.jbaloji.biblequiz.presentation.home.components.TitleText
 import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 
 @Composable
 fun HomeScreen(
-    onNavigateToQuestions: () -> Unit
+    onNavigateToLevels: () -> Unit
 
 )  {
     BibleQuizTheme {
@@ -41,14 +43,20 @@ fun HomeScreen(
                             HomeScreenContents (
                                 contents = {
                                     TitleText()
+                                    Spacer(modifier = Modifier.height(15.dp))
                                     GenericButton(
                                         text = "Start Quiz",
-                                        navigation = onNavigateToQuestions
+                                        action = onNavigateToLevels
                                     )
 
 
                                 }
                             )
+                            Row(
+                                modifier = Modifier.weight(1f,false)
+                            ) {
+                                Text(text = "Demo")
+                            }
 
 
                         }

@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.jbaloji.biblequiz.components.QuitMenu
 import com.jbaloji.biblequiz.presentation.questions.components.*
 import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
@@ -16,7 +17,9 @@ fun QuestionsScreen(
     onNavigateToScore: () -> Unit,
     viewModel: QuestionsViewModel = hiltViewModel()
 ) {
+
     BibleQuizTheme {
+
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             backgroundColor = MaterialTheme.colors.background,
@@ -30,10 +33,7 @@ fun QuestionsScreen(
                             toggleQuitMenu = { viewModel.toggleQuitMenu() },
                             onNavigateToHome = onNavigateToHome
                         )
-
                     }
-
-
 
                     Box() {
                         Column(
@@ -44,7 +44,7 @@ fun QuestionsScreen(
                             Questions { currentIndex, maxQuestions, currentQuestion, hint,
                                         answer,options ->
 
-                                viewModel.totalQuestions = 3
+                                viewModel.totalQuestions = maxQuestions
 
 
                                 QuestionNumberText(

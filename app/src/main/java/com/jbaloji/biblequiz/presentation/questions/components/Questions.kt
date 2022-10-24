@@ -7,6 +7,7 @@ import com.jbaloji.biblequiz.core.Utils
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.Questions
 import com.jbaloji.biblequiz.presentation.questions.QuestionsViewModel
+import kotlinx.coroutines.runBlocking
 
 @Composable
 fun Questions (
@@ -17,18 +18,15 @@ fun Questions (
 ){
     when(val questionResponse = viewModel.questionResponse){
         is Response.Loading -> ProgressBar()
-        is Response.Success -> content(
-            currentIndex = viewModel.currentIndex,
-            maxQuestions = questionResponse.data.size,
-            currentQuestion = questionResponse.data[viewModel.currentIndex].question,
-            hint = questionResponse.data[viewModel.currentIndex].hint,
-            answer = questionResponse.data[viewModel.currentIndex].answer,
-            options = viewModel.randomise(questionResponse.data[viewModel.currentIndex].options)
-        ).also {
-
-                viewModel.randomiseQuestions(questionResponse.data)
-
-        }
+        is Response.Success ->
+            content(
+                currentIndex = viewModel.currentIndex,
+                maxQuestions = questionResponse.data.size,
+                currentQuestion = questionResponse.data[viewModel.currentIndex].question,
+                hint = questionResponse.data[viewModel.currentIndex].hint,
+                answer = questionResponse.data[viewModel.currentIndex].answer,
+                options = viewModel.randomise(questionResponse.data[viewModel.currentIndex].options)
+            )
         is Response.Failure -> Utils.print(questionResponse.e)
     }
 

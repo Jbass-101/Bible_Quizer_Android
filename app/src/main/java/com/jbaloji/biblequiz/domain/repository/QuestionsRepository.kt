@@ -10,4 +10,6 @@ typealias QuestionsResponse = Response<Questions>
 interface QuestionsRepository {
     fun getQuestions() : Flow<QuestionsResponse>
 
+    fun getQuestionsLevel(level: String) : Flow<QuestionsResponse>
+
 }

@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jbaloji.biblequiz.presentation.home.HomeScreen
+import com.jbaloji.biblequiz.presentation.levels.LevelsScreen
 import com.jbaloji.biblequiz.presentation.questions.QuestionsScreen
 import com.jbaloji.biblequiz.presentation.score.ScoreScreen
 
@@ -16,19 +17,20 @@ fun InitGraph  (
     startDestination: String = Screen.Home
 ) {
     NavHost(
-        navController =navController,
+        navController = navController,
         startDestination = startDestination,
     ){
         composable(
             route = Screen.Home
         ){
             HomeScreen(
-                onNavigateToQuestions = { navController.navigate(Screen.Question)}
+                onNavigateToLevels = { navController.navigate(Screen.Levels)}
 
             )
         }
         composable(
-            route = Screen.Question
+            route = Screen.Question,
+            arguments = listOf(navArgument(Screen.Level_ID){type = NavType.StringType})
         ){
             BackHandler(enabled = true) {
                 //navController.navigate(Screen.QuestionQuit)
@@ -47,6 +49,13 @@ fun InitGraph  (
             }
             ScoreScreen (
                 onNavigateToHome = {navController.navigate(Screen.Home)}
+            )
+        }
+        composable(
+            route = Screen.Levels
+        ){
+            LevelsScreen(
+                navController = navController
             )
         }
     }
