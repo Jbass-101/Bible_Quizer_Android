@@ -2,15 +2,10 @@ package com.jbaloji.biblequiz.data.repository
 
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.jbaloji.biblequiz.core.Utils
-import com.jbaloji.biblequiz.di.AppModule
 import com.jbaloji.biblequiz.domain.model.Question
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
-import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import java.util.Collections.shuffle
 import javax.inject.Inject

@@ -1,5 +1,6 @@
 package com.jbaloji.biblequiz.presentation.home
 
+import android.app.Activity
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -12,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.system.exitProcess
 
 @HiltViewModel
 class HomeScreenViewModel @Inject constructor(
@@ -30,7 +32,11 @@ class HomeScreenViewModel @Inject constructor(
         }
     }
 
+
     fun quitGame(){
+
+        exitProcess(0)
+
     }
 
 

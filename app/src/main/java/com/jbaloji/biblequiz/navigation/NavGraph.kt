@@ -23,6 +23,9 @@ fun InitGraph  (
         composable(
             route = Screen.Home
         ){
+            BackHandler(enabled = true) {
+
+            }
             HomeScreen(
                 onNavigateToLevels = { navController.navigate(Screen.Levels)}
 

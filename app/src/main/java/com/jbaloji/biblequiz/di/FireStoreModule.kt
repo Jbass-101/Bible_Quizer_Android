@@ -1,9 +1,5 @@
 package com.jbaloji.biblequiz.di
 
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,14 +11,13 @@ import com.jbaloji.biblequiz.domain.use_case.UseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object FireStoreModule {
 
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
@@ -76,6 +71,7 @@ object AppModule {
         getQuestions = GetQuestions(repo),
         getQuestionLevel = GetQuestionsLevel(repo)
     )
+
 
 
 
