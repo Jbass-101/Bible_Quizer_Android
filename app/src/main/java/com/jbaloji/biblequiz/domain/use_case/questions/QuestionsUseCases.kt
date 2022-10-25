@@ -1,6 +1,7 @@
-package com.jbaloji.biblequiz.domain.use_case
+package com.jbaloji.biblequiz.domain.use_case.questions
 
-data class UseCases (
+
+data class QuestionsUseCases (
     val getQuestions : GetQuestions,
     val getQuestionLevel : GetQuestionsLevel
         )

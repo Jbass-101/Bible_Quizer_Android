@@ -5,9 +5,9 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jbaloji.biblequiz.data.repository.QuestionsRepositoryimpl
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
-import com.jbaloji.biblequiz.domain.use_case.GetQuestions
-import com.jbaloji.biblequiz.domain.use_case.GetQuestionsLevel
-import com.jbaloji.biblequiz.domain.use_case.UseCases
+import com.jbaloji.biblequiz.domain.use_case.questions.GetQuestions
+import com.jbaloji.biblequiz.domain.use_case.questions.GetQuestionsLevel
+import com.jbaloji.biblequiz.domain.use_case.questions.QuestionsUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,23 +25,19 @@ object FireStoreModule {
 
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
-    annotation class UsersRef
-
-    @Qualifier
-    @Retention(AnnotationRetention.BINARY)
     annotation class QuestionDocRef
 
 
 
 //    @Provides
 //    @Singleton
-//    fun provideFirebaseFirestore() = FirebaseFirestore.getInstance().apply {
+//    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance().apply {
 //        useEmulator("10.0.2.2",8080)
 //    }
 
     @Provides
     @Singleton
-    fun provideFirebaseFirestore() = FirebaseFirestore.getInstance()
+    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance()
 
 
     ////Questions
@@ -67,7 +63,7 @@ object FireStoreModule {
     @Provides
     fun provideUseCases(
         repo: QuestionsRepository
-    ) = UseCases(
+    ) = QuestionsUseCases(
         getQuestions = GetQuestions(repo),
         getQuestionLevel = GetQuestionsLevel(repo)
     )

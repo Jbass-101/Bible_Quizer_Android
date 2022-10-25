@@ -1,18 +1,15 @@
 package com.jbaloji.biblequiz.presentation.questions
 
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jbaloji.biblequiz.domain.model.Question
 import com.jbaloji.biblequiz.domain.model.Response.Loading
-import com.jbaloji.biblequiz.domain.repository.Questions
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
-import com.jbaloji.biblequiz.domain.use_case.UseCases
+import com.jbaloji.biblequiz.domain.use_case.questions.QuestionsUseCases
 import com.jbaloji.biblequiz.navigation.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -22,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class QuestionsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val useCases : UseCases,
+    private val useCases : QuestionsUseCases,
 ) : ViewModel() {
 
     private val levelId: String = checkNotNull(savedStateHandle[Screen.Level_ID])

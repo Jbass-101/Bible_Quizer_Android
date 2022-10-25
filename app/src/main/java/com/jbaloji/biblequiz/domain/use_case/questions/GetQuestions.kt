@@ -1,4 +1,4 @@
-package com.jbaloji.biblequiz.domain.use_case
+package com.jbaloji.biblequiz.domain.use_case.questions
 
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
 
