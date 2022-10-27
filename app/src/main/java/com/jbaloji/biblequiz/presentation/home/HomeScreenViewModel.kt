@@ -7,6 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
+import com.jbaloji.biblequiz.domain.repository.User
+import com.jbaloji.biblequiz.domain.repository.UserResponse
+import com.jbaloji.biblequiz.domain.use_case.auth.AuthUseCases
+import com.jbaloji.biblequiz.domain.use_case.auth.CurrentUser
 import com.jbaloji.biblequiz.domain.use_case.questions.QuestionsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,20 +19,29 @@ import kotlin.system.exitProcess
 
 @HiltViewModel
 class HomeScreenViewModel @Inject constructor(
-    private val useCases: QuestionsUseCases,
+    private val authUseCases: AuthUseCases
 ) : ViewModel() {
 
-    var questionResponse by mutableStateOf<QuestionsResponse>(Response.Loading)
+    var userResponse by mutableStateOf<UserResponse>(Response.Loading)
+
+    var currentUser by mutableStateOf<User>(null)
 
     init {
-      //  getQuestions()
-    }
-
-    private fun getQuestions() = viewModelScope.launch {
-        useCases.getQuestions().collect{ response ->
-            questionResponse = response
+        if (authUseCases.currentUser.get() == null){
+            loginAnonymously()
+        } else {
+            currentUser = authUseCases.currentUser.get()
         }
     }
+
+    private fun loginAnonymously () = viewModelScope.launch {
+
+        authUseCases.loginAnonymously().collect{ response ->
+            userResponse = response
+        }
+    }
+
+    fun logOut () = authUseCases.logOut
 
 
     fun quitGame(){

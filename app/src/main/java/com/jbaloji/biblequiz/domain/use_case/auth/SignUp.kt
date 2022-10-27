@@ -6,6 +6,8 @@ class SignUp (private val repo: AuthRepository) {
 
     operator fun invoke(
         email: String,
-        password: String
-    ) = repo.signup(email,password)
+        password: String,
+        userName: String
+
+    ) = repo.signup(email,password,userName)
 }

@@ -13,10 +13,10 @@ fun HomeScreenContents(
     viewModel: HomeScreenViewModel = hiltViewModel(),
     contents: @Composable () -> Unit
 ) {
-    when(val response = viewModel.questionResponse){
-        is Response.Loading -> contents()//ProgressBar()
-        is Response.Success -> contents(
-        )
-        is Response.Failure -> Utils.print(response.e)
-    }
+//    when(val response = viewModel.questionResponse){
+//        is Response.Loading -> contents()//ProgressBar()
+//        is Response.Success -> contents(
+//        )
+//        is Response.Failure -> Utils.print(response.e)
+//    }
 }

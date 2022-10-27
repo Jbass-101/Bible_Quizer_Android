@@ -1,6 +1,6 @@
 package com.jbaloji.biblequiz.core
 
-object Constatnts {
+object Constants {
     //App
     const val FILENAME = "Jesus.bq"
     const val TAG = "AppTag"

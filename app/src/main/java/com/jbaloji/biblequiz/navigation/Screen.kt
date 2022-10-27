@@ -1,16 +1,19 @@
 package com.jbaloji.biblequiz.navigation
 
-import com.jbaloji.biblequiz.core.Constatnts.QUESTION_SCREEN
-
 object Screen {
     const val Home = "home"
     const val Question = "questions/{levelId}"
     const val Score = "score"
     const val Levels = "levels"
+    const val Auth ="auth"
+
+
+    //-----------Screen ID's
+    //-> Questions Screen
     const val Level_ID = "levelId"
 
 
-    //Levels
+    //----------Levels Screen constants
     private const val route = "questions/"
     const val Level_1 = route + "Level_1"
     const val Level_2 = route + "Level_2"

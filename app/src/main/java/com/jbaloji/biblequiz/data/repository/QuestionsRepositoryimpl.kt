@@ -2,6 +2,7 @@ package com.jbaloji.biblequiz.data.repository
 
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
+import com.jbaloji.biblequiz.core.Utils.Companion.print
 import com.jbaloji.biblequiz.domain.model.Question
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
@@ -40,6 +41,7 @@ class QuestionsRepositoryimpl @Inject constructor(
                 shuffle(questions)
                 Response.Success(questions )
             } else {
+                print(error)
                 Response.Failure(error)
             }
             trySend(questionsResponse)

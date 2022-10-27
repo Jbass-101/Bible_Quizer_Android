@@ -27,17 +27,21 @@ object FireStoreModule {
     @Retention(AnnotationRetention.BINARY)
     annotation class QuestionDocRef
 
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class UsersRef
 
 
-//    @Provides
-//    @Singleton
-//    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance().apply {
-//        useEmulator("10.0.2.2",8080)
-//    }
 
     @Provides
     @Singleton
-    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance()
+    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance().apply {
+        useEmulator("10.0.2.2",8080)
+    }
+
+//    @Provides
+//    @Singleton
+//    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance()
 
 
     ////Questions

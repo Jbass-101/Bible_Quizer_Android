@@ -21,39 +21,38 @@ import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 fun LevelsScreen(
     navController: NavController
 ){
-    BibleQuizTheme() {
-
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxSize(1f)
-        ) {
-            GenericButton(
-                text = "Level 1",
-                action = {navController.navigate(Level_1)}
-            )
-            GenericButton(
-                text = "Level 2",
-                action = {navController.navigate(Level_2)},
-                enabled = false
-            )
-            GenericButton(
-                text = "Level 3",
-                action = {navController.navigate(Level_3)},
-                enabled = false
-            )
-            GenericButton(
-                text = "Level 4",
-                action = {navController.navigate(Level_4)},
-                enabled = false
-            )
-            GenericButton(
-                text = "Level 5",
-                action = {navController.navigate(Level_5)},
-                enabled = false
-            )
-
-        }
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize(1f)
+    ) {
+        GenericButton(
+            text = "Level 1",
+            action = {navController.navigate(Level_1)}
+        )
+        GenericButton(
+            text = "Level 2",
+            action = {navController.navigate(Level_2)},
+            enabled = false
+        )
+        GenericButton(
+            text = "Level 3",
+            action = {navController.navigate(Level_3)},
+            enabled = false
+        )
+        GenericButton(
+            text = "Level 4",
+            action = {navController.navigate(Level_4)},
+            enabled = false
+        )
+        GenericButton(
+            text = "Level 5",
+            action = {navController.navigate(Level_5)},
+            enabled = false
+        )
 
     }
+
+
+
 }
