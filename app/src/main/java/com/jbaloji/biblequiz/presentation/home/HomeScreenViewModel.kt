@@ -41,7 +41,8 @@ class HomeScreenViewModel @Inject constructor(
         }
     }
 
-    fun logOut () = authUseCases.logOut
+
+    fun logOut () = authUseCases.logOut()
 
 
     fun quitGame(){

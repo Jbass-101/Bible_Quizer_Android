@@ -22,6 +22,7 @@ class AuthViewModel @Inject constructor(
     var email by mutableStateOf("")
     var password by mutableStateOf("")
     var userName by mutableStateOf("")
+    var isAnonymouse by mutableStateOf(authUseCases.currentUser.get()?.isAnonymous)
 
     //Loading
     var isLoading by mutableStateOf(false)
@@ -67,6 +68,25 @@ class AuthViewModel @Inject constructor(
             }
 
         }
+    }
+
+    fun linkWithAnonymouse (email: String, password: String, userName: String) = viewModelScope.launch {
+
+        isLoading = true
+        authResponse = Response.Loading
+
+        if(email == "" || password == "" || userName == ""){
+            authResponse = Response.Failure(Exception("One or more options or empty"))
+
+        } else {
+
+            authUseCases.linkWithAnonymous(email,password,userName).collect{ response ->
+                isLoading = false
+                authResponse = response
+            }
+
+        }
+
     }
 
     fun toggleShowLogin(){

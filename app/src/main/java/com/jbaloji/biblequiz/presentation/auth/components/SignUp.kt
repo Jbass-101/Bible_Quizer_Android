@@ -1,16 +1,23 @@
 package com.jbaloji.biblequiz.presentation.auth.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.presentation.auth.AuthViewModel
 import com.jbaloji.biblequiz.presentation.home.components.GenericButton
+import com.jbaloji.biblequiz.presentation.theme.Overlay
 
 @Composable
 fun SignUp(
@@ -24,8 +31,24 @@ fun SignUp(
             .fillMaxSize()
     ) {
         Text(text = "User Sign Up")
+        Row() {
+            IconButton(
+                modifier = Modifier
+                    .background(color = Overlay),
+                onClick = { /*TODO*/ }) {
+                Icon(
+                    painter = painterResource(id = R.drawable.male_profile_icon),
+                    contentDescription = "Icon" )
+            }
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    painter = painterResource(id = R.drawable.female_profile_icon),
+                    contentDescription = "Icon" )
+            }
+            
+        }
         GenericTextField(
-            label = "Username",
+            label = "Name",
             placeholder = "John Doe",
             icon = 0,
             value = viewModel.userName ,
@@ -55,11 +78,21 @@ fun SignUp(
 
         GenericButton(
             text = "Sign Up" ,
-            action = { viewModel.signUp(
-                userName = viewModel.userName,
-                email = viewModel.email,
-                password = viewModel.password
-            ) }
+            action = {
+                if (viewModel.isAnonymouse == true){
+                    viewModel.linkWithAnonymouse(
+                        userName = viewModel.userName,
+                        email = viewModel.email,
+                        password = viewModel.password)
+
+                }else {
+                    viewModel.signUp(
+                        userName = viewModel.userName,
+                        email = viewModel.email,
+                        password = viewModel.password)
+
+                }
+            }
         )
         Row(
             verticalAlignment = Alignment.CenterVertically,

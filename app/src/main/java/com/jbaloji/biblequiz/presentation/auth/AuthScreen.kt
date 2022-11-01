@@ -2,6 +2,7 @@ package com.jbaloji.biblequiz.presentation.auth
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.ProgressBar
@@ -30,9 +31,9 @@ fun AuthScreen(
         is Response.Loading ->
             if(viewModel.isLoading) ProgressBar()
         is Response.Success ->
-            onNavigateToHome()
-
-
+            LaunchedEffect(Unit){
+                onNavigateToHome()
+            }
         is Response.Failure ->
             Toast.makeText(
                 LocalContext.current, response.e?.message.toString(),

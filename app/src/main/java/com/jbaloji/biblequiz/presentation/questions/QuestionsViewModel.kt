@@ -1,6 +1,7 @@
 package com.jbaloji.biblequiz.presentation.questions
 
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -66,7 +67,7 @@ class QuestionsViewModel @Inject constructor(
 
     private fun getQuestionsLevel(level: String) = viewModelScope.launch {
 
-       // Log.i("TEST","--------$levelId")
+       Log.i("TEST","--------$levelId")
         useCases.getQuestionLevel(level).collect{ response ->
             questionResponse = response
         }

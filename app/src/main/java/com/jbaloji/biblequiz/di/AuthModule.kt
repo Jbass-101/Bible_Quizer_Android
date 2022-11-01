@@ -17,16 +17,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AuthModule {
 
-//    @Provides
-//    @Singleton
-//    fun providesFirebaseAuth() = Firebase.auth.apply {
-//        useEmulator("10.0.2.2",9099)
-//    }
-
-    @Provides
-    @Singleton
-    fun providesFirebaseAuth() = Firebase.auth
-
 
     @Provides
     fun provideAuthRepository(
@@ -41,7 +31,8 @@ object AuthModule {
         logIn = LogIn(repo),
         logOut = LogOut(repo),
         signUp = SignUp(repo),
-        loginAnonymously = LoginAnonymously(repo)
+        loginAnonymously = LoginAnonymously(repo),
+        linkWithAnonymous = LinkWithAnonymous(repo)
     )
 
 }

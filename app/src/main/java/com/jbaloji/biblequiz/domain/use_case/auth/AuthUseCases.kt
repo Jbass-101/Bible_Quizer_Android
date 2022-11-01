@@ -5,5 +5,6 @@ data class AuthUseCases(
     val logIn: LogIn,
     val signUp: SignUp,
     val logOut: LogOut,
-    val loginAnonymously: LoginAnonymously
+    val loginAnonymously: LoginAnonymously,
+    val linkWithAnonymous: LinkWithAnonymous
 )

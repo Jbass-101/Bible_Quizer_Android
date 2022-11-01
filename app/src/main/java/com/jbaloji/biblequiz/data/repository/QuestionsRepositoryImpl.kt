@@ -12,7 +12,7 @@ import java.util.Collections.shuffle
 import javax.inject.Inject
 
 
-class QuestionsRepositoryimpl @Inject constructor(
+class QuestionsRepositoryImpl @Inject constructor(
     private val collRef:  CollectionReference,
     private val docRef: DocumentReference
 ) : QuestionsRepository {
