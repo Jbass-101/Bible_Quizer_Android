@@ -6,6 +6,8 @@ object Screen {
     const val Score = "score"
     const val Levels = "levels{userId}"
     const val Auth ="auth"
+    const val Lobby ="lobby"
+    const val PauseDialog = "pauseDialog"
 
 
     //-----------Screen ID's

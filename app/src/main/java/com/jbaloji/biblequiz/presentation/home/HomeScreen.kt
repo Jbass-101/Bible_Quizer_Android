@@ -20,7 +20,7 @@ import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 
 @Composable
 fun HomeScreen(
-    onNavigateToLevels: () -> Unit,
+    onNavigateToLobby: () -> Unit,
     onNavigateToAuth: () -> Unit,
     viewModel: HomeScreenViewModel = hiltViewModel()
 
@@ -50,7 +50,7 @@ fun HomeScreen(
                 Spacer(modifier = Modifier.height(15.dp))
                 GenericButton(
                     text = stringResource(id = R.string.Start_Button_Text),
-                    action = onNavigateToLevels
+                    action = onNavigateToLobby
                 )
                 GenericButton(
                     text = stringResource(id = R.string.Quit_Button_Text),

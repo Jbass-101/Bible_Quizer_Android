@@ -15,6 +15,7 @@ import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 fun QuestionsScreen(
     onNavigateToHome: () -> Unit,
     onNavigateToScore: () -> Unit,
+    onNavigateToDialog: () -> Unit,
     viewModel: QuestionsViewModel = hiltViewModel()
 ) {
 
@@ -70,9 +71,9 @@ fun QuestionsScreen(
                                     isLastQuestion = viewModel.isLastQuestion,
                                     nextOrFinish = { viewModel.nextOrFinish()
                                     },
-                                    toggleQuitMenu = {
-                                        viewModel.toggleQuitMenu()
-                                    },
+                                    toggleQuitMenu =
+                                        onNavigateToDialog
+                                    ,
                                     onNavigateToScore = onNavigateToScore
                                 )
                             }

@@ -6,10 +6,12 @@ import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.jbaloji.biblequiz.components.PauseDialogScreen
 import com.jbaloji.biblequiz.components.ScreenWrapper
 import com.jbaloji.biblequiz.presentation.auth.AuthScreen
 import com.jbaloji.biblequiz.presentation.home.HomeScreen
 import com.jbaloji.biblequiz.presentation.levels.LevelsScreen
+import com.jbaloji.biblequiz.presentation.lobby.LobbyScreen
 import com.jbaloji.biblequiz.presentation.questions.QuestionsScreen
 import com.jbaloji.biblequiz.presentation.score.ScoreScreen
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -17,7 +19,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 @Composable
 fun InitGraph  (
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Screen.Home
+    startDestination: String = Screen.Lobby
 ) {
     NavHost(
         navController = navController,
@@ -31,10 +33,22 @@ fun InitGraph  (
             }
             ScreenWrapper {
                 HomeScreen(
-                    onNavigateToLevels = { navController.navigate(Screen.Levels)},
+                    onNavigateToLobby = { navController.navigate(Screen.Lobby)},
                     onNavigateToAuth = { navController.navigate(Screen.Auth)}
                 )
             }
+        }
+        composable(
+            route = Screen.PauseDialog
+        ){ ScreenWrapper {
+
+        }
+                PauseDialogScreen(
+
+                    onBack = { navController.navigateUp() } ,
+                    onNavigateToLevels = {navController.navigate(Screen.Levels)}
+                )
+
         }
         composable(
             route = Screen.Question,
@@ -46,7 +60,8 @@ fun InitGraph  (
             }
             QuestionsScreen(
                 onNavigateToHome = {navController.navigate(Screen.Home)},
-                onNavigateToScore = {navController.navigate(Screen.Score)}
+                onNavigateToScore = {navController.navigate(Screen.Score)},
+                onNavigateToDialog = {navController.navigate(Screen.PauseDialog)}
             )
         }
         composable(
@@ -77,6 +92,15 @@ fun InitGraph  (
                 AuthScreen(
                     onNavigateToHome = {navController.navigate(Screen.Home)}
 
+                )
+            }
+        }
+        composable(
+            route = Screen.Lobby
+        ){
+            ScreenWrapper {
+                LobbyScreen (
+                    onNavigateToLevels = { navController.navigate(Screen.Levels)}
                 )
             }
         }
