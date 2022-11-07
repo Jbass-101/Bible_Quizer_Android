@@ -20,13 +20,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.components.FeatureCard
+import com.jbaloji.biblequiz.components.ProgressBar
+import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 
 @Composable
 fun LobbyScreen(
-    onNavigateToLevels: () -> Unit,    
+    onNavigateToLevels: () -> Unit,
+    viewModel: LobbyViewModel = hiltViewModel()
 ){
     val text = "text"
     val onClick ="onClick"
@@ -79,4 +83,8 @@ fun LobbyScreen(
             }
         }
     )
+
+    when(viewModel.userResponse){
+        is Response.Loading -> ProgressBar()
+    }
 }

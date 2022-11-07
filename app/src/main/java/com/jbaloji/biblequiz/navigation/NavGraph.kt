@@ -14,7 +14,6 @@ import com.jbaloji.biblequiz.presentation.levels.LevelsScreen
 import com.jbaloji.biblequiz.presentation.lobby.LobbyScreen
 import com.jbaloji.biblequiz.presentation.questions.QuestionsScreen
 import com.jbaloji.biblequiz.presentation.score.ScoreScreen
-import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Composable
 fun InitGraph  (
@@ -33,6 +32,7 @@ fun InitGraph  (
             }
             ScreenWrapper {
                 HomeScreen(
+                    navController = navController,
                     onNavigateToLobby = { navController.navigate(Screen.Lobby)},
                     onNavigateToAuth = { navController.navigate(Screen.Auth)}
                 )
@@ -88,16 +88,18 @@ fun InitGraph  (
             route = Screen.Auth
         ){
             ScreenWrapper {
-
                 AuthScreen(
                     onNavigateToHome = {navController.navigate(Screen.Home)}
-
                 )
             }
         }
         composable(
-            route = Screen.Lobby
+            route = Screen.Lobby,
+            arguments = listOf(navArgument(Screen.User_ID){type = NavType.StringType})
         ){
+            BackHandler(enabled = true) {
+
+            }
             ScreenWrapper {
                 LobbyScreen (
                     onNavigateToLevels = { navController.navigate(Screen.Levels)}

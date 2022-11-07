@@ -9,11 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.google.firebase.auth.FirebaseUser
 import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.presentation.home.HomeScreen
 
 @Composable
-fun ProfileCard(){
+fun ProfileCard(
+    user:FirebaseUser
+){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -23,16 +26,10 @@ fun ProfileCard(){
                 painter = painterResource(id = R.drawable.user),
                 contentDescription = "Profile Image" )
         }
-        Text(text = "user Name")
+        Text(text = user.displayName.toString())
         Text(text = "user Description")
 
     }
 
 }
 
-
-@Preview
-@Composable
-fun MyPreview(){
-    ProfileCard()
-}

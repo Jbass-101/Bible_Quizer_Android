@@ -9,17 +9,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.components.ProfileCard
 import com.jbaloji.biblequiz.domain.model.Response
+import com.jbaloji.biblequiz.navigation.Screen
 import com.jbaloji.biblequiz.presentation.home.components.GenericButton
-import com.jbaloji.biblequiz.presentation.home.components.HomeScreenContents
 import com.jbaloji.biblequiz.presentation.home.components.TitleText
-import com.jbaloji.biblequiz.presentation.questions.QuestionsViewModel
-import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 
 @Composable
 fun HomeScreen(
+    navController: NavController,
     onNavigateToLobby: () -> Unit,
     onNavigateToAuth: () -> Unit,
     viewModel: HomeScreenViewModel = hiltViewModel()
@@ -43,28 +43,31 @@ fun HomeScreen(
                 TitleText()
                 Spacer(modifier = Modifier.height(15.dp))
                 if(viewModel.currentUserResponse != null){
-                    ProfileCard()
+                    ProfileCard(viewModel.currentUserResponse!!)
+                    Text(text = viewModel.currentUserResponse?.uid.toString())
                 } else {
                     Text(text = "No User Found")
                 }
                 Spacer(modifier = Modifier.height(15.dp))
                 GenericButton(
                     text = stringResource(id = R.string.Start_Button_Text),
-                    action = onNavigateToLobby
+                    action = {navController.navigate(
+                        Screen.LobbyUser + viewModel.currentUserResponse?.uid.toString()
+                    )}
                 )
                 GenericButton(
                     text = stringResource(id = R.string.Quit_Button_Text),
                     action = {viewModel.quitGame()}
                 )
                 Spacer(modifier = Modifier.height(15.dp))
-                if(viewModel.currentUserResponse != null){
+                if(viewModel.currentUserResponse?.isAnonymous == false){
                 GenericButton(
                     text = "Log Out",
                     action = { viewModel.logOut() }
                 )}else {
                     GenericButton(
                         text = "Log In",
-                        action = onNavigateToAuth
+                        action = {viewModel.logOut()}
                     )
                 }
 

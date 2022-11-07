@@ -3,8 +3,6 @@ package com.jbaloji.biblequiz.presentation.levels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,7 +13,6 @@ import com.jbaloji.biblequiz.navigation.Screen.Level_3
 import com.jbaloji.biblequiz.navigation.Screen.Level_4
 import com.jbaloji.biblequiz.navigation.Screen.Level_5
 import com.jbaloji.biblequiz.presentation.home.components.GenericButton
-import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
 
 @Composable
 fun LevelsScreen(
@@ -50,9 +47,7 @@ fun LevelsScreen(
             action = {navController.navigate(Level_5)},
             enabled = false
         )
-
     }
-
 
 
 }

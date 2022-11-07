@@ -4,15 +4,16 @@ object Screen {
     const val Home = "home"
     const val Question = "questions/{levelId}"
     const val Score = "score"
-    const val Levels = "levels{userId}"
+    const val Levels = "levels"
     const val Auth ="auth"
-    const val Lobby ="lobby"
+    const val Lobby ="lobby/{userId}"
     const val PauseDialog = "pauseDialog"
 
 
     //-----------Screen ID's
     //-> Questions Screen
     const val Level_ID = "levelId"
+    const val User_ID = "userId"
 
 
     //----------Levels Screen constants
@@ -23,6 +24,7 @@ object Screen {
     const val Level_4 = route + "Level_4"
     const val Level_5 = route + "Level_5"
 
-    //----------User ID's
-    const val User_ID = "userId"
+    //----------Home Screen Constant
+    const val LobbyUser = "lobby/"
+
 }

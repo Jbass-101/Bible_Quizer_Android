@@ -22,7 +22,7 @@ class HomeScreenViewModel @Inject constructor(
     private val authUseCases: AuthUseCases
 ) : ViewModel() {
 
-    var userResponse by mutableStateOf<UserResponse>(Response.Loading)
+//    var userResponse by mutableStateOf<UserResponse>(Response.Loading)
     var currentUserResponse by mutableStateOf<User>(null)
 
     var currentUser by mutableStateOf<User>(null)
@@ -30,17 +30,17 @@ class HomeScreenViewModel @Inject constructor(
     init {
         getCurrentUser()
     }
-
-    private fun loginAnonymously () = viewModelScope.launch {
-
-        authUseCases.loginAnonymously().collect{ response ->
-            userResponse = response
-        }
-    }
+//
+//    private fun loginAnonymously () = viewModelScope.launch {
+//
+//        authUseCases.loginAnonymously().collect{ response ->
+//            userResponse = response
+//        }
+//    }
 
     private fun getCurrentUser () = viewModelScope.launch {
-        authUseCases.getCurrentUser().collect{ respose ->
-            currentUserResponse = respose
+        authUseCases.getCurrentUser().collect{ response ->
+            currentUserResponse = response
         }
     }
 
