@@ -136,7 +136,7 @@ fun FeatureCard(
             )
             Text(
                 modifier = Modifier
-                    .background(iconMap[index]?.get(color) as Color)
+                   // .background(iconMap[index]?.get(color) as Color)
                     .fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 text = text

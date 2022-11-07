@@ -73,12 +73,13 @@ fun LogIn(
                 Text(text = "Sign Up")
 
             }
-            GenericButton(
-                text = "home",
-                action = onNavigateToHome
-            )
-
         }
+        Spacer(modifier = Modifier.width(12.dp))
+
+        GenericButton(
+            text = "home",
+            action = onNavigateToHome
+        )
 
 
     }

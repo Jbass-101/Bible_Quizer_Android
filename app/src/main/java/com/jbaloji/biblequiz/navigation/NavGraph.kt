@@ -19,7 +19,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 @Composable
 fun InitGraph  (
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Screen.Lobby
+    startDestination: String = Screen.Home
 ) {
     NavHost(
         navController = navController,

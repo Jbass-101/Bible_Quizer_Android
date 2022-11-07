@@ -10,6 +10,7 @@ import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.UserResponse
 import com.jbaloji.biblequiz.domain.use_case.auth.AuthUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -40,7 +41,12 @@ class AuthViewModel @Inject constructor(
         authResponse = Response.Loading
 
         if(email == "" || password == ""){
-            authResponse = Response.Failure(Exception("Email or password can not be empty"))
+            authResponse = Response.Failure(Exception("Email or password cannot be empty"))
+
+            delay(1000)
+            isLoading = false
+
+
 
         } else {
             authUseCases.logIn(email,password).collect{response ->
@@ -58,7 +64,12 @@ class AuthViewModel @Inject constructor(
         authResponse = Response.Loading
 
         if(email == "" || password == "" || userName == ""){
-            authResponse = Response.Failure(Exception("One or more options or empty"))
+            authResponse = Response.Failure(Exception("One or more options are empty"))
+
+            delay(1000)
+            isLoading = false
+
+
 
         } else {
 
@@ -68,6 +79,8 @@ class AuthViewModel @Inject constructor(
             }
 
         }
+
+
     }
 
     fun linkWithAnonymouse (email: String, password: String, userName: String) = viewModelScope.launch {
@@ -76,7 +89,10 @@ class AuthViewModel @Inject constructor(
         authResponse = Response.Loading
 
         if(email == "" || password == "" || userName == ""){
-            authResponse = Response.Failure(Exception("One or more options or empty"))
+            authResponse = Response.Failure(Exception("One or more options are empty"))
+            delay(1000)
+            isLoading = false
+
 
         } else {
 
@@ -86,6 +102,8 @@ class AuthViewModel @Inject constructor(
             }
 
         }
+
+
 
     }
 

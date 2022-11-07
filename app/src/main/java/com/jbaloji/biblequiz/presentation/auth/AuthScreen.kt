@@ -7,6 +7,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.domain.model.Response
+import com.jbaloji.biblequiz.domain.repository.UserResponse
 import com.jbaloji.biblequiz.presentation.auth.components.LogIn
 import com.jbaloji.biblequiz.presentation.auth.components.SignUp
 
@@ -15,13 +16,13 @@ fun AuthScreen(
     onNavigateToHome: () -> Unit,
     viewModel: AuthViewModel = hiltViewModel()
 ){
+    val response = viewModel.authResponse
 
 
     when(viewModel.showLogin){
         true -> LogIn(
             viewModel = viewModel,
             onNavigateToHome = onNavigateToHome
-
 
         )
         false -> SignUp(
@@ -31,7 +32,8 @@ fun AuthScreen(
     }
 
 
-    when(val response = viewModel.authResponse){
+
+    when(response){
         is Response.Loading ->
             if(viewModel.isLoading) ProgressBar()
         is Response.Success ->
@@ -39,6 +41,7 @@ fun AuthScreen(
                 onNavigateToHome()
             }
         is Response.Failure ->
+            if(viewModel.isLoading)
             Toast.makeText(
                 LocalContext.current, response.e?.message.toString(),
                 Toast.LENGTH_LONG).show()
