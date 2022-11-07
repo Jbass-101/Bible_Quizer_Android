@@ -11,6 +11,8 @@ interface AuthRepository {
 
     val currentUser: User
 
+    fun getCurrentUser() : Flow<User>
+
     fun login(email: String, password: String): Flow<UserResponse>
 
     fun loginAnonymously(): Flow<UserResponse>

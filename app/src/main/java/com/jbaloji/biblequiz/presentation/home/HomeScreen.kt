@@ -5,9 +5,11 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.components.ProfileCard
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.presentation.home.components.GenericButton
@@ -40,21 +42,31 @@ fun HomeScreen(
             ) {
                 TitleText()
                 Spacer(modifier = Modifier.height(15.dp))
-                ProfileCard()
+                if(viewModel.currentUserResponse != null){
+                    ProfileCard()
+                } else {
+                    Text(text = "No User Found")
+                }
                 Spacer(modifier = Modifier.height(15.dp))
                 GenericButton(
-                    text = "Start Quiz",
+                    text = stringResource(id = R.string.Start_Button_Text),
                     action = onNavigateToLevels
                 )
                 GenericButton(
-                    text = "Quit",
+                    text = stringResource(id = R.string.Quit_Button_Text),
                     action = {viewModel.quitGame()}
                 )
                 Spacer(modifier = Modifier.height(15.dp))
+                if(viewModel.currentUserResponse != null){
                 GenericButton(
-                    text = "Log In",
-                    action = onNavigateToAuth
-                )
+                    text = "Log Out",
+                    action = { viewModel.logOut() }
+                )}else {
+                    GenericButton(
+                        text = "Log In",
+                        action = onNavigateToAuth
+                    )
+                }
 
             }
 

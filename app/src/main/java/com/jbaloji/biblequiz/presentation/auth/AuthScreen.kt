@@ -19,10 +19,14 @@ fun AuthScreen(
 
     when(viewModel.showLogin){
         true -> LogIn(
-            viewModel = viewModel
+            viewModel = viewModel,
+            onNavigateToHome = onNavigateToHome
+
+
         )
         false -> SignUp(
-            viewModel = viewModel
+            viewModel = viewModel,
+            onNavigateToHome = onNavigateToHome
         )
     }
 

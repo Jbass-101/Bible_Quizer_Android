@@ -1,7 +1,6 @@
 package com.jbaloji.biblequiz.data.repository
 
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
 import com.jbaloji.biblequiz.core.Utils
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.model.UserData

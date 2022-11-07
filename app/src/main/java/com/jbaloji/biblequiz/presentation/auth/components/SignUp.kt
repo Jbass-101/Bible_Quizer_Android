@@ -21,7 +21,9 @@ import com.jbaloji.biblequiz.presentation.theme.Overlay
 
 @Composable
 fun SignUp(
-    viewModel: AuthViewModel
+    viewModel: AuthViewModel,
+    onNavigateToHome: () -> Unit,
+
 ){
 
     Column(
@@ -31,22 +33,22 @@ fun SignUp(
             .fillMaxSize()
     ) {
         Text(text = "User Sign Up")
-        Row() {
-            IconButton(
-                modifier = Modifier
-                    .background(color = Overlay),
-                onClick = { /*TODO*/ }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.male_profile_icon),
-                    contentDescription = "Icon" )
-            }
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.female_profile_icon),
-                    contentDescription = "Icon" )
-            }
-            
-        }
+//        Row() {
+//            IconButton(
+//                modifier = Modifier
+//                    .background(color = Overlay),
+//                onClick = { /*TODO*/ }) {
+//                Icon(
+//                    painter = painterResource(id = R.drawable.male_profile_icon),
+//                    contentDescription = "Icon" )
+//            }
+//            IconButton(onClick = { /*TODO*/ }) {
+//                Icon(
+//                    painter = painterResource(id = R.drawable.female_profile_icon),
+//                    contentDescription = "Icon" )
+//            }
+//
+//        }
         GenericTextField(
             label = "Name",
             placeholder = "John Doe",
@@ -110,6 +112,10 @@ fun SignUp(
             }
             
         }
+        GenericButton(
+            text = "Home",
+            action = onNavigateToHome
+        )
 
 
     }

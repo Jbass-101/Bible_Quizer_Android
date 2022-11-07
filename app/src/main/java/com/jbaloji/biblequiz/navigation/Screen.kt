@@ -4,7 +4,7 @@ object Screen {
     const val Home = "home"
     const val Question = "questions/{levelId}"
     const val Score = "score"
-    const val Levels = "levels"
+    const val Levels = "levels{userId}"
     const val Auth ="auth"
 
 
@@ -20,4 +20,7 @@ object Screen {
     const val Level_3 = route + "Level_3"
     const val Level_4 = route + "Level_4"
     const val Level_5 = route + "Level_5"
+
+    //----------User ID's
+    const val User_ID = "userId"
 }

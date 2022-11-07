@@ -18,6 +18,17 @@ class AuthRepositoryImpl @Inject constructor(
     override val currentUser: FirebaseUser?
         get() = auth.currentUser
 
+    override fun getCurrentUser() = callbackFlow {
+        auth.addAuthStateListener { result ->
+            val userResponse = result.currentUser
+
+            trySend(userResponse)
+        }
+        awaitClose{
+
+        }
+    }
+
     override fun login(email: String, password: String) = callbackFlow {
         val listener = auth.signInWithEmailAndPassword(email,password)
             .addOnCompleteListener { result ->
@@ -104,10 +115,6 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun logout() {
-        auth.signOut()
-
-
-    }
+    override fun logout() = auth.signOut()
 
 }

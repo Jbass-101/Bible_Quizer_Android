@@ -2,6 +2,7 @@ package com.jbaloji.biblequiz.presentation.auth.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,7 +17,8 @@ import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 
 @Composable
 fun LogIn(
-    viewModel: AuthViewModel
+    viewModel: AuthViewModel,
+    onNavigateToHome: () -> Unit,
 ){
 
     Column(
@@ -71,6 +73,10 @@ fun LogIn(
                 Text(text = "Sign Up")
 
             }
+            GenericButton(
+                text = "home",
+                action = onNavigateToHome
+            )
 
         }
 

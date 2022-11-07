@@ -28,6 +28,7 @@ object AuthModule {
         repo: AuthRepository
     ) = AuthUseCases(
         currentUser = CurrentUser(repo),
+        getCurrentUser = GetCurrentUser(repo),
         logIn = LogIn(repo),
         logOut = LogOut(repo),
         signUp = SignUp(repo),

@@ -23,21 +23,24 @@ class HomeScreenViewModel @Inject constructor(
 ) : ViewModel() {
 
     var userResponse by mutableStateOf<UserResponse>(Response.Loading)
+    var currentUserResponse by mutableStateOf<User>(null)
 
     var currentUser by mutableStateOf<User>(null)
 
     init {
-        if (authUseCases.currentUser.get() == null){
-            loginAnonymously()
-        } else {
-            currentUser = authUseCases.currentUser.get()
-        }
+        getCurrentUser()
     }
 
     private fun loginAnonymously () = viewModelScope.launch {
 
         authUseCases.loginAnonymously().collect{ response ->
             userResponse = response
+        }
+    }
+
+    private fun getCurrentUser () = viewModelScope.launch {
+        authUseCases.getCurrentUser().collect{ respose ->
+            currentUserResponse = respose
         }
     }
 

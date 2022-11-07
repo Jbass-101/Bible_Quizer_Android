@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Bible Quiz</string>
-    <string name="Start_Button_Text">Start</string>
+
     <string name="Question_Number_Text">Question 1</string>
     <string name="Answer_Btn_Text_4">Answer 4</string>
     <string name="Answer_Btn_Text_3">Answer 3</string>
@@ -12,4 +11,10 @@
     <string name="Sample_Answer_4">So this answer is ridiculously long, I want to see how it looks on the button</string>
 
     <string name="sampleQuestion">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. .</string>
+
+    <!-- Home Screen-->
+    <string name="app_name">Bible Quiz</string>
+    <string name="Start_Button_Text">Start</string>
+    <string name="Quit_Button_Text">Quit</string>
+
 </resources>

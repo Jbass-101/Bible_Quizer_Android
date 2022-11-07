@@ -17,7 +17,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 @Composable
 fun InitGraph  (
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Screen.Auth
+    startDestination: String = Screen.Home
 ) {
     NavHost(
         navController = navController,
@@ -60,7 +60,8 @@ fun InitGraph  (
             )
         }
         composable(
-            route = Screen.Levels
+            route = Screen.Levels,
+                    arguments = listOf(navArgument(Screen.User_ID){type = NavType.StringType})
         ){
             ScreenWrapper {
                 LevelsScreen(
