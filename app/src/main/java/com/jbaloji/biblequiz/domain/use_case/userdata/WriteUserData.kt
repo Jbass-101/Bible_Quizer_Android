@@ -4,5 +4,9 @@ import com.jbaloji.biblequiz.domain.repository.UserDataRepository
 
 class WriteUserData(private val repo : UserDataRepository) {
 
-    operator fun invoke() = repo.writeUserData()
+    operator fun invoke(
+        userId: String = "userID",
+        gameType: String = "Timed Quiz",
+        level: String ="Score"
+    ) = repo.writeUserData(userId,gameType, level)
 }

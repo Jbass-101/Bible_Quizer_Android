@@ -1,31 +1,16 @@
 package com.jbaloji.biblequiz.presentation.lobby
 
-import androidx.compose.foundation.background
+
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.components.FeatureCard
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 
 @Composable
 fun LobbyScreen(
@@ -84,7 +69,8 @@ fun LobbyScreen(
         }
     )
 
-    when(viewModel.userResponse){
+    when(viewModel.userDataResponse){
         is Response.Loading -> ProgressBar()
+        else -> {}
     }
 }

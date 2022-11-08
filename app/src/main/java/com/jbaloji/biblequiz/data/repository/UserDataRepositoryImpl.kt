@@ -14,8 +14,12 @@ import javax.inject.Inject
 class UserDataRepositoryImpl @Inject constructor(
     private val userRef: CollectionReference
 ) : UserDataRepository {
-    override fun writeUserData() = callbackFlow {
-        val listener = userRef.document("UserID").collection("Quiz").document("Level_1")
+    override fun writeUserData(
+        userId: String,
+        gameType: String,
+        dataType: String
+    ) = callbackFlow {
+        val listener = userRef.document(userId).collection(gameType).document(dataType)
             .set( UserData())
             .addOnCompleteListener { result ->
                 val userDataResponse = if(result.isSuccessful){
@@ -30,6 +34,8 @@ class UserDataRepositoryImpl @Inject constructor(
             listener.isComplete
         }
     }
+
+
 
     override fun getUserData(): Flow<UserDataResponse> {
         TODO("Not yet implemented")

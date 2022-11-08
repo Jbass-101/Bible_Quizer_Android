@@ -8,7 +8,11 @@ typealias UserDataResponse = Response<UserData>
 
 interface UserDataRepository {
 
-    fun writeUserData(): Flow<UserDataResponse>
+    fun writeUserData(
+        userId: String,
+        gameType: String,
+        level: String
+    ): Flow<UserDataResponse>
 
     fun getUserData(): Flow<UserDataResponse>
 

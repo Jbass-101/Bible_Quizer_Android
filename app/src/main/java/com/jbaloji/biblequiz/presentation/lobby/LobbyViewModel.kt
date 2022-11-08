@@ -9,14 +9,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jbaloji.biblequiz.core.Constants
 import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.domain.repository.User
 import com.jbaloji.biblequiz.domain.repository.UserDataResponse
 import com.jbaloji.biblequiz.domain.repository.UserResponse
 import com.jbaloji.biblequiz.domain.use_case.auth.AuthUseCases
 import com.jbaloji.biblequiz.domain.use_case.userdata.UserDataUseCases
 import com.jbaloji.biblequiz.navigation.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -45,12 +43,19 @@ class LobbyViewModel @Inject constructor(
         authUseCases.loginAnonymously().collect{ response ->
             userResponse = response
 
-            when(userResponse){
-                is Response.Success -> userDataUseCases.writeUserData().collect{res ->
-                    userDataResponse = res
+            when(response){
+                is Response.Success -> {
+                    userDataUseCases.writeUserData(
+                        userId = response.data?.uid!!
+                    ).collect{res ->
+                        userDataResponse = res
+                    }
                 }
-
+                is Response.Failure ->
+                    userResponse = Response.Failure(response.e)
+                else -> {}
             }
+
 
         }
 
