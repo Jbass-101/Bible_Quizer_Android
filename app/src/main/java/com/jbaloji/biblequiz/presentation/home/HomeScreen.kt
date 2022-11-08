@@ -67,7 +67,7 @@ fun HomeScreen(
                 )}else {
                     GenericButton(
                         text = "Log In",
-                        action = {viewModel.logOut()}
+                        action = onNavigateToAuth
                     )
                 }
 

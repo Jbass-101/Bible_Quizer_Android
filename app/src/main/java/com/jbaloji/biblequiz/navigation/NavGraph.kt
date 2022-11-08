@@ -46,7 +46,9 @@ fun InitGraph  (
                 PauseDialogScreen(
 
                     onBack = { navController.navigateUp() } ,
-                    onNavigateToLevels = {navController.navigate(Screen.Levels)}
+                    onNavigateToLevels = {navController.navigate(Screen.Levels){
+                        popUpTo(Screen.Lobby)
+                    } }
                 )
 
         }
@@ -75,8 +77,7 @@ fun InitGraph  (
             )
         }
         composable(
-            route = Screen.Levels,
-                    arguments = listOf(navArgument(Screen.User_ID){type = NavType.StringType})
+            route = Screen.Levels
         ){
             ScreenWrapper {
                 LevelsScreen(
@@ -87,6 +88,7 @@ fun InitGraph  (
         composable(
             route = Screen.Auth
         ){
+            BackHandler(enabled = true) {}
             ScreenWrapper {
                 AuthScreen(
                     onNavigateToHome = {navController.navigate(Screen.Home)}
@@ -102,7 +104,8 @@ fun InitGraph  (
             }
             ScreenWrapper {
                 LobbyScreen (
-                    onNavigateToLevels = { navController.navigate(Screen.Levels)}
+                    onNavigateToLevels = { navController.navigate(Screen.Levels)},
+                    onNavigateToHome = {navController.navigate(Screen.Home)}
                 )
             }
         }

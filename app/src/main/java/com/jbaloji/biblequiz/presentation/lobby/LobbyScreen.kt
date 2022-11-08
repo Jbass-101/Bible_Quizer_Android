@@ -11,10 +11,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.FeatureCard
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.domain.model.Response
+import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 
 @Composable
 fun LobbyScreen(
     onNavigateToLevels: () -> Unit,
+    onNavigateToHome: () -> Unit,
     viewModel: LobbyViewModel = hiltViewModel()
 ){
     val text = "text"
@@ -64,12 +66,14 @@ fun LobbyScreen(
                     index = item,
                     onClick =  list[item]?.get(onClick) as () -> Unit
                 )
-
             }
         }
     )
 
-    when(viewModel.userDataResponse){
+    GenericButton(text = "Home", action = onNavigateToHome)
+
+
+    when(viewModel.userResponse){
         is Response.Loading -> ProgressBar()
         else -> {}
     }

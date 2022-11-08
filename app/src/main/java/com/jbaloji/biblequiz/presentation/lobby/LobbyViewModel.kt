@@ -55,11 +55,7 @@ class LobbyViewModel @Inject constructor(
                     userResponse = Response.Failure(response.e)
                 else -> {}
             }
-
-
         }
-
-
 
     }
 
