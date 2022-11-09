@@ -1,6 +1,7 @@
 package com.jbaloji.biblequiz.di
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.jbaloji.biblequiz.data.repository.AuthRepositoryImpl
@@ -10,6 +11,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
@@ -17,15 +19,21 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AuthModule {
 
-//    @Provides
-//    fun provideCurrentUser(
-//        auth: FirebaseAuth
-//    ) = auth.currentUser
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class UserUID
+
+    @UserUID
+    @Provides
+    fun provideCurrentUser(
+        auth: FirebaseAuth
+    ) = auth.currentUser?.uid
 
 
     @Provides
     fun provideAuthRepository(
-        auth: FirebaseAuth
+        auth: FirebaseAuth,
     ) : AuthRepository = AuthRepositoryImpl(auth)
 
     @Provides

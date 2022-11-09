@@ -12,7 +12,8 @@ import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 class UserDataRepositoryImpl @Inject constructor(
-    private val userRef: CollectionReference
+    private val userRef: CollectionReference,
+    private val currentUser: String?
 ) : UserDataRepository {
     override fun writeUserData(
         userId: String,
@@ -48,7 +49,7 @@ class UserDataRepositoryImpl @Inject constructor(
         fieldName: String,
         updateVal: Int
     ) = callbackFlow {
-        val listener = userRef.document(userId).collection(gameType).document(docName)
+        val listener = userRef.document(currentUser!!).collection(gameType).document(docName)
             .update(fieldName,updateVal)
             .addOnCompleteListener { result ->
                 val updateDataResponse =if (result.isSuccessful){
