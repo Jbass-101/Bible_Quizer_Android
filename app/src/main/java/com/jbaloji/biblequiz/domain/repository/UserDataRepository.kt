@@ -11,12 +11,18 @@ interface UserDataRepository {
     fun writeUserData(
         userId: String,
         gameType: String,
-        level: String
+        docName: String
     ): Flow<UserDataResponse>
 
     fun getUserData(): Flow<UserDataResponse>
 
-    fun updateUserdata(): Flow<UserDataResponse>
+    fun updateUserdata(
+        userId: String,
+        gameType: String,
+        docName: String,
+        fieldName: String,
+        updateVal: Int
+    ): Flow<Response<Boolean>>
 
 
 }

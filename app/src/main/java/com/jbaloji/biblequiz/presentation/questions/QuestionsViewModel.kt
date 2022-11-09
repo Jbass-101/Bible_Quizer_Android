@@ -23,7 +23,7 @@ class QuestionsViewModel @Inject constructor(
     private val useCases : QuestionsUseCases,
 ) : ViewModel() {
 
-    private val levelId: String = checkNotNull(savedStateHandle[Screen.Level_ID])
+     val levelId: String = checkNotNull(savedStateHandle[Screen.Level_ID])
 
 
     //Question Feature

@@ -17,9 +17,9 @@ class UserDataRepositoryImpl @Inject constructor(
     override fun writeUserData(
         userId: String,
         gameType: String,
-        dataType: String
+        docName: String
     ) = callbackFlow {
-        val listener = userRef.document(userId).collection(gameType).document(dataType)
+        val listener = userRef.document(userId).collection(gameType).document(docName)
             .set( UserData())
             .addOnCompleteListener { result ->
                 val userDataResponse = if(result.isSuccessful){
@@ -41,7 +41,26 @@ class UserDataRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override fun updateUserdata(): Flow<UserDataResponse> {
-        TODO("Not yet implemented")
+    override fun updateUserdata(
+        userId: String,
+        gameType: String,
+        docName: String,
+        fieldName: String,
+        updateVal: Int
+    ) = callbackFlow {
+        val listener = userRef.document(userId).collection(gameType).document(docName)
+            .update(fieldName,updateVal)
+            .addOnCompleteListener { result ->
+                val updateDataResponse =if (result.isSuccessful){
+                    Response.Success(true)
+                } else {
+                    Utils.print(result.exception)
+                    Response.Failure(result.exception)
+                }
+                trySend(updateDataResponse)
+            }
+        awaitClose{
+            listener.isComplete
+        }
     }
 }

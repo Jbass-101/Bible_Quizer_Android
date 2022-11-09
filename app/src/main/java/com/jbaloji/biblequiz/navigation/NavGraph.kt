@@ -63,11 +63,16 @@ fun InitGraph  (
             QuestionsScreen(
                 onNavigateToHome = {navController.navigate(Screen.Home)},
                 onNavigateToScore = {navController.navigate(Screen.Score)},
-                onNavigateToDialog = {navController.navigate(Screen.PauseDialog)}
+                onNavigateToDialog = {navController.navigate(Screen.PauseDialog)},
+                navController = navController
             )
         }
         composable(
-            route = Screen.Score
+            route = Screen.Score,
+            arguments = listOf(
+                navArgument(Screen.Level_ID){type = NavType.StringType},
+                navArgument(Screen.Score_ID){type = NavType.IntType}
+            )
         ){
             BackHandler(enabled = true) {
 

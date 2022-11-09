@@ -16,6 +16,7 @@ fun QuestionsScreen(
     onNavigateToHome: () -> Unit,
     onNavigateToScore: () -> Unit,
     onNavigateToDialog: () -> Unit,
+    navController: NavController,
     viewModel: QuestionsViewModel = hiltViewModel()
 ) {
 
@@ -45,7 +46,7 @@ fun QuestionsScreen(
                             Questions { currentIndex, maxQuestions, currentQuestion, hint,
                                         answer,options ->
 
-                                viewModel.totalQuestions = maxQuestions
+                                viewModel.totalQuestions = 5
 
 
                                 QuestionNumberText(
@@ -74,7 +75,11 @@ fun QuestionsScreen(
                                     toggleQuitMenu =
                                         onNavigateToDialog
                                     ,
-                                    onNavigateToScore = onNavigateToScore
+                                    onNavigateToScore = {
+                                        navController.navigate(
+                                            "score/${viewModel.levelId}/${viewModel.totalScore}"
+                                        )
+                                    }
                                 )
                             }
 

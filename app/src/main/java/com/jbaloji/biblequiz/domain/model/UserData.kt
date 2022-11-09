@@ -1,9 +1,9 @@
 package com.jbaloji.biblequiz.domain.model
 
 data class UserData (
-    var Level_1: Int = 0,
-    var Level_2: Int = 0,
-    var Level_3: Int = 0,
-    var Level_4: Int = 0,
-    var Level_5: Int = 0,
+    var level_1: Int = 0,
+    var level_2: Int = 0,
+    var level_3: Int = 0,
+    var level_4: Int = 0,
+    var level_5: Int = 0,
 )
