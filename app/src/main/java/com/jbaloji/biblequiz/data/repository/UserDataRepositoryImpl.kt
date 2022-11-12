@@ -38,8 +38,23 @@ class UserDataRepositoryImpl @Inject constructor(
 
 
 
-    override fun getUserData(): Flow<UserDataResponse> {
-        TODO("Not yet implemented")
+    override fun getUserData(
+        gameType: String,
+        docName: String
+    ) = callbackFlow {
+        val snapshotListener = userRef.document(currentUser!!).collection(gameType).document(docName)
+            .addSnapshotListener{ snapshot, error ->
+                val userDataResponse = if (snapshot != null){
+                    val userData = snapshot.toObject(UserData::class.java)
+                    Response.Success(userData!!)
+            } else {
+                Response.Failure(error)
+                }
+                trySend(userDataResponse)
+            }
+        awaitClose{
+            snapshotListener.remove()
+        }
     }
 
     override fun updateUserdata(

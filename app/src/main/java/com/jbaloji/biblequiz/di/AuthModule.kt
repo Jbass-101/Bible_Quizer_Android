@@ -34,6 +34,7 @@ object AuthModule {
     @Provides
     fun provideAuthRepository(
         auth: FirebaseAuth,
+       @UserUID currentUser: String?
     ) : AuthRepository = AuthRepositoryImpl(auth)
 
     @Provides

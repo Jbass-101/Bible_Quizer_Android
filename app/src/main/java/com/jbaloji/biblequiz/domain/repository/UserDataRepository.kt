@@ -14,7 +14,10 @@ interface UserDataRepository {
         docName: String
     ): Flow<UserDataResponse>
 
-    fun getUserData(): Flow<UserDataResponse>
+    fun getUserData(
+        gameType: String,
+        docName: String
+    ): Flow<UserDataResponse>
 
     fun updateUserdata(
         userId: String,
