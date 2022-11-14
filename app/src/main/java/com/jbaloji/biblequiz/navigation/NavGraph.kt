@@ -54,7 +54,10 @@ fun InitGraph  (
         }
         composable(
             route = Screen.Question,
-            arguments = listOf(navArgument(Screen.Level_ID){type = NavType.StringType})
+            arguments = listOf(
+                navArgument(Screen.Level_ID){type = NavType.StringType},
+                navArgument(Screen.Saved_Score_ID){type = NavType.IntType}
+            )
         ){
             BackHandler(enabled = true) {
                 //navController.navigate(Screen.QuestionQuit)
@@ -71,7 +74,7 @@ fun InitGraph  (
             route = Screen.Score,
             arguments = listOf(
                 navArgument(Screen.Level_ID){type = NavType.StringType},
-                navArgument(Screen.Score_ID){type = NavType.IntType}
+                navArgument(Screen.Saved_Score_ID){type = NavType.IntType}
             )
         ){
             BackHandler(enabled = true) {

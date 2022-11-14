@@ -1,19 +1,25 @@
 package com.jbaloji.biblequiz.navigation
 
 object Screen {
+
+    //-----------ID's
+    const val Level_ID = "levelId"
+    const val User_ID = "userId"
+    const val Saved_Score_ID = "savedScore"
+    const val Current_Score_ID = "currentScore"
+
+
+
+    //-----------Routes
     const val Home = "home"
-    const val Question = "questions/{levelId}"
-    const val Score = "score/{levelId}/{scoreId}"
+    const val Question = "questions/{$Level_ID}/{$Saved_Score_ID}"
+    const val Score = "score/{$Level_ID}/{$Saved_Score_ID}/{$Current_Score_ID}"
     const val Levels = "levels"
     const val Auth ="auth"
-    const val Lobby ="lobby/{userId}"
+    const val Lobby ="lobby/{$User_ID}"
     const val PauseDialog = "pauseDialog"
 
 
-    //-----------Screen ID's
-    const val Level_ID = "levelId"
-    const val User_ID = "userId"
-    const val Score_ID = "scoreId"
 
 
     //----------Levels Screen constants

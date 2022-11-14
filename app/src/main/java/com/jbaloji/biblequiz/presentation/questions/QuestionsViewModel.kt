@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jbaloji.biblequiz.core.Constants
 import com.jbaloji.biblequiz.domain.model.Response.Loading
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import com.jbaloji.biblequiz.domain.use_case.questions.QuestionsUseCases
@@ -23,7 +24,9 @@ class QuestionsViewModel @Inject constructor(
     private val useCases : QuestionsUseCases,
 ) : ViewModel() {
 
-     val levelId: String = checkNotNull(savedStateHandle[Screen.Level_ID])
+    val levelId: String = checkNotNull(savedStateHandle[Screen.Level_ID])
+    val savedScore: Int = checkNotNull(savedStateHandle[Screen.Saved_Score_ID])
+
 
 
     //Question Feature
@@ -33,7 +36,7 @@ class QuestionsViewModel @Inject constructor(
 
     //Answer Feature
     var hasAnswered by mutableStateOf(false)
-    var totalScore by mutableStateOf(0)
+    var currentScore by mutableStateOf(0)
     var isLastQuestion by mutableStateOf(false)
 
     //Hint Feature
@@ -52,6 +55,7 @@ class QuestionsViewModel @Inject constructor(
 
 
     init {
+        Log.i(Constants.TAG, "Saved Score------->: $savedScore.")
         getQuestionsLevel(levelId)
         startCountDown()
     }
@@ -96,7 +100,7 @@ class QuestionsViewModel @Inject constructor(
 
      fun answerQuestion (correctAnswer: Boolean) {
         hasAnswered = true
-        if (correctAnswer) totalScore++
+        if (correctAnswer) currentScore++
     }
 
     fun showHint(){

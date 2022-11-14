@@ -53,7 +53,7 @@ fun QuestionsScreen(
                                     currentQuestion = currentIndex + 1,
                                     totalQuestions = maxQuestions,
                                     maxHints = viewModel.maxHints,
-                                    totalScore = viewModel.totalScore
+                                    totalScore = viewModel.currentScore
                                 )
                                 CountDown(
                                     time = viewModel.currentTime,
@@ -77,7 +77,7 @@ fun QuestionsScreen(
                                     ,
                                     onNavigateToScore = {
                                         navController.navigate(
-                                            "score/${viewModel.levelId}/${viewModel.totalScore}"
+                                            "score/${viewModel.levelId}/${viewModel.savedScore}/${viewModel.currentScore}"
                                         )
                                     }
                                 )
