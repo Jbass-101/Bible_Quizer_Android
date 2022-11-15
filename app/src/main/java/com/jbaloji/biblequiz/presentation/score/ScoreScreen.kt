@@ -1,45 +1,51 @@
 package com.jbaloji.biblequiz.presentation.score
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.jbaloji.biblequiz.presentation.theme.BibleQuizTheme
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.jbaloji.biblequiz.presentation.home.components.GenericButton
+
 
 @Composable
 fun ScoreScreen (
     onNavigateToHome: () -> Unit,
+    onNavigateToLevels: () -> Unit,
     viewModel: ScoreScreenViewModel =  hiltViewModel()
 ){
-    BibleQuizTheme() {
-        Scaffold(
-            backgroundColor = MaterialTheme.colors.background,
-        ) {
 
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxSize(1f)
-                    .padding(it)
-            ) {
-                Text(text = "Demo Complete")
-                Spacer(modifier = Modifier.padding(15.dp))
-                Button(onClick = onNavigateToHome ) {
-                    Text(text = "Home")
-
-                }
-
-            }
-
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize(1f)
+    ) {
+        Text(
+            text = viewModel.currentScore.toString(),
+            fontSize = 25.sp
+        )
+        Text(
+            text = "You Score"
+        )
+        Spacer(modifier = Modifier.padding(30.dp))
+        if (viewModel.currentScore > 8){
+            Text(text = "New level unlocked")
+        }else {
+            Text(text = "Score at least 8 to unlock the next level")
         }
+        Spacer(modifier = Modifier.padding(15.dp))
+        GenericButton(
+            text = "Select Level",
+            action = onNavigateToLevels)
+        GenericButton(
+            text = "Home",
+            action = onNavigateToHome)
 
     }
 }
+
+

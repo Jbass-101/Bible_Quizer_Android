@@ -16,7 +16,10 @@ fun ScreenWrapper(
         Scaffold(
             backgroundColor = MaterialTheme.colors.background
         ) { paddingValues ->
-            Box(modifier = Modifier.padding(paddingValues)){
+            Box(
+                modifier = Modifier
+                    .padding(paddingValues)
+            ){
                content()
             }
 

@@ -70,7 +70,7 @@ fun LobbyScreen(
         }
     )
 
-    GenericButton(text = "Home", action = onNavigateToHome)
+//    GenericButton(text = "Home", action = onNavigateToHome)
 
 
     when(viewModel.userResponse){

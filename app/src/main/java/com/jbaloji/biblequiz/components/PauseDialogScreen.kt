@@ -15,42 +15,42 @@ import com.jbaloji.biblequiz.presentation.theme.Overlay
 @Composable
 fun PauseDialogScreen(
     onBack: () -> Unit,
-    onNavigateToLevels: () -> Unit
+    onNavigateToLobby: () -> Unit
 ){
-    Popup(
-        alignment = Alignment.Center,
-        properties = PopupProperties(
-            focusable = true
-        ),
-        onDismissRequest = onBack
-    )
-    {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .fillMaxHeight(0.3f)
 
-                .background(color = Overlay)
-        ) {
-            Text(text = "Quit Bible Quiz?")
-            Spacer(modifier = Modifier.padding(15.dp))
-            Button(
-                onClick = onBack
-            ) {
-                Text(text = "Continue")
+        Popup(
+//            alignment = Alignment.Center,
+            properties = PopupProperties(
+                focusable = true
+            ),
+            onDismissRequest = onBack
+        )
+        {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .fillMaxHeight(0.3f)
 
-            }
-            Button(
-                onClick = onNavigateToLevels
+                    .background(color = Overlay)
             ) {
-                Text(text = "Quit to main menu")
+                Text(text = "Quit Bible Quiz?")
+                Spacer(modifier = Modifier.padding(15.dp))
+                Button(
+                    onClick = onBack
+                ) {
+                    Text(text = "Continue")
+                }
+                Button(
+                    onClick = onNavigateToLobby
+                ) {
+                    Text(text = "Quit to main menu")
+
+                }
 
             }
 
         }
-
-    }
 
 }

@@ -23,19 +23,23 @@ class ScoreScreenViewModel @Inject constructor(
 
 
     private val currentLevel: String = checkNotNull(savedStateHandle[Screen.Level_ID])
-    private val currentScore: Int = checkNotNull(savedStateHandle[Screen.Current_Score_ID])
     private val savedScore: Int = checkNotNull(savedStateHandle[Screen.Saved_Score_ID])
+    val currentScore: Int = checkNotNull(savedStateHandle[Screen.Current_Score_ID])
 
     init {
         Log.i(Constants.TAG,"Current level: $currentLevel - - - -" +
                 "Saved Score: $savedScore - - - - " +
                 "Current Score: $currentScore")
-      //  updateData()
+
+        if (currentScore > savedScore){
+              updateData(currentScore)
+
+        }
     }
 
-    private fun updateData() = viewModelScope.launch {
+    private fun updateData(newScore: Int) = viewModelScope.launch {
         userDataUseCases.updateUserData(
-            updateVal = currentScore
+            updateVal = newScore
         ).collect()
     }
 

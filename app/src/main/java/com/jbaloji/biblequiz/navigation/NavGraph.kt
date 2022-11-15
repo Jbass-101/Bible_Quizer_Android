@@ -40,16 +40,18 @@ fun InitGraph  (
         }
         composable(
             route = Screen.PauseDialog
-        ){ ScreenWrapper {
+        ){
+            ScreenWrapper {
+            PauseDialogScreen(
+
+                onBack = { navController.navigateUp() } ,
+                onNavigateToLobby = {navController.navigate(Screen.Lobby){
+                    popUpTo(Screen.Lobby)
+                } }
+            )
 
         }
-                PauseDialogScreen(
 
-                    onBack = { navController.navigateUp() } ,
-                    onNavigateToLevels = {navController.navigate(Screen.Levels){
-                        popUpTo(Screen.Lobby)
-                    } }
-                )
 
         }
         composable(
@@ -63,26 +65,33 @@ fun InitGraph  (
                 //navController.navigate(Screen.QuestionQuit)
 
             }
-            QuestionsScreen(
-                onNavigateToHome = {navController.navigate(Screen.Home)},
-                onNavigateToScore = {navController.navigate(Screen.Score)},
-                onNavigateToDialog = {navController.navigate(Screen.PauseDialog)},
-                navController = navController
-            )
+            ScreenWrapper {
+
+                QuestionsScreen(
+                    onNavigateToHome = {navController.navigate(Screen.Home)},
+                    onNavigateToScore = {navController.navigate(Screen.Score)},
+                    onNavigateToDialog = {navController.navigate(Screen.PauseDialog)},
+                    navController = navController
+                )
+            }
         }
         composable(
             route = Screen.Score,
             arguments = listOf(
                 navArgument(Screen.Level_ID){type = NavType.StringType},
-                navArgument(Screen.Saved_Score_ID){type = NavType.IntType}
+                navArgument(Screen.Saved_Score_ID){type = NavType.IntType},
+                navArgument(Screen.Current_Score_ID){type = NavType.IntType}
             )
         ){
             BackHandler(enabled = true) {
 
             }
-            ScoreScreen (
-                onNavigateToHome = {navController.navigate(Screen.Home)}
-            )
+            ScreenWrapper {
+                ScoreScreen (
+                    onNavigateToHome = {navController.navigate(Screen.Home)},
+                    onNavigateToLevels = {navController.navigate(Screen.Levels)}
+                )
+            }
         }
         composable(
             route = Screen.Levels

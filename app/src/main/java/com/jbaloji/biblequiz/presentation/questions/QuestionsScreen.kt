@@ -46,7 +46,7 @@ fun QuestionsScreen(
                             Questions { currentIndex, maxQuestions, currentQuestion, hint,
                                         answer,options ->
 
-                                viewModel.totalQuestions = 5
+                                viewModel.totalQuestions = maxQuestions
 
 
                                 QuestionNumberText(

@@ -55,7 +55,7 @@ class QuestionsViewModel @Inject constructor(
 
 
     init {
-        Log.i(Constants.TAG, "Saved Score------->: $savedScore.")
+        Log.i(Constants.TAG, "Saved Score------->: $savedScore")
         getQuestionsLevel(levelId)
         startCountDown()
     }

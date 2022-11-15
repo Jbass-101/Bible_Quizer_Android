@@ -41,13 +41,13 @@ fun HomeScreen(
 
             ) {
                 TitleText()
-                Spacer(modifier = Modifier.height(15.dp))
-                if(viewModel.currentUserResponse != null){
-                    ProfileCard(viewModel.currentUserResponse!!)
-                    Text(text = viewModel.currentUserResponse?.uid.toString())
-                } else {
-                    Text(text = "No User Found")
-                }
+//                Spacer(modifier = Modifier.height(15.dp))
+//                if(viewModel.currentUserResponse != null){
+//                    ProfileCard(viewModel.currentUserResponse!!)
+//                    Text(text = viewModel.currentUserResponse?.uid.toString())
+//                } else {
+//                    Text(text = "No User Found")
+//                }
                 Spacer(modifier = Modifier.height(15.dp))
                 GenericButton(
                     text = stringResource(id = R.string.Start_Button_Text),
@@ -60,16 +60,16 @@ fun HomeScreen(
                     action = {viewModel.quitGame()}
                 )
                 Spacer(modifier = Modifier.height(15.dp))
-                if(viewModel.currentUserResponse?.isAnonymous == false){
-                GenericButton(
-                    text = "Log Out",
-                    action = { viewModel.logOut() }
-                )}else {
-                    GenericButton(
-                        text = "Log In",
-                        action = onNavigateToAuth
-                    )
-                }
+//                if(viewModel.currentUserResponse?.isAnonymous == false){
+//                GenericButton(
+//                    text = "Log Out",
+//                    action = { viewModel.logOut() }
+//                )}else {
+//                    GenericButton(
+//                        text = "Log In",
+//                        action = onNavigateToAuth
+//                    )
+//                }
 
             }
 
