@@ -26,8 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
         hideSystemBars()
 
         setContent {
-            InitGraph(
-            )
+            InitGraph()
         }
 
 

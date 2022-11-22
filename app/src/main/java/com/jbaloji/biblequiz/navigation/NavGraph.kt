@@ -49,9 +49,7 @@ fun InitGraph  (
                     popUpTo(Screen.Lobby)
                 } }
             )
-
         }
-
 
         }
         composable(

@@ -3,6 +3,7 @@ package com.jbaloji.biblequiz.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,27 +27,31 @@ fun QuitMenu(
         onDismissRequest = toggleQuitMenu
     )
      {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .fillMaxHeight(0.3f)
+        Card() {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+//                .fillMaxWidth(0.8f)
+//                .fillMaxHeight(0.3f)
+                    .fillMaxSize()
 
-                .background(color = Overlay)
-        ) {
-            Text(text = "Quit Bible Quiz?")
-            Spacer(modifier = Modifier.padding(15.dp))
-            Button(
-                onClick = toggleQuitMenu
+                    .background(color = Overlay)
             ) {
-                Text(text = "Continue")
+                Text(text = "Quit Bible Quiz?")
+                Spacer(modifier = Modifier.padding(15.dp))
+                Button(
+                    onClick = toggleQuitMenu
+                ) {
+                    Text(text = "Continue")
 
-            }
-            Button(
-                onClick = onNavigateToHome
-            ) {
-                Text(text = "Quit to main menu")
+                }
+                Button(
+                    onClick = onNavigateToHome
+                ) {
+                    Text(text = "Quit to main menu")
+
+                }
 
             }
 

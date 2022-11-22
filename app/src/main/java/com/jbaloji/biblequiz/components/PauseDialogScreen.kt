@@ -3,6 +3,7 @@ package com.jbaloji.biblequiz.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,20 +19,23 @@ fun PauseDialogScreen(
     onNavigateToLobby: () -> Unit
 ){
 
-        Popup(
+    Popup(
 //            alignment = Alignment.Center,
-            properties = PopupProperties(
-                focusable = true
-            ),
-            onDismissRequest = onBack
-        )
-        {
+        properties = PopupProperties(
+            focusable = true
+        ),
+        onDismissRequest = onBack
+
+    )
+    {
+        Card {
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .fillMaxHeight(0.3f)
+//                        .fillMaxWidth(0.8f)
+//                        .fillMaxHeight(0.3f)
+                    .fillMaxSize()
 
                     .background(color = Overlay)
             ) {
@@ -52,5 +56,7 @@ fun PauseDialogScreen(
             }
 
         }
+
+    }
 
 }
