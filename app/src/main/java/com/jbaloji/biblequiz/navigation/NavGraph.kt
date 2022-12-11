@@ -47,6 +47,9 @@ fun InitGraph  (
                 onBack = { navController.navigateUp() } ,
                 onNavigateToLobby = {navController.navigate(Screen.Lobby){
                     popUpTo(Screen.Lobby)
+                } },
+                onNavigateToLevels = {navController.navigate(Screen.Levels){
+                    popUpTo(Screen.Levels)
                 } }
             )
         }

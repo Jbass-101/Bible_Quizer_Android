@@ -11,24 +11,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
+import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 import com.jbaloji.biblequiz.presentation.theme.Overlay
 
 @Composable
 fun PauseDialogScreen(
     onBack: () -> Unit,
-    onNavigateToLobby: () -> Unit
+    onNavigateToLobby: () -> Unit,
+    onNavigateToLevels : () -> Unit
 ){
 
-    Popup(
+//    Popup(
 //            alignment = Alignment.Center,
-        properties = PopupProperties(
-            focusable = true
-        ),
-        onDismissRequest = onBack
-
-    )
-    {
-        Card {
+//        properties = PopupProperties(
+//            focusable = true
+//        ),
+//        onDismissRequest = onBack
+//
+//    )
+//    {
+        Card(
+            modifier = Modifier.fillMaxSize()
+        ) {
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -39,24 +43,23 @@ fun PauseDialogScreen(
 
                     .background(color = Overlay)
             ) {
-                Text(text = "Quit Bible Quiz?")
-                Spacer(modifier = Modifier.padding(15.dp))
-                Button(
-                    onClick = onBack
-                ) {
-                    Text(text = "Continue")
-                }
-                Button(
-                    onClick = onNavigateToLobby
-                ) {
-                    Text(text = "Quit to main menu")
-
-                }
+                GenericButton(
+                    text = "Continue" ,
+                    action = onBack
+                )
+                GenericButton(
+                    text = "Levels" ,
+                    action = onNavigateToLevels
+                )
+                GenericButton(
+                    text = "Main menu",
+                    action = onNavigateToLobby
+                )
 
             }
 
         }
 
-    }
+//    }
 
 }

@@ -14,7 +14,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.FeatureCard
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 
 @Composable
 fun LobbyScreen(
@@ -84,7 +83,6 @@ fun LobbyScreen(
         
     }
 
-//    GenericButton(text = "Home", action = onNavigateToHome)
 
 
     when(viewModel.userResponse){

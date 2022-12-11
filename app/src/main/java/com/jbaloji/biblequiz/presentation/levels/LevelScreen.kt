@@ -1,12 +1,13 @@
 package com.jbaloji.biblequiz.presentation.levels
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jbaloji.biblequiz.domain.model.Response
@@ -149,10 +150,19 @@ fun LevelsScreen(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxSize(1f)
     ) {
+
+        Text(
+            text = "Select Level",
+            fontSize = 20.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
         LazyColumn(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             userScrollEnabled = true,
+            modifier = Modifier
+                .fillMaxHeight(0.5f)
+                .fillMaxWidth(1f),
             content = {
                 items(list.size){ item ->
                     GenericButton(
@@ -165,6 +175,11 @@ fun LevelsScreen(
 
                 }
             }
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        GenericButton(
+            text = "Back" ,
+            action = { navController.navigateUp() }
         )
     }
 
