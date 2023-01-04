@@ -32,9 +32,7 @@ fun InitGraph  (
             }
             ScreenWrapper {
                 HomeScreen(
-                    navController = navController,
-                    onNavigateToLobby = { navController.navigate(Screen.Lobby)},
-                    onNavigateToAuth = { navController.navigate(Screen.Auth)}
+                    navController = navController
                 )
             }
         }

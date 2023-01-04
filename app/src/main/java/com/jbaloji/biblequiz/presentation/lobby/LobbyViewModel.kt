@@ -46,7 +46,6 @@ class LobbyViewModel @Inject constructor(
             when(response){
                 is Response.Success -> {
                     userDataUseCases.writeUserData(
-                        userId = response.data?.uid!!
                     ).collect{res ->
                         userDataResponse = res
                     }

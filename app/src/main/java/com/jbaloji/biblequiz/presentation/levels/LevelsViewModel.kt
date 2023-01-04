@@ -15,7 +15,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LevelsViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
     private val userDataUseCases: UserDataUseCases
     ) : ViewModel() {
 

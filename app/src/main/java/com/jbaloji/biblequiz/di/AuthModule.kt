@@ -1,9 +1,6 @@
 package com.jbaloji.biblequiz.di
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.jbaloji.biblequiz.data.repository.AuthRepositoryImpl
 import com.jbaloji.biblequiz.domain.repository.AuthRepository
 import com.jbaloji.biblequiz.domain.use_case.auth.*
@@ -26,15 +23,16 @@ object AuthModule {
 
     @UserUID
     @Provides
+    @Singleton
     fun provideCurrentUser(
         auth: FirebaseAuth
     ) = auth.currentUser?.uid
 
 
     @Provides
+    @Singleton
     fun provideAuthRepository(
-        auth: FirebaseAuth,
-       @UserUID currentUser: String?
+        auth: FirebaseAuth
     ) : AuthRepository = AuthRepositoryImpl(auth)
 
     @Provides

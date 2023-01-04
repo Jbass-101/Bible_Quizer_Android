@@ -20,8 +20,6 @@ import com.jbaloji.biblequiz.presentation.home.components.TitleText
 @Composable
 fun HomeScreen(
     navController: NavController,
-    onNavigateToLobby: () -> Unit,
-    onNavigateToAuth: () -> Unit,
     viewModel: HomeScreenViewModel = hiltViewModel()
 
 )  {

@@ -14,11 +14,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.FeatureCard
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.domain.model.Response
+import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 
 @Composable
 fun LobbyScreen(
     onNavigateToLevels: () -> Unit,
-    onNavigateToHome: () -> Unit,
+    onNavigateToHome : () -> Unit,
     viewModel: LobbyViewModel = hiltViewModel()
 ){
     val text = "text"
@@ -49,10 +50,12 @@ fun LobbyScreen(
     )
 
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxSize()
     ) {
-        Spacer(modifier = Modifier.height(8.dp))
         Text(
+            modifier = Modifier.padding(vertical = 8.dp),
             text = "Select Game Mode",
             fontSize = 20.sp
         )
@@ -67,7 +70,7 @@ fun LobbyScreen(
             end = 12.dp,
             bottom = 16.dp
         ),
-        modifier = Modifier.fillMaxSize(),
+//        modifier = Modifier.fillMaxSize(),
         content = {
 
             items(list.size){ item ->
@@ -79,7 +82,14 @@ fun LobbyScreen(
                 )
             }
         }
+
     )
+
+        GenericButton(
+            paddingSize = 8.dp,
+            text ="Home" ,
+            action = onNavigateToHome
+        )
         
     }
 
