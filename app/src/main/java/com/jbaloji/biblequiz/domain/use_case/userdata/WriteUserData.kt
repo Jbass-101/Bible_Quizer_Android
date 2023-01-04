@@ -1,12 +1,13 @@
 package com.jbaloji.biblequiz.domain.use_case.userdata
 
+import com.jbaloji.biblequiz.core.Constants.DOC_NAME
+import com.jbaloji.biblequiz.core.Constants.GAME_TYPE
 import com.jbaloji.biblequiz.domain.repository.UserDataRepository
 
 class WriteUserData(private val repo : UserDataRepository) {
 
     operator fun invoke(
-        userId: String = "userID",
-        gameType: String = "Timed Quiz",
-        docName: String ="Score"
-    ) = repo.writeUserData(userId,gameType, docName)
+        gameType: String = GAME_TYPE,
+        docName: String = DOC_NAME
+    ) = repo.writeUserData(gameType, docName)
 }

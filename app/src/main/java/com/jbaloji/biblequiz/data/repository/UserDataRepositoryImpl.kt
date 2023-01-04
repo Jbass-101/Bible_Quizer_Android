@@ -16,11 +16,10 @@ class UserDataRepositoryImpl @Inject constructor(
     private val currentUser: String?
 ) : UserDataRepository {
     override fun writeUserData(
-        userId: String,
         gameType: String,
         docName: String
     ) = callbackFlow {
-        val listener = userRef.document(userId).collection(gameType).document(docName)
+        val listener = userRef.document(currentUser!!).collection(gameType).document(docName)
             .set( UserData())
             .addOnCompleteListener { result ->
                 val userDataResponse = if(result.isSuccessful){
@@ -58,7 +57,6 @@ class UserDataRepositoryImpl @Inject constructor(
     }
 
     override fun updateUserdata(
-        userId: String,
         gameType: String,
         docName: String,
         fieldName: String,

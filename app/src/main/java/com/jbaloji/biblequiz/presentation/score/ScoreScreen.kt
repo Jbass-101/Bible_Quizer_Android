@@ -29,13 +29,13 @@ fun ScoreScreen (
             fontSize = 25.sp
         )
         Text(
-            text = "You Score"
+            text = "Your Score"
         )
         Spacer(modifier = Modifier.padding(30.dp))
         if (viewModel.currentScore > 8){
             Text(text = "New level unlocked")
         }else {
-            Text(text = "Score at least 8 to unlock the next level")
+            Text(text = "Score at least 9 to unlock the next level")
         }
         Spacer(modifier = Modifier.padding(15.dp))
         GenericButton(

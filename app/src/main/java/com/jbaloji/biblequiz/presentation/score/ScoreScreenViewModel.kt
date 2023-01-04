@@ -1,9 +1,6 @@
 package com.jbaloji.biblequiz.presentation.score
 
 import android.util.Log
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -39,7 +36,8 @@ class ScoreScreenViewModel @Inject constructor(
 
     private fun updateData(newScore: Int) = viewModelScope.launch {
         userDataUseCases.updateUserData(
-            updateVal = newScore
+            updateVal = newScore,
+            fieldName = currentLevel
         ).collect()
     }
 

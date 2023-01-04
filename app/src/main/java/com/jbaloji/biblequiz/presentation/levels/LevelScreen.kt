@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jbaloji.biblequiz.domain.model.Response
+import com.jbaloji.biblequiz.navigation.Screen
 import com.jbaloji.biblequiz.navigation.Screen.Level_1
 import com.jbaloji.biblequiz.navigation.Screen.Level_2
 import com.jbaloji.biblequiz.navigation.Screen.Level_3
@@ -179,7 +180,9 @@ fun LevelsScreen(
         Spacer(modifier = Modifier.height(8.dp))
         GenericButton(
             text = "Back" ,
-            action = { navController.navigateUp() }
+            action = { navController.navigate(Screen.Lobby){
+                popUpTo(Screen.Lobby)
+            } }
         )
     }
 
