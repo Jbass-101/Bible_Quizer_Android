@@ -1,24 +1,50 @@
 package com.jbaloji.biblequiz
 
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavHostController
+import com.jbaloji.biblequiz.core.Constants
 import com.jbaloji.biblequiz.navigation.InitGraph
+import com.jbaloji.biblequiz.notification.TestNotification
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
  class MainActivity : ComponentActivity() {
 
+    // Declare the launcher at the top of your Activity/Fragment:
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            // FCM SDK (and your app) can post notifications.
+            Log.i(Constants.TAG,"Notification permission Granted")
+        } else {
+            // TODO: Inform user that that your app will not show notifications.
+            Log.i(Constants.TAG,"Notification permission denied")
+        }
+    }
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        requestPermissionLauncher
+
+        //Create Notification Channel
+        TestNotification(applicationContext).createNotificationChannel()
+
         hideSystemBars()
+
 
         setContent {
             InitGraph()
@@ -38,6 +64,8 @@ import dagger.hilt.android.AndroidEntryPoint
         // Hide both the status bar and the navigation bar
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
     }
+
+
 
 
 
