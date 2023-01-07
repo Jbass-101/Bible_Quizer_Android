@@ -25,7 +25,7 @@ class TestNotification (context : Context, title : String = "", message : String
     private val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
     private val testNotificationBuild = NotificationCompat.Builder(context, channelID)
-        .setSmallIcon(R.drawable.user)
+        .setSmallIcon(R.drawable.ic_notification)
         .setContentTitle("My notification")
         .setContentText("Hello World!")
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)

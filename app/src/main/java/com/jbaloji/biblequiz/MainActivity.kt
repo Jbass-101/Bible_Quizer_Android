@@ -1,5 +1,6 @@
 package com.jbaloji.biblequiz
 
+import android.Manifest.permission.POST_NOTIFICATIONS
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -38,8 +39,9 @@ import dagger.hilt.android.AndroidEntryPoint
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        requestPermissionLauncher
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermissionLauncher.launch(POST_NOTIFICATIONS)
+        }
         //Create Notification Channel
         TestNotification(applicationContext).createNotificationChannel()
 

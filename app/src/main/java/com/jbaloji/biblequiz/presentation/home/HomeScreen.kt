@@ -1,11 +1,13 @@
 package com.jbaloji.biblequiz.presentation.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,6 +44,7 @@ fun HomeScreen(
                     .fillMaxSize()
 
             ) {
+//                Image(painter = painterResource(id = R.drawable.logo_light), contentDescription = "Hello" )
                 TitleText()
 //                Spacer(modifier = Modifier.height(15.dp))
 //                if(viewModel.currentUserResponse != null){
@@ -62,9 +65,9 @@ fun HomeScreen(
                     action = {viewModel.quitGame()}
                 )
                 Spacer(modifier = Modifier.height(15.dp))
-                GenericButton(
-                    text = "Launch Notification" ,
-                    action = { TestNotification(context).launchNotification() })
+//                GenericButton(
+//                    text = "Launch Notification" ,
+//                    action = { TestNotification(context).launchNotification() })
 //                if(viewModel.currentUserResponse?.isAnonymous == false){
 //                GenericButton(
 //                    text = "Log Out",
