@@ -44,9 +44,8 @@ object UserDataModule {
 
     @Provides
     fun providesUserDataRepository(
-        @UsersRef collRef:  CollectionReference,
-        @AuthModule.UserUID userId : String?
-    ) : UserDataRepository = UserDataRepositoryImpl(collRef,userId)
+        @UsersRef collRef:  CollectionReference
+    ) : UserDataRepository = UserDataRepositoryImpl(collRef)
 
     @Provides
     fun provideUserDataUseCases(

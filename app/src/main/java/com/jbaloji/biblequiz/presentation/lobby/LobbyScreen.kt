@@ -49,54 +49,54 @@ fun LobbyScreen(
 //        17 to onNavigateToLevels,
     )
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Text(
-            modifier = Modifier.padding(vertical = 8.dp),
-            text = "Select Game Mode",
-            fontSize = 20.sp
-        )
-        
-        LazyVerticalGrid(
-        verticalArrangement = Arrangement.Center,
-        horizontalArrangement = Arrangement.Center,
-        columns = GridCells.Fixed(1),
-        contentPadding = PaddingValues(
-            start = 12.dp,
-            top = 16.dp,
-            end = 12.dp,
-            bottom = 16.dp
-        ),
-//        modifier = Modifier.fillMaxSize(),
-        content = {
-
-            items(list.size){ item ->
-                @Suppress("UNCHECKED_CAST")
-                FeatureCard(
-                    text = list[item]?.get(text) as String,
-                    index = item,
-                    onClick =  list[item]?.get(onClick) as () -> Unit
-                )
-            }
-        }
-
-    )
-
-        GenericButton(
-            paddingSize = 8.dp,
-            text ="Home" ,
-            action = onNavigateToHome
-        )
-        
-    }
-
-
-
-    when(viewModel.userResponse){
+    when(viewModel.userDataResponse){
         is Response.Loading -> ProgressBar()
-        else -> {}
+        else -> {
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                Text(
+                    modifier = Modifier.padding(vertical = 8.dp),
+                    text = "Select Game Mode",
+                    fontSize = 20.sp
+                )
+
+                LazyVerticalGrid(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalArrangement = Arrangement.Center,
+                    columns = GridCells.Fixed(1),
+                    contentPadding = PaddingValues(
+                        start = 12.dp,
+                        top = 16.dp,
+                        end = 12.dp,
+                        bottom = 16.dp
+                    ),
+//        modifier = Modifier.fillMaxSize(),
+                    content = {
+
+                        items(list.size){ item ->
+                            @Suppress("UNCHECKED_CAST")
+                            FeatureCard(
+                                text = list[item]?.get(text) as String,
+                                index = item,
+                                onClick =  list[item]?.get(onClick) as () -> Unit
+                            )
+                        }
+                    }
+
+                )
+
+                GenericButton(
+                    paddingSize = 8.dp,
+                    text ="Home" ,
+                    action = onNavigateToHome
+                )
+
+            }
+
+        }
     }
 }

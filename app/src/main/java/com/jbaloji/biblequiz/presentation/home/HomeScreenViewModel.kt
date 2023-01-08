@@ -1,10 +1,12 @@
 package com.jbaloji.biblequiz.presentation.home
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jbaloji.biblequiz.core.Constants
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import com.jbaloji.biblequiz.domain.repository.User
@@ -41,6 +43,7 @@ class HomeScreenViewModel @Inject constructor(
     private fun getCurrentUser () = viewModelScope.launch {
         authUseCases.getCurrentUser().collect{ response ->
             currentUserResponse = response
+            Log.i(Constants.TAG,"Home Screen user : ${response?.uid.toString()}")
         }
     }
 

@@ -12,14 +12,14 @@ import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 class UserDataRepositoryImpl @Inject constructor(
-    private val userRef: CollectionReference,
-    private val currentUser: String?
+    private val userRef: CollectionReference
 ) : UserDataRepository {
     override fun writeUserData(
+        user: String,
         gameType: String,
         docName: String
-    ) = callbackFlow {
-        val listener = userRef.document(currentUser!!).collection(gameType).document(docName)
+    ): Flow<UserDataResponse> = callbackFlow {
+        val listener = userRef.document(user).collection(gameType).document(docName)
             .set( UserData())
             .addOnCompleteListener { result ->
                 val userDataResponse = if(result.isSuccessful){
@@ -38,10 +38,11 @@ class UserDataRepositoryImpl @Inject constructor(
 
 
     override fun getUserData(
+        user: String,
         gameType: String,
         docName: String
     ) = callbackFlow {
-        val snapshotListener = userRef.document(currentUser!!).collection(gameType).document(docName)
+        val snapshotListener = userRef.document(user).collection(gameType).document(docName)
             .addSnapshotListener{ snapshot, error ->
                 val userDataResponse = if (snapshot != null){
                     val userData = snapshot.toObject(UserData::class.java)
@@ -57,12 +58,13 @@ class UserDataRepositoryImpl @Inject constructor(
     }
 
     override fun updateUserdata(
+        user: String,
         gameType: String,
         docName: String,
         fieldName: String,
         updateVal: Int
     ) = callbackFlow {
-        val listener = userRef.document(currentUser!!).collection(gameType).document(docName)
+        val listener = userRef.document(user).collection(gameType).document(docName)
             .update(fieldName,updateVal)
             .addOnCompleteListener { result ->
                 val updateDataResponse =if (result.isSuccessful){

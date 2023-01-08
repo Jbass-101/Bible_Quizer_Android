@@ -7,7 +7,8 @@ import com.jbaloji.biblequiz.domain.repository.UserDataRepository
 class WriteUserData(private val repo : UserDataRepository) {
 
     operator fun invoke(
+        user : String,
         gameType: String = GAME_TYPE,
         docName: String = DOC_NAME
-    ) = repo.writeUserData(gameType, docName)
+    ) = repo.writeUserData(user,gameType, docName)
 }

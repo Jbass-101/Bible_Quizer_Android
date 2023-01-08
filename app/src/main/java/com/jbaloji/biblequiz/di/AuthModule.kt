@@ -17,18 +17,6 @@ import javax.inject.Singleton
 object AuthModule {
 
 
-    @Qualifier
-    @Retention(AnnotationRetention.BINARY)
-    annotation class UserUID
-
-    @UserUID
-    @Provides
-    @Singleton
-    fun provideCurrentUser(
-        auth: FirebaseAuth
-    ) = auth.currentUser?.uid
-
-
     @Provides
     @Singleton
     fun provideAuthRepository(

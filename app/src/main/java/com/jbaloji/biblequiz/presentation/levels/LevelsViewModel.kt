@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.UserDataResponse
+import com.jbaloji.biblequiz.domain.use_case.auth.AuthUseCases
 import com.jbaloji.biblequiz.domain.use_case.userdata.UserDataUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,10 +16,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LevelsViewModel @Inject constructor(
-    private val userDataUseCases: UserDataUseCases
+    private val userDataUseCases: UserDataUseCases,
+    private val authUseCases: AuthUseCases
     ) : ViewModel() {
 
-     var userDataResponse by mutableStateOf<UserDataResponse>(Response.Loading)
+    var userDataResponse by mutableStateOf<UserDataResponse>(Response.Loading)
 
     var score1 by mutableStateOf(0)
     var score2 by mutableStateOf(0)
@@ -48,9 +50,15 @@ class LevelsViewModel @Inject constructor(
         }
 
     private fun getUserData() = viewModelScope.launch {
-        userDataUseCases.getUserData().collect{response ->
-            userDataResponse = response
 
+
+        authUseCases.currentUser.get()?.uid?.let {
+            userDataUseCases.getUserData(
+                it
+            ).collect{response ->
+                userDataResponse = response
+
+            }
         }
 
 

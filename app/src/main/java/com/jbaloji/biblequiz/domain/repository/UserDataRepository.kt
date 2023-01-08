@@ -9,16 +9,19 @@ typealias UserDataResponse = Response<UserData>
 interface UserDataRepository {
 
     fun writeUserData(
+        user: String,
         gameType: String,
         docName: String
     ): Flow<UserDataResponse>
 
     fun getUserData(
+        user: String,
         gameType: String,
         docName: String
     ): Flow<UserDataResponse>
 
     fun updateUserdata(
+        user: String,
         gameType: String,
         docName: String,
         fieldName: String,

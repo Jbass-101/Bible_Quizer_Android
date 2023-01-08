@@ -5,6 +5,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jbaloji.biblequiz.core.Constants
+import com.jbaloji.biblequiz.domain.use_case.auth.AuthUseCases
 import com.jbaloji.biblequiz.domain.use_case.userdata.UserDataUseCases
 import com.jbaloji.biblequiz.navigation.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ScoreScreenViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val userDataUseCases: UserDataUseCases
+    private val userDataUseCases: UserDataUseCases,
+    private val authUseCases: AuthUseCases
 ) : ViewModel() {
 
 
@@ -35,10 +37,13 @@ class ScoreScreenViewModel @Inject constructor(
     }
 
     private fun updateData(newScore: Int) = viewModelScope.launch {
-        userDataUseCases.updateUserData(
-            updateVal = newScore,
-            fieldName = currentLevel
-        ).collect()
+        authUseCases.currentUser.get()?.uid?.let {
+            userDataUseCases.updateUserData(
+                user = it,
+                updateVal = newScore,
+                fieldName = currentLevel
+            ).collect()
+        }
     }
 
 }

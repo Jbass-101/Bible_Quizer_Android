@@ -26,7 +26,6 @@ class LobbyViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val userId: String = checkNotNull(savedStateHandle[Screen.User_ID])
-    var userResponse by mutableStateOf<UserResponse>(Response.Loading)
     var userDataResponse by mutableStateOf<UserDataResponse>(Response.Loading)
 
     init {
@@ -34,33 +33,37 @@ class LobbyViewModel @Inject constructor(
         if(userId == "null"){
             loginAnonymously()
         } else {
-            /*@TODO*/
-           getCurrentUser()
+            getUserData()
         }
     }
 
     private fun loginAnonymously () = viewModelScope.launch {
         authUseCases.loginAnonymously().collect{ response ->
-            userResponse = response
+//            userResponse = response
 
             when(response){
                 is Response.Success -> {
-                    userDataUseCases.writeUserData(
-                    ).collect{res ->
-                        userDataResponse = res
+                    response.data?.let {
+                        userDataUseCases.writeUserData(
+                            it.uid
+                        ).collect{res ->
+                            userDataResponse = res
+                        }
                     }
                 }
                 is Response.Failure ->
-                    userResponse = Response.Failure(response.e)
+                    userDataResponse = Response.Failure(response.e)
                 else -> {}
             }
         }
 
     }
 
-    private fun getCurrentUser () = viewModelScope.launch {
-        authUseCases.getCurrentUser().collect{ response ->
-            userResponse = Response.Success(response)
+    private fun getUserData () = viewModelScope.launch {
+        authUseCases.currentUser.get()?.uid?.let {
+            userDataUseCases.getUserData(it).collect{ response ->
+                userDataResponse = response
+            }
         }
     }
 }

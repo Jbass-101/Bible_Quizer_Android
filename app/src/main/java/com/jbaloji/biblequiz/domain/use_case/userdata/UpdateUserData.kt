@@ -9,11 +9,12 @@ import com.jbaloji.biblequiz.domain.repository.UserDataRepository
 class UpdateUserData(private val repo: UserDataRepository) {
 
     operator fun invoke(
+        user: String,
         gameType: String = GAME_TYPE,
         docName: String = DOC_NAME,
         fieldName: String = FIELD_NAME,
         updateVal: Int = UPDATE_VAL
     ) = repo.updateUserdata(
-        gameType,docName,fieldName,updateVal
+        user,gameType,docName,fieldName,updateVal
     )
 }
