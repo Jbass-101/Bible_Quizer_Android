@@ -2,10 +2,12 @@ package com.jbaloji.biblequiz.navigation
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
-import androidx.navigation.*
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.jbaloji.biblequiz.components.PauseDialogScreen
 import com.jbaloji.biblequiz.components.ScreenWrapper
 import com.jbaloji.biblequiz.presentation.auth.AuthScreen

@@ -13,14 +13,6 @@ import androidx.navigation.NavController
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.navigation.Screen
 import com.jbaloji.biblequiz.navigation.Screen.Level_1
-import com.jbaloji.biblequiz.navigation.Screen.Level_2
-import com.jbaloji.biblequiz.navigation.Screen.Level_3
-import com.jbaloji.biblequiz.navigation.Screen.Level_4
-import com.jbaloji.biblequiz.navigation.Screen.Level_5
-import com.jbaloji.biblequiz.navigation.Screen.Level_6
-import com.jbaloji.biblequiz.navigation.Screen.Level_7
-import com.jbaloji.biblequiz.navigation.Screen.Level_8
-import com.jbaloji.biblequiz.navigation.Screen.Level_9
 import com.jbaloji.biblequiz.navigation.Screen.Level_10
 import com.jbaloji.biblequiz.navigation.Screen.Level_11
 import com.jbaloji.biblequiz.navigation.Screen.Level_12
@@ -31,7 +23,15 @@ import com.jbaloji.biblequiz.navigation.Screen.Level_16
 import com.jbaloji.biblequiz.navigation.Screen.Level_17
 import com.jbaloji.biblequiz.navigation.Screen.Level_18
 import com.jbaloji.biblequiz.navigation.Screen.Level_19
+import com.jbaloji.biblequiz.navigation.Screen.Level_2
 import com.jbaloji.biblequiz.navigation.Screen.Level_20
+import com.jbaloji.biblequiz.navigation.Screen.Level_3
+import com.jbaloji.biblequiz.navigation.Screen.Level_4
+import com.jbaloji.biblequiz.navigation.Screen.Level_5
+import com.jbaloji.biblequiz.navigation.Screen.Level_6
+import com.jbaloji.biblequiz.navigation.Screen.Level_7
+import com.jbaloji.biblequiz.navigation.Screen.Level_8
+import com.jbaloji.biblequiz.navigation.Screen.Level_9
 import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 
 @Composable

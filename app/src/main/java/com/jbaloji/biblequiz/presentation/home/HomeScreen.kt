@@ -1,23 +1,16 @@
 package com.jbaloji.biblequiz.presentation.home
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jbaloji.biblequiz.R
-import com.jbaloji.biblequiz.components.ProfileCard
-import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.navigation.Screen
-import com.jbaloji.biblequiz.notification.TestNotification
 import com.jbaloji.biblequiz.presentation.home.components.GenericButton
 import com.jbaloji.biblequiz.presentation.home.components.TitleText
 

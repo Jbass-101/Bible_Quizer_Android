@@ -7,7 +7,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.domain.repository.UserResponse
 import com.jbaloji.biblequiz.presentation.auth.components.LogIn
 import com.jbaloji.biblequiz.presentation.auth.components.SignUp
 

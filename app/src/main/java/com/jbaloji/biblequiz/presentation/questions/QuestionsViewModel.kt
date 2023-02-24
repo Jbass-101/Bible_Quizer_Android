@@ -14,7 +14,10 @@ import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import com.jbaloji.biblequiz.domain.use_case.questions.QuestionsUseCases
 import com.jbaloji.biblequiz.navigation.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import java.util.Collections.shuffle
 import javax.inject.Inject
 

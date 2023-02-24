@@ -5,9 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.core.Utils
 import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.domain.repository.Questions
 import com.jbaloji.biblequiz.presentation.questions.QuestionsViewModel
-import kotlinx.coroutines.runBlocking
 
 @Composable
 fun Questions (

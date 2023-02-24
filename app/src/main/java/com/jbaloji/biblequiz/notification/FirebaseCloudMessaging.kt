@@ -1,12 +1,9 @@
 package com.jbaloji.biblequiz.notification;
 
 import android.util.Log
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.jbaloji.biblequiz.core.Constants.TAG
-import javax.inject.Inject
 
 class FirebaseCloudMessaging : FirebaseMessagingService() {
     

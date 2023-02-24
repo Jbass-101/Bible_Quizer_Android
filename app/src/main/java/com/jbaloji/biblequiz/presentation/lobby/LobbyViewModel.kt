@@ -10,7 +10,6 @@ import androidx.lifecycle.viewModelScope
 import com.jbaloji.biblequiz.core.Constants
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.UserDataResponse
-import com.jbaloji.biblequiz.domain.repository.UserResponse
 import com.jbaloji.biblequiz.domain.use_case.auth.AuthUseCases
 import com.jbaloji.biblequiz.domain.use_case.userdata.UserDataUseCases
 import com.jbaloji.biblequiz.navigation.Screen

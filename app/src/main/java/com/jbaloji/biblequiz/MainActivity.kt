@@ -12,7 +12,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.navigation.NavHostController
 import com.jbaloji.biblequiz.core.Constants
 import com.jbaloji.biblequiz.navigation.InitGraph
 import com.jbaloji.biblequiz.notification.TestNotification

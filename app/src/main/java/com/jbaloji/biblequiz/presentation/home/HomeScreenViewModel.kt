@@ -7,13 +7,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jbaloji.biblequiz.core.Constants
-import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import com.jbaloji.biblequiz.domain.repository.User
-import com.jbaloji.biblequiz.domain.repository.UserResponse
 import com.jbaloji.biblequiz.domain.use_case.auth.AuthUseCases
-import com.jbaloji.biblequiz.domain.use_case.auth.CurrentUser
-import com.jbaloji.biblequiz.domain.use_case.questions.QuestionsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

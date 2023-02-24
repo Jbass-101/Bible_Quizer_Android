@@ -1,11 +1,9 @@
 package com.jbaloji.biblequiz.di
 
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jbaloji.biblequiz.data.repository.UserDataRepositoryImpl
 import com.jbaloji.biblequiz.domain.repository.UserDataRepository
-import com.jbaloji.biblequiz.domain.repository.UserDataResponse
 import com.jbaloji.biblequiz.domain.use_case.userdata.GetUserData
 import com.jbaloji.biblequiz.domain.use_case.userdata.UpdateUserData
 import com.jbaloji.biblequiz.domain.use_case.userdata.UserDataUseCases
