@@ -26,19 +26,19 @@ fun Splash(
             popUpTo(0)
         }
     }
-    
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
     ) {
 
-        if (!isSystemInDarkTheme()){
+        if (isSystemInDarkTheme()){
 
-            Image(painter = painterResource(id = R.drawable.splash_dark) , contentDescription = "Splash Logo" )
+            Image(painter = painterResource(id = R.drawable.splash_light) , contentDescription = "Splash Logo" )
 
         }else {
 
-            Image(painter = painterResource(id = R.drawable.splash_light) , contentDescription = "Splash Logo" )
+            Image(painter = painterResource(id = R.drawable.splash_dark) , contentDescription = "Splash Logo" )
         }
 
     }

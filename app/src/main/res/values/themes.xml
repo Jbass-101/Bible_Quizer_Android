@@ -16,4 +16,16 @@
 
 
     </style>
+
+
+    <style name="Theme.CustomTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_dark</item>
+        <item name="windowSplashScreenAnimationDuration">600</item>
+        <item name="postSplashScreenTheme">@style/Theme.BibleQuiz</item>
+    </style>
+
+
+
+
 </resources>

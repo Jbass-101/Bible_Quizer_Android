@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BibleQuiz"
+        android:theme="@style/Theme.CustomTheme"
         tools:targetApi="31">
 
         <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
@@ -47,7 +47,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.BibleQuiz">
+            android:theme="@style/Theme.CustomTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

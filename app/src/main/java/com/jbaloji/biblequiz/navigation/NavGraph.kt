@@ -21,7 +21,7 @@ import com.jbaloji.biblequiz.presentation.splash.Splash
 @Composable
 fun InitGraph  (
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Screen.Splash
+    startDestination: String = Screen.Home
 ) {
     NavHost(
         navController = navController,
