@@ -1,11 +1,16 @@
 package com.jbaloji.biblequiz.presentation.home
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -22,59 +27,49 @@ fun HomeScreen(
 )  {
 
     val context = LocalContext.current
-    Box(){
-//                    Image(
-//                        painter = painterResource(id = R.drawable.background ),
-//                        contentDescription = "background",
-//                        contentScale = ContentScale.FillHeight,
-//                        modifier = Modifier.fillMaxSize()
-//                    )
-        Box() {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxSize()
+    Box(
+        Modifier.fillMaxSize()
+    ){
+        Column(
+            modifier = Modifier.align(Alignment.Center)
+        ) {
+            TitleText()
 
-            ) {
-//                Image(painter = painterResource(id = R.drawable.logo_light), contentDescription = "Hello" )
-                TitleText()
-//                Spacer(modifier = Modifier.height(15.dp))
-//                if(viewModel.currentUserResponse != null){
-//                    ProfileCard(viewModel.currentUserResponse!!)
-//                    Text(text = viewModel.currentUserResponse?.uid.toString())
-//                } else {
-//                    Text(text = "No User Found")
-//                }
-                Spacer(modifier = Modifier.height(15.dp))
-                GenericButton(
-                    text = stringResource(id = R.string.Start_Button_Text),
-                    action = {navController.navigate(
-                        Screen.LobbyUser + viewModel.currentUserResponse?.uid.toString()
-                    )}
-                )
-                GenericButton(
-                    text = stringResource(id = R.string.Quit_Button_Text),
-                    action = {viewModel.quitGame()}
-                )
-                Spacer(modifier = Modifier.height(15.dp))
-//                GenericButton(
-//                    text = "Launch Notification" ,
-//                    action = { TestNotification(context).launchNotification() })
-//                if(viewModel.currentUserResponse?.isAnonymous == false){
-//                GenericButton(
-//                    text = "Log Out",
-//                    action = { viewModel.logOut() }
-//                )}else {
-//                    GenericButton(
-//                        text = "Log In",
-//                        action = onNavigateToAuth
-//                    )
-//                }
+            Spacer(modifier = Modifier.height(15.dp))
+            GenericButton(
+                text = stringResource(id = R.string.Start_Button_Text),
+                action = {navController.navigate(
+                    Screen.LobbyUser + viewModel.currentUserResponse?.uid.toString()
+                )}
+            )
+            GenericButton(
+                text = stringResource(id = R.string.Quit_Button_Text),
+                action = {viewModel.quitGame()}
+            )
+            
+        }
 
+
+        Box (
+            modifier = Modifier
+                .size(120.dp)
+                .align(Alignment.BottomCenter)
+                ) {
+            if (isSystemInDarkTheme()){
+
+                Image(
+                    painter = painterResource(id = R.drawable.splash_light) ,
+                    contentDescription = "Splash Logo"
+                )
+            }else {
+                Image(
+                    painter = painterResource(id = R.drawable.splash_dark) ,
+                    contentDescription = "Splash Logo"
+                )
             }
 
         }
+
     }
     
 }
