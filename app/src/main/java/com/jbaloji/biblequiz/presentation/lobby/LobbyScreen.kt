@@ -59,7 +59,7 @@ fun LobbyScreen(
                 modifier = Modifier.fillMaxSize()
             ) {
                 Text(
-                    modifier = Modifier.padding(vertical = 8.dp),
+                    modifier = Modifier.padding(0.dp,35.dp,0.dp,0.dp),
                     text = "Select Game Mode",
                     fontSize = 20.sp
                 )
