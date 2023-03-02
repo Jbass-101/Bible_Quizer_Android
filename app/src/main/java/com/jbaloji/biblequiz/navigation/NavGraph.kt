@@ -16,11 +16,12 @@ import com.jbaloji.biblequiz.presentation.levels.LevelsScreen
 import com.jbaloji.biblequiz.presentation.lobby.LobbyScreen
 import com.jbaloji.biblequiz.presentation.questions.QuestionsScreen
 import com.jbaloji.biblequiz.presentation.score.ScoreScreen
+import com.jbaloji.biblequiz.presentation.splash.Splash
 
 @Composable
 fun InitGraph  (
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Screen.Home
+    startDestination: String = Screen.Splash
 ) {
     NavHost(
         navController = navController,
@@ -127,6 +128,17 @@ fun InitGraph  (
                 )
             }
         }
+
+        composable(
+            route = Screen.Splash
+        ){
+            ScreenWrapper {
+                Splash(
+                    navController = navController
+                )
+            }
+        }
+
     }
 
 }

@@ -18,6 +18,7 @@ object Screen {
     const val Auth ="auth"
     const val Lobby ="lobby/{$User_ID}"
     const val PauseDialog = "pauseDialog"
+    const val Splash = "splash"
 
 
 
