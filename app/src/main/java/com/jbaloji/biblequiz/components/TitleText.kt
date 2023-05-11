@@ -1,7 +1,6 @@
-package com.jbaloji.biblequiz.presentation.home.components
+package com.jbaloji.biblequiz.components
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
@@ -12,7 +11,6 @@ fun TitleText(){
     Text(
         text = stringResource(id = R.string.app_name),
         fontSize = 40.sp,
-        color = MaterialTheme.colors.primary
 
     )
 

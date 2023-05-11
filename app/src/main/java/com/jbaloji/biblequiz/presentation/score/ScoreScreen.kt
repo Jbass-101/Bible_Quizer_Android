@@ -1,14 +1,14 @@
 package com.jbaloji.biblequiz.presentation.score
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.jbaloji.biblequiz.presentation.home.components.GenericButton
+import com.jbaloji.biblequiz.components.GenericButton
 
 
 @Composable

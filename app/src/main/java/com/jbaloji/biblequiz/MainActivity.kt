@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.compose.material3.Surface
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -16,6 +17,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.jbaloji.biblequiz.core.Constants
 import com.jbaloji.biblequiz.navigation.InitGraph
 import com.jbaloji.biblequiz.notification.TestNotification
+import com.jbaloji.biblequiz.theme.BibleQuizTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,7 +53,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
         setContent {
-            InitGraph()
+            BibleQuizTheme() {
+                InitGraph()
+            }
         }
 
     }

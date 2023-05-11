@@ -4,7 +4,7 @@ package com.jbaloji.biblequiz.presentation.lobby
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,7 +14,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.FeatureCard
 import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.presentation.home.components.GenericButton
+import com.jbaloji.biblequiz.components.GenericButton
 
 @Composable
 fun LobbyScreen(

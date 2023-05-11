@@ -2,7 +2,7 @@ package com.jbaloji.biblequiz.presentation.levels
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,7 +32,7 @@ import com.jbaloji.biblequiz.navigation.Screen.Level_6
 import com.jbaloji.biblequiz.navigation.Screen.Level_7
 import com.jbaloji.biblequiz.navigation.Screen.Level_8
 import com.jbaloji.biblequiz.navigation.Screen.Level_9
-import com.jbaloji.biblequiz.presentation.home.components.GenericButton
+import com.jbaloji.biblequiz.components.GenericButton
 
 @Composable
 fun LevelsScreen(
