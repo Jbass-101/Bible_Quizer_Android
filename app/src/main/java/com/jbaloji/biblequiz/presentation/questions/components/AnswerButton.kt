@@ -2,8 +2,8 @@ package com.jbaloji.biblequiz.presentation.questions.components
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -11,7 +11,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.presentation.questions.QuestionsViewModel
-import com.jbaloji.biblequiz.presentation.theme.Shapes
+import com.jbaloji.biblequiz.theme.Shapes
 
 @Composable
 fun AnswerButton(

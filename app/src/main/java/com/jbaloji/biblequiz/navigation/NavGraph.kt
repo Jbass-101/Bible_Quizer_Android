@@ -9,7 +9,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.jbaloji.biblequiz.components.PauseDialogScreen
-import com.jbaloji.biblequiz.components.ScreenWrapper
 import com.jbaloji.biblequiz.presentation.auth.AuthScreen
 import com.jbaloji.biblequiz.presentation.home.HomeScreen
 import com.jbaloji.biblequiz.presentation.levels.LevelsScreen
@@ -33,16 +32,13 @@ fun InitGraph  (
             BackHandler(enabled = true) {
 
             }
-            ScreenWrapper {
-                HomeScreen(
-                    navController = navController
-                )
-            }
+            HomeScreen(
+                navController = navController
+            )
         }
         composable(
             route = Screen.PauseDialog
         ){
-            ScreenWrapper {
             PauseDialogScreen(
 
                 onBack = { navController.navigateUp() } ,
@@ -53,7 +49,6 @@ fun InitGraph  (
                     popUpTo(Screen.Levels)
                 } }
             )
-        }
 
         }
         composable(
@@ -67,15 +62,13 @@ fun InitGraph  (
                 //navController.navigate(Screen.QuestionQuit)
 
             }
-            ScreenWrapper {
 
-                QuestionsScreen(
-                    onNavigateToHome = {navController.navigate(Screen.Home)},
-                    onNavigateToScore = {navController.navigate(Screen.Score)},
-                    onNavigateToDialog = {navController.navigate(Screen.PauseDialog)},
-                    navController = navController
-                )
-            }
+            QuestionsScreen(
+                onNavigateToHome = {navController.navigate(Screen.Home)},
+                onNavigateToScore = {navController.navigate(Screen.Score)},
+                onNavigateToDialog = {navController.navigate(Screen.PauseDialog)},
+                navController = navController
+            )
         }
         composable(
             route = Screen.Score,
@@ -88,31 +81,27 @@ fun InitGraph  (
             BackHandler(enabled = true) {
 
             }
-            ScreenWrapper {
-                ScoreScreen (
-                    onNavigateToHome = {navController.navigate(Screen.Home)},
-                    onNavigateToLevels = {navController.navigate(Screen.Levels)}
-                )
-            }
+            ScoreScreen (
+                onNavigateToHome = {navController.navigate(Screen.Home)},
+                onNavigateToLevels = {navController.navigate(Screen.Levels)}
+            )
         }
         composable(
             route = Screen.Levels
         ){
-            ScreenWrapper {
-                LevelsScreen(
-                    navController = navController
-                )
-            }
+
+            LevelsScreen(
+                navController = navController
+            )
         }
         composable(
             route = Screen.Auth
         ){
             BackHandler(enabled = true) {}
-            ScreenWrapper {
-                AuthScreen(
-                    onNavigateToHome = {navController.navigate(Screen.Home)}
-                )
-            }
+
+            AuthScreen(
+                onNavigateToHome = {navController.navigate(Screen.Home)}
+            )
         }
         composable(
             route = Screen.Lobby,
@@ -121,22 +110,18 @@ fun InitGraph  (
             BackHandler(enabled = true) {
 
             }
-            ScreenWrapper {
-                LobbyScreen (
-                    onNavigateToLevels = { navController.navigate(Screen.Levels)},
-                    onNavigateToHome = {navController.navigate(Screen.Home)}
-                )
-            }
+            LobbyScreen (
+                onNavigateToLevels = { navController.navigate(Screen.Levels)},
+                onNavigateToHome = {navController.navigate(Screen.Home)}
+            )
         }
 
         composable(
             route = Screen.Splash
         ){
-            ScreenWrapper {
-                Splash(
-                    navController = navController
-                )
-            }
+            Splash(
+                navController = navController
+            )
         }
 
     }

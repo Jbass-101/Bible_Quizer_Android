@@ -1,8 +1,8 @@
 package com.jbaloji.biblequiz.presentation.auth.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -10,7 +10,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.presentation.auth.AuthViewModel
-import com.jbaloji.biblequiz.presentation.home.components.GenericButton
+import com.jbaloji.biblequiz.components.GenericButton
 
 @Composable
 fun SignUp(
