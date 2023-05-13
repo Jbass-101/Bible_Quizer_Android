@@ -32,6 +32,9 @@ class QuestionsViewModel @Inject constructor(
 
 
 
+
+
+
     //Question Feature
     var questionResponse by mutableStateOf<QuestionsResponse>(Loading)
     var currentIndex by mutableStateOf(0)
@@ -53,12 +56,12 @@ class QuestionsViewModel @Inject constructor(
 
     //Quit menu
     var showQuitMenu by mutableStateOf(false)
+    var showDialog by mutableStateOf(false)
 
 
 
 
     init {
-        Log.i(Constants.TAG, "Saved Score------->: $savedScore")
         getQuestionsLevel(levelId)
         startCountDown()
     }
@@ -134,10 +137,14 @@ class QuestionsViewModel @Inject constructor(
 
     }
 
+    fun toggleDialog() {
+        showDialog = !showDialog
+    }
+
     fun randomise(options: List<String>): List<String>{
 
         val myArr = listOf(0,1,2,3)
-        var myList = mutableListOf<String>()
+        val myList = mutableListOf<String>()
 
         shuffle(myArr)
 

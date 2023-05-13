@@ -19,13 +19,13 @@ fun AnswerButtonContainer(
             .fillMaxHeight(0.8f)
 
     ) {
-
-        for(option in options){
-            AnswerButton(
-                option = option,
-                answer = answer,
-            )
-        }
+//
+//        for(option in options){
+//            AnswerButton(
+//                option = option,
+//                answer = answer,
+//            )
+//        }
 
     }
 

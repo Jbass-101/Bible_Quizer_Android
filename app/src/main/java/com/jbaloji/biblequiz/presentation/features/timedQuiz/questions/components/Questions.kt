@@ -41,20 +41,3 @@ fun Questions (
 
 
 
-
-
-
-/*
-@Composable
-fun Books(
-    viewModel: BooksViewModel = hiltViewModel(),
-    booksContent: @Composable (books: Books) -> Unit
-) {
-    when(val booksResponse = viewModel.booksResponse) {
-        is Loading -> ProgressBar()
-        is Success -> booksContent(booksResponse.data)
-        is Failure -> print(booksResponse.e)
-    }
-}
-*
-* */

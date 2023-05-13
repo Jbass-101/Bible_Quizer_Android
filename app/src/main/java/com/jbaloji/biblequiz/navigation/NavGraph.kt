@@ -66,6 +66,7 @@ fun InitGraph  (
                 onNavigateToHome = {navController.navigate(Screen.Home)},
                 onNavigateToScore = {navController.navigate(Screen.Score)},
                 onNavigateToDialog = {navController.navigate(Screen.PauseDialog)},
+                onNavigateToLevels = {navController.navigate(Screen.Levels)},
                 navController = navController
             )
         }

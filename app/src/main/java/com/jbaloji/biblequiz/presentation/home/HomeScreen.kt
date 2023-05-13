@@ -18,7 +18,7 @@ fun HomeScreen(
 
     HomeScreenContents(
         onNavigateToLobby = onNavigateToLobby,
-        showDialog = onNavigateToLobby
+        showDialog = { vm.toggleDialog() }
     )
 
     MyAlertDialog(
