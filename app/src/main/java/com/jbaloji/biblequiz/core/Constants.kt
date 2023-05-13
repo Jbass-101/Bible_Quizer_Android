@@ -18,8 +18,8 @@ object Constants {
     //User Data Module
 
     //User Data Use Case
-    const val GAME_TYPE = "Timed Quiz"
-    const val DOC_NAME = "Score"
+    const val TIMED_QUIZ = "Timed Quiz"
+    const val SCORE = "Score"
     const val FIELD_NAME = "level_1"
     const val UPDATE_VAL = 0
 }

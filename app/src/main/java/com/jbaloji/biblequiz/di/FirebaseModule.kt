@@ -14,26 +14,26 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object FirebaseModule {
 
-//    @Provides
-//    @Singleton
-//    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance().apply {
-//        useEmulator("10.0.2.2",8080)
-//    }
-
     @Provides
     @Singleton
-    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance()
-
+    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance().apply {
+        useEmulator("10.0.2.2",9091)
+    }
 
 //    @Provides
 //    @Singleton
-//    fun providesFirebaseAuth() = Firebase.auth.apply {
-//        useEmulator("10.0.2.2",9099)
-//    }
+//    fun provideFirebaseFireStore() = FirebaseFirestore.getInstance()
+
 
     @Provides
     @Singleton
-    fun providesFirebaseAuth() = Firebase.auth
+    fun providesFirebaseAuth() = Firebase.auth.apply {
+        useEmulator("10.0.2.2",9090)
+    }
+
+//    @Provides
+//    @Singleton
+//    fun providesFirebaseAuth() = Firebase.auth
 
 //    @Provides
 //    @Singleton

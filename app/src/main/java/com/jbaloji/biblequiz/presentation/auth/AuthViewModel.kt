@@ -6,110 +6,29 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.domain.repository.UserResponse
-import com.jbaloji.biblequiz.domain.use_case.auth.AuthUseCases
+import com.jbaloji.biblequiz.domain.model.Response.Loading
+import com.jbaloji.biblequiz.domain.model.Response.Success
+import com.jbaloji.biblequiz.domain.repository.AuthRepository
+import com.jbaloji.biblequiz.domain.repository.AuthResponseBoolean
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authUseCases: AuthUseCases
+    private val repo: AuthRepository
 ) : ViewModel() {
 
-    //User details
-    var email by mutableStateOf("")
-    var password by mutableStateOf("")
-    var userName by mutableStateOf("")
-    var isAnonymouse by mutableStateOf(authUseCases.currentUser.get()?.isAnonymous)
+    var signInAnonResponse by mutableStateOf<AuthResponseBoolean>(Success(false))
+        private set
 
-    //Loading
-    var isLoading by mutableStateOf(false)
-
-    //User Response
-    var authResponse by mutableStateOf<UserResponse>(Response.Loading)
-    var signUpResponse by mutableStateOf<UserResponse>(Response.Loading)
-
-    //Log In or Sign Up
-    var showLogin by mutableStateOf(true)
-
-    fun login (email: String ,password: String ) = viewModelScope.launch {
-
-        isLoading = true
-        authResponse = Response.Loading
-
-        if(email == "" || password == ""){
-            authResponse = Response.Failure(Exception("Email or password cannot be empty"))
-
-            delay(1000)
-            isLoading = false
-
-
-
-        } else {
-            authUseCases.logIn(email,password).collect{response ->
-                isLoading = false
-                authResponse = response
-            }
-
-        }
-
+    init {
+        signInAnonymously()
     }
 
-    fun signUp(email: String, password: String, userName: String) = viewModelScope.launch {
-
-        isLoading = true
-        authResponse = Response.Loading
-
-        if(email == "" || password == "" || userName == ""){
-            authResponse = Response.Failure(Exception("One or more options are empty"))
-
-            delay(1000)
-            isLoading = false
-
-
-
-        } else {
-
-            authUseCases.signUp(email,password,userName).collect{ response ->
-                isLoading = false
-                authResponse = response
-            }
-
-        }
-
-
+    private fun signInAnonymously() = viewModelScope.launch {
+        signInAnonResponse = Loading
+        signInAnonResponse = repo.signInAnonymously()
     }
-
-    fun linkWithAnonymouse (email: String, password: String, userName: String) = viewModelScope.launch {
-
-        isLoading = true
-        authResponse = Response.Loading
-
-        if(email == "" || password == "" || userName == ""){
-            authResponse = Response.Failure(Exception("One or more options are empty"))
-            delay(1000)
-            isLoading = false
-
-
-        } else {
-
-            authUseCases.linkWithAnonymous(email,password,userName).collect{ response ->
-                isLoading = false
-                authResponse = response
-            }
-
-        }
-
-
-
-    }
-
-    fun toggleShowLogin(){
-        showLogin = !showLogin
-    }
-
 
 }

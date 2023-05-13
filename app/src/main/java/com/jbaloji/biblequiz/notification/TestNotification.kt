@@ -9,7 +9,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.jbaloji.biblequiz.MainActivity
+import com.jbaloji.biblequiz.main.MainActivity
 import com.jbaloji.biblequiz.R
 
 class TestNotification (context : Context, title : String = "", message : String = "") {

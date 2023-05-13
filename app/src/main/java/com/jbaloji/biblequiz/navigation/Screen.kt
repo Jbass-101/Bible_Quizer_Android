@@ -16,9 +16,9 @@ object Screen {
     const val Score = "score/{$Level_ID}/{$Saved_Score_ID}/{$Current_Score_ID}"
     const val Levels = "levels"
     const val Auth ="auth"
-    const val Lobby ="lobby/{$User_ID}"
+    const val Lobby ="lobby"
+//    const val Lobby ="lobby/{$User_ID}"
     const val PauseDialog = "pauseDialog"
-    const val Splash = "splash"
 
 
 

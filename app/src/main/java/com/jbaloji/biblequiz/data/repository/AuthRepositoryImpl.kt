@@ -1,120 +1,47 @@
 package com.jbaloji.biblequiz.data.repository
 
 
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.jbaloji.biblequiz.core.Utils.Companion.print
+import com.jbaloji.biblequiz.core.Utils
+import com.jbaloji.biblequiz.core.Utils.Companion.myCatch
+import com.jbaloji.biblequiz.core.Utils.Companion.myLog
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.AuthRepository
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AuthRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth
 ) : AuthRepository {
-    override val currentUser: FirebaseUser?
-        get() = auth.currentUser
 
-    override fun getCurrentUser() = callbackFlow {
-        auth.addAuthStateListener { result ->
-            val userResponse = result.currentUser
-
-            trySend(userResponse)
+    override fun getAuthState(viewModelScope: CoroutineScope) = callbackFlow {
+        myLog("Getting Auth State.............")
+        val authStateListener = FirebaseAuth.AuthStateListener { auth ->
+            trySend(auth.currentUser == null)
         }
-        awaitClose{
-
-        }
-    }
-
-    override fun login(email: String, password: String) = callbackFlow {
-        val listener = auth.signInWithEmailAndPassword(email,password)
-            .addOnCompleteListener { result ->
-                val userResponse = if(result.isSuccessful){
-                    Response.Success(auth.currentUser)
-                } else {
-                    Response.Failure(result.exception)
-                }
-                trySend(userResponse)
-            }
-        awaitClose{
-            listener.isComplete
-        }
-    }
-
-    override fun loginAnonymously() = callbackFlow {
-        val listener = auth.signInAnonymously()
-            .addOnCompleteListener { result ->
-                val userResponse = if(result.isSuccessful){
-
-                    print(auth.currentUser)
-                    Response.Success(auth.currentUser)
-                } else {
-
-                    print(result.exception)
-
-
-                    Response.Failure(null)
-
-                }
-                trySend(userResponse)
-            }
+        auth.addAuthStateListener(authStateListener)
         awaitClose {
-            listener.isComplete
+            auth.removeAuthStateListener(authStateListener)
         }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), auth.currentUser == null)
+
+    override suspend fun signInAnonymously() = try {
+        myLog("Signing In Anonymously......")
+        auth.signInAnonymously().await()
+        Response.Success(true)
+    } catch (e: Exception) {
+        myCatch(e)
+        Response.Failure(e)
     }
 
-    override fun linkWithAnonymous(
-        email: String,
-        password: String,
-        userName: String
-    ) = callbackFlow {
-        val listener = auth.currentUser!!.linkWithCredential(
-            EmailAuthProvider.getCredential(email, password))
-            .addOnCompleteListener { result ->
-                val userResponse = if(result.isSuccessful){
+    override fun signOut() = auth.signOut()
 
-                auth.currentUser?.updateProfile(userProfileChangeRequest {
-                    displayName = userName
-                })
-
-                print(auth.currentUser)
-                Response.Success(auth.currentUser)
-
-            } else {
-                print(result.exception)
-                Response.Failure(result.exception)
-            }
-                trySend(userResponse)
-            }
-        awaitClose { listener.isComplete }
-    }
-
-    override fun signup(email: String, password: String, userName: String) = callbackFlow {
-        val listener = auth.createUserWithEmailAndPassword(email,password)
-            .addOnCompleteListener { result ->
-                val userResponse = if(result.isSuccessful){
-
-                    auth.currentUser?.updateProfile(userProfileChangeRequest {
-                        displayName = userName
-                    })
-
-                    print(auth.currentUser)
-                    Response.Success(auth.currentUser)
-                } else {
-
-                    print(result.exception)
-                    Response.Failure(result.exception)
-                }
-                trySend(userResponse)
-            }
-        awaitClose {
-            listener.isComplete
-        }
-    }
-
-    override fun logout() = auth.signOut()
 
 }

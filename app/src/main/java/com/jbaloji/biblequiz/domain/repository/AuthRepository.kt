@@ -1,26 +1,17 @@
 package com.jbaloji.biblequiz.domain.repository
 
-import com.google.firebase.auth.FirebaseUser
 import com.jbaloji.biblequiz.domain.model.Response
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.StateFlow
 
-typealias User = FirebaseUser?
-typealias UserResponse = Response<User>
+typealias AuthStateResponse = StateFlow<Boolean>
+typealias AuthResponseBoolean = Response<Boolean>
 
 interface AuthRepository {
+    fun getAuthState(viewModelScope: CoroutineScope): AuthStateResponse
 
-    val currentUser: User
+    suspend fun signInAnonymously(): AuthResponseBoolean
 
-    fun getCurrentUser() : Flow<User>
-
-    fun login(email: String, password: String): Flow<UserResponse>
-
-    fun loginAnonymously(): Flow<UserResponse>
-
-    fun linkWithAnonymous(email: String,password: String,userName: String): Flow<UserResponse>
-
-    fun signup(email: String, password: String, userName: String): Flow<UserResponse>
-
-    fun logout()
+    fun signOut()
 
 }

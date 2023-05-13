@@ -108,6 +108,12 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.1'
 
 
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    //------------------------------------Tasks
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
+
+
 }
 
 // Allow references to generated code

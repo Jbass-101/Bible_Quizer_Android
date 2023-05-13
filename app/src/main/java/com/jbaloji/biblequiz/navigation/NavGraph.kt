@@ -11,16 +11,15 @@ import androidx.navigation.navArgument
 import com.jbaloji.biblequiz.components.PauseDialogScreen
 import com.jbaloji.biblequiz.presentation.auth.AuthScreen
 import com.jbaloji.biblequiz.presentation.home.HomeScreen
-import com.jbaloji.biblequiz.presentation.levels.LevelsScreen
+import com.jbaloji.biblequiz.presentation.features.timedQuiz.levels.LevelsScreen
 import com.jbaloji.biblequiz.presentation.lobby.LobbyScreen
-import com.jbaloji.biblequiz.presentation.questions.QuestionsScreen
-import com.jbaloji.biblequiz.presentation.score.ScoreScreen
-import com.jbaloji.biblequiz.presentation.splash.Splash
+import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.QuestionsScreen
+import com.jbaloji.biblequiz.presentation.features.timedQuiz.score.ScoreScreen
 
 @Composable
 fun InitGraph  (
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Screen.Home
+    startDestination: String = Screen.Auth
 ) {
     NavHost(
         navController = navController,
@@ -33,7 +32,7 @@ fun InitGraph  (
 
             }
             HomeScreen(
-                navController = navController
+                onNavigateToLobby = {navController.navigate(Screen.Lobby)}
             )
         }
         composable(
@@ -105,7 +104,7 @@ fun InitGraph  (
         }
         composable(
             route = Screen.Lobby,
-            arguments = listOf(navArgument(Screen.User_ID){type = NavType.StringType})
+//            arguments = listOf(navArgument(Screen.User_ID){type = NavType.StringType})
         ){
             BackHandler(enabled = true) {
 
@@ -113,14 +112,6 @@ fun InitGraph  (
             LobbyScreen (
                 onNavigateToLevels = { navController.navigate(Screen.Levels)},
                 onNavigateToHome = {navController.navigate(Screen.Home)}
-            )
-        }
-
-        composable(
-            route = Screen.Splash
-        ){
-            Splash(
-                navController = navController
             )
         }
 

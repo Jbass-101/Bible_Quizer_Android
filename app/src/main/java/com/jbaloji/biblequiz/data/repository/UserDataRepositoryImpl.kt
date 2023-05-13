@@ -1,40 +1,63 @@
 package com.jbaloji.biblequiz.data.repository
 
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.jbaloji.biblequiz.core.Utils
-import com.jbaloji.biblequiz.domain.model.Response
-import com.jbaloji.biblequiz.domain.model.UserData
+import com.jbaloji.biblequiz.core.Utils.Companion.myCatch
+import com.jbaloji.biblequiz.core.Utils.Companion.myLog
+import com.jbaloji.biblequiz.domain.model.Response.Failure
+import com.jbaloji.biblequiz.domain.model.Response.Success
+import com.jbaloji.biblequiz.domain.model.TimedQuizScore
 import com.jbaloji.biblequiz.domain.repository.UserDataRepository
-import com.jbaloji.biblequiz.domain.repository.UserDataResponse
+import com.jbaloji.biblequiz.domain.repository.UserDataResponseBoolean
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class UserDataRepositoryImpl @Inject constructor(
-    private val userRef: CollectionReference
+    private val userRef: CollectionReference,
+    authRef : FirebaseAuth
 ) : UserDataRepository {
-    override fun writeUserData(
-        user: String,
-        gameType: String,
-        docName: String
-    ): Flow<UserDataResponse> = callbackFlow {
-        val listener = userRef.document(user).collection(gameType).document(docName)
-            .set( UserData())
-            .addOnCompleteListener { result ->
-                val userDataResponse = if(result.isSuccessful){
-                    Response.Success(UserData())
-                } else {
-                    Utils.print(result.exception)
-                    Response.Failure(result.exception)
-                }
-                trySend(userDataResponse)
-            }
-        awaitClose{
-            listener.isComplete
-        }
+
+    private val currentUser = authRef.currentUser?.uid!!
+    override suspend fun initUserData(gameType: String,docName: String, data: TimedQuizScore) = try {
+        myLog("Initializing user data for $gameType ........")
+        userRef.document(currentUser).collection(gameType).document(docName).set(data).await()
+        Success(true)
+    }catch (e: Exception){
+        myCatch(e)
+        Failure(e)
     }
 
+    override suspend fun getScoreData(gameType: String, docName: String) = try {
+        myLog("Getting Score Data for $gameType ........")
+        Success(
+            userRef.document(currentUser).collection(gameType).document(docName).get().await().toObject(TimedQuizScore::class.java)!!
+        )
+    }catch (e: Exception){
+        myCatch(e)
+        Failure(e)
+    }
+
+    override suspend fun updateScoreData(
+        gameType: String,
+        docName: String,
+        fieldName: String,
+        updateVal: Int
+    ) = try {
+        myLog("Updating $gameType's $fieldName to $updateVal ")
+        userRef.document(currentUser).collection(gameType).document(docName)
+            .update(fieldName,updateVal).await()
+        Success(true)
+
+    }catch (e:Exception){
+        myCatch(e)
+        Failure(e)
+
+    }
 
 
     override fun getUserData(
@@ -45,10 +68,10 @@ class UserDataRepositoryImpl @Inject constructor(
         val snapshotListener = userRef.document(user).collection(gameType).document(docName)
             .addSnapshotListener{ snapshot, error ->
                 val userDataResponse = if (snapshot != null){
-                    val userData = snapshot.toObject(UserData::class.java)
-                    Response.Success(userData!!)
+                    val userData = snapshot.toObject(TimedQuizScore::class.java)
+                    Success(userData!!)
             } else {
-                Response.Failure(error)
+                Failure(error)
                 }
                 trySend(userDataResponse)
             }
@@ -68,10 +91,10 @@ class UserDataRepositoryImpl @Inject constructor(
             .update(fieldName,updateVal)
             .addOnCompleteListener { result ->
                 val updateDataResponse =if (result.isSuccessful){
-                    Response.Success(true)
+                    Success(true)
                 } else {
                     Utils.print(result.exception)
-                    Response.Failure(result.exception)
+                    Failure(result.exception)
                 }
                 trySend(updateDataResponse)
             }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,11 +19,12 @@ fun GenericButton (
     text: String,
     action : () -> Unit,
     enabled : Boolean = true,
-    paddingSize : Dp = 0.dp
+    paddingSize : Dp = 0.dp,
+
 ){
     Button(
         modifier = Modifier
-            .fillMaxWidth(0.5f)
+            .fillMaxWidth()
             .padding(vertical = paddingSize),
         onClick = action,
         enabled = enabled
@@ -32,7 +34,10 @@ fun GenericButton (
                 painter = painterResource(id = R.drawable.lock_icon_24) ,
                 contentDescription = "Locked" )
         }
-        Text(text = text)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyLarge
+        )
         
     }
 
