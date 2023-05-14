@@ -1,9 +1,6 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
@@ -15,17 +12,16 @@ fun AnswerButtonContainer(
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
-            .fillMaxWidth(1f)
-            .fillMaxHeight(0.8f)
+            .fillMaxSize()
 
     ) {
-//
-//        for(option in options){
-//            AnswerButton(
-//                option = option,
-//                answer = answer,
-//            )
-//        }
+
+        for(option in options){
+            AnswerButton(
+                option = option,
+                answer = answer,
+            )
+        }
 
     }
 

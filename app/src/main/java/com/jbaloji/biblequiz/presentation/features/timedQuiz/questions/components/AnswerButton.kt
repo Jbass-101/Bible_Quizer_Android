@@ -10,24 +10,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.QuestionsViewModel
 import com.jbaloji.biblequiz.theme.Shapes
 
 @Composable
 fun AnswerButton(
-    hasAnswered : Boolean,
     option: String,
     answer: String,
-    answerQuestion : (Boolean) -> Unit,
+    vm: QuestionsViewModel = hiltViewModel(),
 ){
     val correct = answer == option
 
     //correct Answer
-    if(hasAnswered && correct){
+    if(vm.hasAnswered && correct){
         TextButton(
             modifier = Modifier
                 .fillMaxWidth(1f)
                 .border(1.dp, MaterialTheme.colorScheme.secondary, Shapes.medium),
-            enabled = !hasAnswered,
+            enabled = !vm.hasAnswered,
             onClick = {
             },
             content = {
@@ -41,12 +42,12 @@ fun AnswerButton(
             }
         )
     //Incorrect Answer
-    } else if(hasAnswered && !correct){
+    } else if(vm.hasAnswered && !correct){
         TextButton(
             modifier = Modifier
                 .fillMaxWidth(1f)
                 .border(1.dp, MaterialTheme.colorScheme.error, Shapes.medium),
-            enabled = !hasAnswered,
+            enabled = !vm.hasAnswered,
             onClick = {
             },
             content = {
@@ -64,10 +65,10 @@ fun AnswerButton(
         TextButton(
             modifier = Modifier
                 .fillMaxWidth(1f)
-                .border(1.dp, Color.DarkGray, Shapes.medium),
-            enabled = !hasAnswered,
+                .border(1.dp, MaterialTheme.colorScheme.onSurface, Shapes.medium),
+            enabled = !vm.hasAnswered,
             onClick = {
-                      answerQuestion(correct)
+                      vm.answerQuestion(correct)
             },
             content = {
                 Text(

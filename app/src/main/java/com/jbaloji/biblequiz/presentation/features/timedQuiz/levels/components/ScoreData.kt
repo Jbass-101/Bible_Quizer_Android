@@ -23,7 +23,6 @@ fun ScoreData(
                 score = data )
         }
         is Failure -> scoreData.apply {
-            Log.i("AppTag", "no Data, Let's initialize data")
             vm.initScoreData()
         }
     }

@@ -1,14 +1,12 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions
 
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jbaloji.biblequiz.core.Constants
 import com.jbaloji.biblequiz.domain.model.Response.Loading
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
 import com.jbaloji.biblequiz.domain.use_case.questions.QuestionsUseCases
@@ -66,18 +64,7 @@ class QuestionsViewModel @Inject constructor(
         startCountDown()
     }
 
-     private fun getQuestions() = viewModelScope.launch {
-
-
-        useCases.getQuestions().collect{ response ->
-            questionResponse = response
-
-        }
-    }
-
     private fun getQuestionsLevel(level: String) = viewModelScope.launch {
-
-       Log.i("TEST","--------$levelId")
         useCases.getQuestionLevel(level).collect{ response ->
             questionResponse = response
         }
@@ -94,6 +81,8 @@ class QuestionsViewModel @Inject constructor(
              if (hasAnswered){
                  cancel()
              }
+
+
 
              delay(1000L)
              currentTime--
@@ -122,19 +111,15 @@ class QuestionsViewModel @Inject constructor(
         isHint = false
 
         if (currentIndex < totalQuestions - 1){
-            startCountDown()
             isHint = false
             currentIndex++
+            currentProgress = 1f
+            startCountDown()
 
             if(currentIndex == totalQuestions - 1){
                 isLastQuestion = true
             }
         }
-    }
-
-    fun toggleQuitMenu() {
-        showQuitMenu = !showQuitMenu
-
     }
 
     fun toggleDialog() {

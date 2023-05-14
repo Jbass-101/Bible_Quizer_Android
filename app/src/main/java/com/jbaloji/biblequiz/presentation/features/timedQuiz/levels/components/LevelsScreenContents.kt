@@ -1,4 +1,3 @@
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Surface
@@ -41,8 +40,6 @@ fun LevelsScreenContents(
     navController: NavController,
     score : TimedQuizScore
 ){
-
-    Log.i("AppTag",score.toString())
 
     val text = "text"
     val path = "path"
@@ -152,11 +149,11 @@ fun LevelsScreenContents(
     )
 
     Surface(
-        modifier = Modifier.padding(10.dp,0.dp)) {
+        modifier = Modifier.fillMaxSize(1f) ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxSize(1f)
+            modifier = Modifier.padding(10.dp,0.dp)
         ) {
 
             Text(

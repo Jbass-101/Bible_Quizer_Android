@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.components.GenericButton
-import com.jbaloji.biblequiz.components.TitleText
+import com.jbaloji.biblequiz.components.ShrinkableText
 
 @Composable
 fun HomeScreenContents(
@@ -25,6 +25,13 @@ fun HomeScreenContents(
         ) {
         Box(
         ) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .offset(0.dp,50.dp)
+            ) {
+                ShrinkableText(text = stringResource(id = R.string.app_name))
+            }
             Column(
                 modifier = Modifier
                     .align(Alignment.Center)
@@ -32,7 +39,6 @@ fun HomeScreenContents(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                TitleText()
 
                 Spacer(modifier = Modifier.height(15.dp))
                 GenericButton(

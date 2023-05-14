@@ -21,8 +21,7 @@ fun MiscButtonContainer(
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .fillMaxHeight(1f)
-                .fillMaxWidth(1f)
+                .fillMaxSize()
         ){
 
 
@@ -31,7 +30,6 @@ fun MiscButtonContainer(
 
             }
             Button(
-
                 modifier = Modifier
                     .width(100.dp)
                     .height(50.dp),
@@ -52,8 +50,6 @@ fun MiscButtonContainer(
 
             }
         }
-
-
 
 }
 

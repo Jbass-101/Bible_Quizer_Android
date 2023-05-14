@@ -1,5 +1,6 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -23,23 +24,19 @@ fun HintText(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .fillMaxHeight(0.2f)
-            .fillMaxWidth(1f)
+            .fillMaxSize()
     ) {
-
-        if(!viewModel.hasAnswered && !viewModel.isHint){
-            Text(text = "")
-        } else {
-            Text(text = hintText)
-        }
 
         TextButton(onClick = {
             viewModel.showHint()
         }) {
-            Text(text = "Show Hint")
-            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
             Icon(painter = painterResource(id = R.drawable.ic_info),
                 contentDescription = "Show Hint")
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            Text(text = "Show Hint")
+        }
+        AnimatedVisibility(visible = viewModel.hasAnswered || viewModel.isHint) {
+            Text(text = hintText)
         }
     }
 }

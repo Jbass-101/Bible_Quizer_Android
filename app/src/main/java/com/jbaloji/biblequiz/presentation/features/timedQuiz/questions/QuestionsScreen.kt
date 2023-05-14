@@ -1,16 +1,11 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jbaloji.biblequiz.components.MyAlertDialog
-import com.jbaloji.biblequiz.components.QuitMenu
-import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components.*
+import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components.Questions
+import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components.QuestionsScreenContents
 
 @Composable
 fun QuestionsScreen(
@@ -22,83 +17,43 @@ fun QuestionsScreen(
     vm: QuestionsViewModel = hiltViewModel()
 ) {
 
-    Questions_()
 
-    MyAlertDialog(
-        showDialog = vm.showDialog,
-        dialogText = "Quit Current Game",
-        onCancel = { vm.toggleDialog() },
-        onConfirm = { onNavigateToLevels() },
-        onDismiss = { vm.toggleDialog() }
-    )
+    Questions { currentIndex, maxQuestions, currentQuestion, hint,
+                answer, options ->
 
-//    Box(){
-//
-//    if (viewModel.showQuitMenu){
-//
-//        QuitMenu(
-//            toggleQuitMenu = { viewModel.toggleQuitMenu() },
-//            onNavigateToHome = onNavigateToHome
-//        )
-//    }
-//
-//    Box() {
-//        Column(
-//            modifier = Modifier
-//                .padding(20.dp,30.dp)
-//
-//        ) {
-//
-//            Questions { currentIndex, maxQuestions, currentQuestion, hint,
-//                        answer,options ->
-//
-//                viewModel.totalQuestions = maxQuestions
-//
-//
-//                QuestionNumberText(
-//                    currentQuestion = currentIndex + 1,
-//                    totalQuestions = maxQuestions,
-//                    maxHints = viewModel.maxHints,
-//                    totalScore = viewModel.currentScore
-//                )
-//                CountDown(
-//                    time = viewModel.currentTime,
-//                    progress = viewModel.currentProgress
-//                )
-//                QuestionText(currentQuestion)
-//                HintText(
-//                    hintText = hint,
-//                )
-//                AnswerButtonContainer(
-//                    options = options,
-//                    answer = answer,
-//                )
-//                MiscButtonContainer(
-//                    hasAnswered = viewModel.hasAnswered,
-//                    isLastQuestion = viewModel.isLastQuestion,
-//                    nextOrFinish = { viewModel.nextOrFinish()
-//                    },
-//                    toggleQuitMenu = onNavigateToDialog
-//                    ,
-//                    onNavigateToScore = {
-//                        navController.navigate(
-//                            "score/${viewModel.levelId}/${viewModel.savedScore}/${viewModel.currentScore}"
-//                        )
-//                    }
-//                )
-//            }
-//
-//        }
-//
-//
-//    }
-//}
+        vm.totalQuestions = maxQuestions
+
+        QuestionsScreenContents(
+            currentQuestion = currentQuestion,
+            hint = hint,
+            answer = answer,
+            options = options,
+            currentScore = vm.currentScore,
+            currentQuestionNumber = currentIndex + 1,
+            time = vm.currentTime,
+            progress = vm.currentProgress,
+            totalQuestions = maxQuestions,
+            totalHints = vm.maxHints,
+            isLastQuestion = vm.isLastQuestion,
+            hasAnswered = vm.hasAnswered,
+            toggleDialog = { vm.toggleDialog() },
+            nextOrFinish = { vm.nextOrFinish() },
+            onNavigateToScore = {
+                navController.navigate(
+                    "score/${vm.levelId}/${vm.savedScore}/${vm.currentScore}"
+                )
+            }
+        )
 
 
-
-
-
-
+        MyAlertDialog(
+            showDialog = vm.showDialog,
+            dialogText = "Quit Current Game",
+            onCancel = { vm.toggleDialog() },
+            onConfirm = { onNavigateToLevels() },
+            onDismiss = { vm.toggleDialog() }
+        )
+    }
 
 }
 
