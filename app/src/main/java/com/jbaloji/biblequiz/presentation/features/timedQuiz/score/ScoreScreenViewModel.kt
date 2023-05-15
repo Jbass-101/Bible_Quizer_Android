@@ -32,7 +32,6 @@ class ScoreScreenViewModel @Inject constructor(
 
         if (currentScore > savedScore){
               updateData(currentScore)
-
         }
     }
 
