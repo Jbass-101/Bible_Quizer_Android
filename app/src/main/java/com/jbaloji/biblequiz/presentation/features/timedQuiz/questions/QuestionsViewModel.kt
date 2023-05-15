@@ -8,8 +8,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jbaloji.biblequiz.domain.model.Response.Loading
+import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
-import com.jbaloji.biblequiz.domain.use_case.questions.QuestionsUseCases
 import com.jbaloji.biblequiz.navigation.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
@@ -22,19 +22,14 @@ import javax.inject.Inject
 @HiltViewModel
 class QuestionsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val useCases : QuestionsUseCases,
+    private val questionRepo : QuestionsRepository,
 ) : ViewModel() {
 
     val levelId: String = checkNotNull(savedStateHandle[Screen.Level_ID])
     val savedScore: Int = checkNotNull(savedStateHandle[Screen.Saved_Score_ID])
 
-
-
-
-
-
     //Question Feature
-    var questionResponse by mutableStateOf<QuestionsResponse>(Loading)
+    var questionResponse by  mutableStateOf<QuestionsResponse>(Loading)
     var currentIndex by mutableStateOf(0)
     var totalQuestions by mutableStateOf(0)
 
@@ -65,9 +60,7 @@ class QuestionsViewModel @Inject constructor(
     }
 
     private fun getQuestionsLevel(level: String) = viewModelScope.launch {
-        useCases.getQuestionLevel(level).collect{ response ->
-            questionResponse = response
-        }
+        questionResponse = questionRepo.getQuestionsLevel(level)
     }
 
      private fun startCountDown() = viewModelScope.launch {
@@ -81,8 +74,6 @@ class QuestionsViewModel @Inject constructor(
              if (hasAnswered){
                  cancel()
              }
-
-
 
              delay(1000L)
              currentTime--
@@ -106,8 +97,9 @@ class QuestionsViewModel @Inject constructor(
     }
 
 
-    fun nextOrFinish(){
+    fun nextOrFinish() =viewModelScope.launch{
         isHint = false
+        delay(100L)
         hasAnswered = false
 
         if (currentIndex < totalQuestions - 1){
