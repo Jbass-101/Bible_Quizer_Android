@@ -4,18 +4,18 @@ import android.Manifest.permission.POST_NOTIFICATIONS
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
+import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.*
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.jbaloji.biblequiz.core.Constants
@@ -60,6 +60,8 @@ import dagger.hilt.android.AndroidEntryPoint
         hideSystemBars()
 
 
+
+
         setContent {
             navController = rememberNavController()
             BibleQuizTheme() {
@@ -87,12 +89,19 @@ import dagger.hilt.android.AndroidEntryPoint
         WindowCompat.setDecorFitsSystemWindows(window,false)
         val windowInsetsController =
             ViewCompat.getWindowInsetsController(window.decorView) ?: return
+
         // Configure the behavior of the hidden system bars
         windowInsetsController.systemBarsBehavior =
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         // Hide both the status bar and the navigation bar
         windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+
+
     }
+
+
+
+
 
 
 

@@ -1,9 +1,7 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,12 +26,13 @@ fun QuestionsScreenContents(
     nextOrFinish : () -> Unit,
     onNavigateToScore : () -> Unit
 ){
-    Surface(
+    Scaffold(
         modifier = Modifier
             .fillMaxSize()
     ) {
         Column(modifier = Modifier
-            .padding(12.dp,12.dp,12.dp,0.dp)
+            .padding(10.dp,0.dp)
+
         ) {
             Box(modifier = Modifier
                 .weight(0.1f)
@@ -68,7 +67,7 @@ fun QuestionsScreenContents(
                     options = options,
                     answer = answer,
                 )}
-            Box(modifier = Modifier.weight(0.2f)) {
+            Box(modifier = Modifier.weight(0.1f)) {
                 MiscButtonContainer(
                     hasAnswered = hasAnswered,
                     isLastQuestion = isLastQuestion,

@@ -153,7 +153,9 @@ fun LevelsScreenContents(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.padding(10.dp,0.dp)
+            modifier = Modifier
+                .padding(10.dp,0.dp)
+                .safeContentPadding(),
         ) {
 
             Text(

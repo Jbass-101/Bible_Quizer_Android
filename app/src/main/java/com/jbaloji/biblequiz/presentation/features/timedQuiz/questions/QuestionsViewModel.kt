@@ -107,8 +107,8 @@ class QuestionsViewModel @Inject constructor(
 
 
     fun nextOrFinish(){
-        hasAnswered = false
         isHint = false
+        hasAnswered = false
 
         if (currentIndex < totalQuestions - 1){
             isHint = false

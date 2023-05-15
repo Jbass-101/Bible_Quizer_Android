@@ -21,11 +21,13 @@ fun LobbyScreenContents(
 ){
     Surface(
         modifier = Modifier
-            .padding(10.dp)
+            .fillMaxSize(),
+
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize(),
+                .padding(10.dp,0.dp)
+                .safeContentPadding(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
@@ -54,7 +56,7 @@ fun LobbyScreenContents(
 
             Box(
                 modifier = Modifier
-                    .weight(0.12f)
+                    .weight(0.11f)
             ) {
                 GenericButton(
                     paddingSize = 8.dp,

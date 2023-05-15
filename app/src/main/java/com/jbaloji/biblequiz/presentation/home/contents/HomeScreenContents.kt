@@ -24,11 +24,13 @@ fun HomeScreenContents(
         Modifier.fillMaxSize(),
         ) {
         Box(
+            modifier = Modifier
+                .padding(10.dp,0.dp)
+                .safeContentPadding(),
         ) {
             Box(
                 modifier = Modifier
                     .align(Alignment.TopCenter)
-                    .offset(0.dp,50.dp)
             ) {
                 ShrinkableText(text = stringResource(id = R.string.app_name))
             }
