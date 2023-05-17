@@ -14,7 +14,7 @@ fun Questions_(
     content: @Composable (questions: Questions) -> Unit
 ){
     when(val questionResponse = viewModel.questionResponse){
-        is Response.Loading -> ProgressBar()
+        is Response.Loading -> QuestionShimmer()
         is Response.Success -> questionResponse.apply {
             content(data)
         }

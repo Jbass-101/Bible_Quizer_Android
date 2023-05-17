@@ -1,5 +1,6 @@
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -11,6 +12,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jbaloji.biblequiz.components.GenericButton
+import com.jbaloji.biblequiz.components.shimmerEffect
 import com.jbaloji.biblequiz.domain.model.TimedQuizScore
 import com.jbaloji.biblequiz.navigation.Screen
 import com.jbaloji.biblequiz.navigation.Screen.Level_1
@@ -149,29 +151,34 @@ fun LevelsScreenContents(
     )
 
     Surface(
-        modifier = Modifier.fillMaxSize(1f) ) {
+        modifier = Modifier
+            .fillMaxSize(1f) ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                .padding(10.dp,0.dp)
-                .safeContentPadding(),
+                .safeContentPadding()
+                .padding(12.dp,0.dp),
         ) {
-
-            Text(
-                modifier = Modifier.weight(0.1f),
-                text = "Select Level",
-                fontSize = 20.sp
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.1f)){
+                Text(
+                    text = "Select Level",
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
             LazyColumn(
-                verticalArrangement = Arrangement.Center,
+//                verticalArrangement = Arrangement.spacedBy(5.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 userScrollEnabled = true,
                 modifier = Modifier.weight(0.9f),
                 content = {
                     items(list.size) { item ->
                         GenericButton(
-                            paddingSize = 2.dp,
                             text = list[item]!![text] as String,
                             action = {
                                 navController.navigate(
@@ -186,6 +193,7 @@ fun LevelsScreenContents(
             )
             Box(
                 modifier = Modifier.weight(0.12f),
+                contentAlignment = Alignment.Center
             ) {
                 GenericButton(
                     text = "Back",

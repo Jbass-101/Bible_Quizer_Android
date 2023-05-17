@@ -1,18 +1,14 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components
 
-import androidx.compose.foundation.border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.jbaloji.biblequiz.theme.Shapes
 
 @Composable
 fun AnswerButton_(
@@ -25,10 +21,11 @@ fun AnswerButton_(
 
     //correct Answer
     if(hasAnswered && correct){
-        TextButton(
+        OutlinedButton(
             modifier = Modifier
-                .fillMaxWidth(1f)
-                .border(1.dp, MaterialTheme.colorScheme.secondary, Shapes.medium),
+                .fillMaxWidth(1f),
+//                .border(1.dp, MaterialTheme.colorScheme.secondary, Shapes.medium),
+            border = BorderStroke(1.dp,MaterialTheme.colorScheme.onSurface),
             enabled = false,
             onClick = {
             },
@@ -38,16 +35,17 @@ fun AnswerButton_(
                         .fillMaxWidth(1f),
                     text = option,
                     textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         )
     //Incorrect Answer
     } else if(hasAnswered){
-        TextButton(
+        OutlinedButton(
             modifier = Modifier
-                .fillMaxWidth(1f)
-                .border(1.dp, MaterialTheme.colorScheme.error, Shapes.medium),
+                .fillMaxWidth(1f),
+//                .border(1.dp, MaterialTheme.colorScheme.error, Shapes.medium),
+            border = BorderStroke(1.dp,MaterialTheme.colorScheme.error),
             enabled = false,
             onClick = {
             },
@@ -63,10 +61,10 @@ fun AnswerButton_(
         )
     //Default
     } else {
-        TextButton(
+        OutlinedButton(
             modifier = Modifier
-                .fillMaxWidth(1f)
-                .border(1.dp, MaterialTheme.colorScheme.onSurface, Shapes.medium),
+                .fillMaxWidth(1f),
+//                .border(1.dp, MaterialTheme.colorScheme.onSurface, Shapes.medium),
             onClick = {
                       answerQuestion(correct)
             },

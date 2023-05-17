@@ -1,7 +1,6 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.EaseOut
 import androidx.compose.animation.core.LinearEasing
@@ -43,9 +42,12 @@ fun QuestionsScreenContents_(
     Surface(
         modifier = Modifier
             .fillMaxSize()
-            .padding(12.dp)
     ) {
-        Column() {
+        Column(
+            modifier = Modifier
+                .safeContentPadding()
+                .padding(12.dp,0.dp),
+        ) {
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically,
@@ -99,16 +101,17 @@ fun QuestionsScreenContents_(
             }
             Card(
                 modifier = Modifier
-                    .fillMaxWidth(1f)
-                    .fillMaxHeight(0.3f)
+                    .fillMaxSize()
                     .weight(0.3f)
+
                 ,) {
                 Text(
                     modifier = Modifier
                         .fillMaxSize(),
-                    fontSize = 19.sp,
                     textAlign = TextAlign.Center,
-                    text = q.question
+                    text = q.question,
+                    style = MaterialTheme.typography.bodyLarge
+
                 )
             }
 

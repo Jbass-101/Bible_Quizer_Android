@@ -1,6 +1,7 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.score.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -8,7 +9,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.jbaloji.biblequiz.components.GenericButton
 
 @Composable
@@ -26,14 +26,16 @@ fun ScoreScreenContents(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize(1f)
+                .safeContentPadding()
+                .padding(12.dp,0.dp),
 
         ) {
             Text(
-                text = score.toString(),
-                fontSize = 25.sp
+                text = "Your Score"
             )
             Text(
-                text = "Your Score"
+                text = score.toString(),
+                style = MaterialTheme.typography.displayLarge
             )
             Spacer(modifier = Modifier.padding(30.dp))
             if (score > 8) {

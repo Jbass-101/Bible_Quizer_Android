@@ -26,8 +26,8 @@ fun LobbyScreenContents(
     ) {
         Column(
             modifier = Modifier
-                .padding(10.dp,0.dp)
-                .safeContentPadding(),
+                .safeContentPadding()
+                .padding(12.dp,0.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {

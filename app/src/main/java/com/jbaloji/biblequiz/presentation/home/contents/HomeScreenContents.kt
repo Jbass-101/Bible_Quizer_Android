@@ -25,8 +25,8 @@ fun HomeScreenContents(
         ) {
         Box(
             modifier = Modifier
-                .padding(10.dp,0.dp)
-                .safeContentPadding(),
+                .safeContentPadding()
+                .padding(12.dp,0.dp),
         ) {
             Box(
                 modifier = Modifier
