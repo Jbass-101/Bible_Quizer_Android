@@ -1,12 +1,15 @@
 package com.jbaloji.biblequiz.notification
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.jbaloji.biblequiz.main.MainActivity
@@ -26,9 +29,9 @@ class TestNotification (context : Context, title : String = "", message : String
 
     private val testNotificationBuild = NotificationCompat.Builder(context, channelID)
         .setSmallIcon(R.drawable.ic_notification)
-        .setContentTitle("My notification")
-        .setContentText("Hello World!")
-        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        .setContentTitle(title)
+        .setContentText(message)
+        .setPriority(NotificationCompat.PRIORITY_HIGH)
         // Set the intent that will fire when the user taps the notification
         .setContentIntent(pendingIntent)
         .setAutoCancel(true)
@@ -41,7 +44,7 @@ class TestNotification (context : Context, title : String = "", message : String
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Channel Name"
             val descriptionText = "Channel Description"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(id, name, importance).apply {
                 description = descriptionText
             }
@@ -54,6 +57,20 @@ class TestNotification (context : Context, title : String = "", message : String
 
     fun launchNotification(context: Context = localContext){
         with(NotificationManagerCompat.from(context)){
+            if (ActivityCompat.checkSelfPermission(
+                    context,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return
+            }
             notify(100,testNotificationBuild.build())
         }
     }

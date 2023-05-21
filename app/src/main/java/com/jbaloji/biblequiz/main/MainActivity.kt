@@ -4,14 +4,11 @@ import android.Manifest.permission.POST_NOTIFICATIONS
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
-import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -27,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
  class MainActivity : ComponentActivity() {
+
 
     private lateinit var navController: NavHostController
     private val viewModel by viewModels<MainVM>()
@@ -71,6 +69,18 @@ import dagger.hilt.android.AndroidEntryPoint
             }
             AuthState()
         }
+
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+//            if (!task.isSuccessful) {
+//                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+//                return@OnCompleteListener
+//            }
+//
+//            // Get new FCM registration token
+//            val token = task.result
+//
+//            Log.d(TAG, token)
+//        })
     }
 
     @Composable
