@@ -1,34 +1,32 @@
 package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components
 
-import androidx.compose.foundation.border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.QuestionsViewModel
-import com.jbaloji.biblequiz.theme.Shapes
 
 @Composable
 fun AnswerButton(
     option: String,
     answer: String,
-    vm: QuestionsViewModel = hiltViewModel(),
+    hasAnswered: Boolean,
+    answerQuestion: (Boolean) -> Unit,
 ){
-    val correct = answer == option
+    val correct = (answer == option)
 
     //correct Answer
-    if(vm.hasAnswered && correct){
-        TextButton(
+    if(hasAnswered && correct){
+        OutlinedButton(
             modifier = Modifier
-                .fillMaxWidth(1f)
-                .border(1.dp, MaterialTheme.colorScheme.secondary, Shapes.medium),
-            enabled = !vm.hasAnswered,
+                .fillMaxWidth(1f),
+//                .border(1.dp, MaterialTheme.colorScheme.secondary, Shapes.medium),
+            border = BorderStroke(1.dp,MaterialTheme.colorScheme.onSurface),
+            enabled = false,
             onClick = {
             },
             content = {
@@ -37,17 +35,18 @@ fun AnswerButton(
                         .fillMaxWidth(1f),
                     text = option,
                     textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         )
     //Incorrect Answer
-    } else if(vm.hasAnswered && !correct){
-        TextButton(
+    } else if(hasAnswered){
+        OutlinedButton(
             modifier = Modifier
-                .fillMaxWidth(1f)
-                .border(1.dp, MaterialTheme.colorScheme.error, Shapes.medium),
-            enabled = !vm.hasAnswered,
+                .fillMaxWidth(1f),
+//                .border(1.dp, MaterialTheme.colorScheme.error, Shapes.medium),
+            border = BorderStroke(1.dp,MaterialTheme.colorScheme.error),
+            enabled = false,
             onClick = {
             },
             content = {
@@ -62,13 +61,12 @@ fun AnswerButton(
         )
     //Default
     } else {
-        TextButton(
+        OutlinedButton(
             modifier = Modifier
-                .fillMaxWidth(1f)
-                .border(1.dp, MaterialTheme.colorScheme.onSurface, Shapes.medium),
-            enabled = !vm.hasAnswered,
+                .fillMaxWidth(1f),
+//                .border(1.dp, MaterialTheme.colorScheme.onSurface, Shapes.medium),
             onClick = {
-                      vm.answerQuestion(correct)
+                      answerQuestion(correct)
             },
             content = {
                 Text(
@@ -81,10 +79,6 @@ fun AnswerButton(
         )
 
     }
-
-
-
-
 }
 
 

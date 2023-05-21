@@ -16,12 +16,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.domain.model.Question
 
 @Composable
-fun QuestionsScreenContents_(
+fun QuestionsScreenContents(
     q : Question,
     score: Int,
     questionNumber: Int,
@@ -46,7 +45,7 @@ fun QuestionsScreenContents_(
         Column(
             modifier = Modifier
                 .safeContentPadding()
-                .padding(12.dp,0.dp),
+                .padding(12.dp, 0.dp),
         ) {
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -101,18 +100,21 @@ fun QuestionsScreenContents_(
             }
             Card(
                 modifier = Modifier
-                    .fillMaxSize()
+//                    .fillMaxSize()
                     .weight(0.3f)
 
                 ,) {
-                Text(
+                Box(
                     modifier = Modifier
                         .fillMaxSize(),
-                    textAlign = TextAlign.Center,
-                    text = q.question,
-                    style = MaterialTheme.typography.bodyLarge
+                    contentAlignment = Alignment.Center) {
+                    Text(
+                        textAlign = TextAlign.Center,
+                        text = q.question,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
 
-                )
+                }
             }
 
             Row(
@@ -140,7 +142,7 @@ fun QuestionsScreenContents_(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.weight(0.5f)) {
                 for(option in q.options){
-                    AnswerButton_(
+                    AnswerButton(
                         hasAnswered = hasAnswered,
                         option = option,
                         answer = q.answer,
@@ -184,9 +186,9 @@ fun QuestionsScreenContents_(
 @Preview("Question Screen")
 @Composable
 fun Question_Screen(){
-    QuestionsScreenContents_(
+    QuestionsScreenContents(
         Question(
-            "This is the question",
+            "This is the question | This is the question | This is the question | This is the question |",
             "This is the Answer",
             "This is the hint",
             "This is the book",

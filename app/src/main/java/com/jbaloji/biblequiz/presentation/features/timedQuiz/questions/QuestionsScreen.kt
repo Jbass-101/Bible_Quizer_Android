@@ -5,7 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jbaloji.biblequiz.components.MyAlertDialog
 import com.jbaloji.biblequiz.domain.repository.Questions
-import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components.QuestionsScreenContents_
+import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components.QuestionsScreenContents
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.components.Questions_
 
 @Composable
@@ -21,7 +21,7 @@ fun QuestionsScreen(
         Questions_() {questions: Questions ->
 
             vm.totalQuestions = questions.size
-            QuestionsScreenContents_(
+            QuestionsScreenContents(
                 q = questions[vm.currentIndex],
                 score = vm.currentScore,
                 questionNumber = vm.currentIndex + 1,
