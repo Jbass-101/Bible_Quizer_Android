@@ -86,6 +86,7 @@ class QuestionsViewModel @Inject constructor(
 
      fun answerQuestion (correctAnswer: Boolean) {
         hasAnswered = true
+         isHint = true
         if (correctAnswer) currentScore++
     }
 
