@@ -22,4 +22,8 @@ object Constants {
     const val SCORE = "Score"
     const val FIELD_NAME = "level_1"
     const val UPDATE_VAL = 0
+
+    //Api
+    const val BASE_URL = "https://extrabrains.co/"
+//    const val BASE_URL = "http://192.168.0.195:3000/"
 }

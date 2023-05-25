@@ -2,14 +2,13 @@ package com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.componen
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.jbaloji.biblequiz.components.ProgressBar
 import com.jbaloji.biblequiz.core.Utils
 import com.jbaloji.biblequiz.domain.model.Response
 import com.jbaloji.biblequiz.domain.repository.Questions
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.QuestionsViewModel
 
 @Composable
-fun Questions_(
+fun Questions(
     viewModel: QuestionsViewModel = hiltViewModel(),
     content: @Composable (questions: Questions) -> Unit
 ){

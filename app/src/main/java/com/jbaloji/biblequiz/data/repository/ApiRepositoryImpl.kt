@@ -17,7 +17,7 @@ class ApiRepositoryImpl @Inject constructor(
         val result = api.getVerse(verse)
 
         return if (result.toString().isNotEmpty()){
-            myLog("Backend result ${result.verse}")
+            myLog("Backend result ${result.toString()}")
             result
         }else {
             BibleVerse()

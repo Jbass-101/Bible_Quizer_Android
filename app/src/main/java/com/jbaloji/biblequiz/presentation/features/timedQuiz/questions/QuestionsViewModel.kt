@@ -7,6 +7,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jbaloji.biblequiz.data.repository.ApiRepositoryImpl
+import com.jbaloji.biblequiz.domain.model.BibleVerse
 import com.jbaloji.biblequiz.domain.model.Response.Loading
 import com.jbaloji.biblequiz.domain.repository.QuestionsRepository
 import com.jbaloji.biblequiz.domain.repository.QuestionsResponse
@@ -16,13 +18,13 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import java.util.Collections.shuffle
 import javax.inject.Inject
 
 @HiltViewModel
 class QuestionsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val questionRepo : QuestionsRepository,
+    private val apiRepo : ApiRepositoryImpl
 ) : ViewModel() {
 
     val levelId: String = checkNotNull(savedStateHandle[Screen.Level_ID])
@@ -51,13 +53,17 @@ class QuestionsViewModel @Inject constructor(
     var showQuitMenu by mutableStateOf(false)
     var showDialog by mutableStateOf(false)
 
-
+    //Verse
+    var getVerseResponse by mutableStateOf(BibleVerse())
+    var showVerseDialog by mutableStateOf(false)
+    var verseTitle by mutableStateOf("")
 
 
     init {
         getQuestionsLevel(levelId)
         startCountDown()
     }
+
 
     private fun getQuestionsLevel(level: String) = viewModelScope.launch {
         questionResponse = questionRepo.getQuestionsLevel(level)
@@ -119,20 +125,17 @@ class QuestionsViewModel @Inject constructor(
         showDialog = !showDialog
     }
 
-    fun randomise(options: List<String>): List<String>{
 
-        val myArr = listOf(0,1,2,3)
-        val myList = mutableListOf<String>()
-
-        shuffle(myArr)
-
-        for (i in myArr){
-            myList.add(options[i])
-        }
-
-        return myList
-
+    fun getVerse(verse : String) = viewModelScope.launch {
+        getVerseResponse = BibleVerse()
+        getVerseResponse = apiRepo.getVerse(verse)
     }
+
+    fun toggleVerseDialog(){
+        showVerseDialog = !showVerseDialog
+    }
+
+
 
 
 

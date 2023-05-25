@@ -25,7 +25,7 @@ fun AnswerButton(
             modifier = Modifier
                 .fillMaxWidth(1f),
 //                .border(1.dp, MaterialTheme.colorScheme.secondary, Shapes.medium),
-            border = BorderStroke(1.dp,MaterialTheme.colorScheme.onSurface),
+            border = BorderStroke(1.dp,MaterialTheme.colorScheme.inversePrimary),
             enabled = false,
             onClick = {
             },
@@ -35,7 +35,7 @@ fun AnswerButton(
                         .fillMaxWidth(1f),
                     text = option,
                     textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.inversePrimary
                 )
             }
         )

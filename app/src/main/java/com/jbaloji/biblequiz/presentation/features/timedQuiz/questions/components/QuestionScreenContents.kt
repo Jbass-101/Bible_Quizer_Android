@@ -7,6 +7,7 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.R
+import com.jbaloji.biblequiz.domain.model.BibleVerse
 import com.jbaloji.biblequiz.domain.model.Question
 
 @Composable
@@ -35,7 +37,9 @@ fun QuestionsScreenContents(
     toggleDialog : () -> Unit,
     onShowHint: () -> Unit,
     onNext : () -> Unit,
-    onNavigateToScore : () -> Unit
+    onNavigateToScore : () -> Unit,
+    getVerse : (String) -> Unit,
+    toggleVerseDialog : () -> Unit
 ){
 
     Surface(
@@ -108,11 +112,16 @@ fun QuestionsScreenContents(
                     modifier = Modifier
                         .fillMaxSize(),
                     contentAlignment = Alignment.Center) {
-                    Text(
-                        textAlign = TextAlign.Center,
-                        text = q.question,
-                        style = MaterialTheme.typography.bodyLarge
-                    )
+                    LazyColumn(content = {
+                        item {
+                            Text(
+                                textAlign = TextAlign.Center,
+                                text = q.question,
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+
+                        }
+                    })
 
                 }
             }
@@ -135,7 +144,14 @@ fun QuestionsScreenContents(
                 AnimatedVisibility(
                     visible = hint,
                 ) {
-                    Text(text = q.hint)
+                    TextButton(
+                        onClick = {
+                            getVerse(q.hint)
+                        toggleVerseDialog()
+                        }) {
+                        Text(text = q.hint)
+
+                    }
                 }
             }
             Column(
@@ -201,6 +217,8 @@ fun Question_Screen(){
         onShowHint = {},
         toggleDialog = {},
         answerQuestion = {},
+        getVerse = {},
+        toggleVerseDialog = {},
         questionNumber = 5,
         score = 5,
         totalHints = 5,
@@ -209,6 +227,6 @@ fun Question_Screen(){
         hint = true,
         progress = 0.5f,
         time = 30,
-        hasAnswered = false
+        hasAnswered = false,
     )
 }
