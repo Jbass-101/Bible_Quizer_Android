@@ -1,20 +1,46 @@
 <resources>
 
-    <string name="Question_Number_Text">Question 1</string>
-    <string name="Answer_Btn_Text_4">Answer 4</string>
-    <string name="Answer_Btn_Text_3">Answer 3</string>
-    <string name="Answer_Btn_Text_2">Answer 2</string>
-    <string name="Answer_Btn_Text_1">Answer 1</string>
-    <string name="Sample_Answer_1">This is a short answer</string>
-    <string name="Sample_Answer_2">This is not a short answer, but close</string>
-    <string name="Sample_Answer_3">This answer is a bit long, but we are testing</string>
-    <string name="Sample_Answer_4">So this answer is ridiculously long, I want to see how it looks on the button</string>
+    <string name="Question_Number_Text" translatable="false">Question 1</string>
+    <string name="Answer_Btn_Text_4" translatable="false">Answer 4</string>
+    <string name="Answer_Btn_Text_3" translatable="false">Answer 3</string>
+    <string name="Answer_Btn_Text_2" translatable="false">Answer 2</string>
+    <string name="Answer_Btn_Text_1" translatable="false">Answer 1</string>
+    <string name="Sample_Answer_1" translatable="false">This is a short answer</string>
+    <string name="Sample_Answer_2" translatable="false">This is not a short answer, but close</string>
+    <string name="Sample_Answer_3" translatable="false">This answer is a bit long, but we are testing</string>
+    <string name="Sample_Answer_4" translatable="false">So this answer is ridiculously long, I want to see how it looks on the button</string>
 
-    <string name="sampleQuestion">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. .</string>
+    <string name="sampleQuestion" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. .</string>
 
     <!-- Home Screen-->
     <string name="app_name">Bible Quiz</string>
     <string name="Start_Button_Text">Start</string>
     <string name="Quit_Button_Text">Quit</string>
+    <string name="Setting_Button_Text">Settings</string>
+
+
+    <!-- Lobby Screen-->
+    <string name="select_game_mode">Select Game Mode</string>
+    <string name="mode_timed_quiz">Timed Quiz</string>
+    <string name="home_btn_text">Home</string>
+
+    <!-- Timed Quiz Level Screen-->
+    <string name="select_level_txt">Select Level</string>
+    <string name="level_txt">Level</string>
+    <string name="back_btn_text">Back</string>
+
+    <!-- Timed Quiz Question Screen-->
+    <string name="score_text">Score</string>
+    <string name="question_txt">Question</string>
+    <string name="hint_txt">Hint</string>
+    <string name="show_hint_txt">Show Hint</string>
+    <string name="next_btn_txt">Next</string>
+    <string name="finish_btn_txt">Finish</string>
+
+    <!-- Timed Quiz Score Screen-->
+    <string name="your_score_text">Your Score</string>
+    <string name="level_unlocked_text">New Level Unlocked!</string>
+    <string name="min_score_txt">Score at least 9 to unlock the next level</string>
+
 
 </resources>

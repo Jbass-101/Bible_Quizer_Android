@@ -14,11 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.R
-import com.jbaloji.biblequiz.domain.model.BibleVerse
 import com.jbaloji.biblequiz.domain.model.Question
 
 @Composable
@@ -58,9 +58,9 @@ fun QuestionsScreenContents(
                     .weight(0.1f)
                     .fillMaxWidth()
             ) {
-                Text(text = "Score: $score")
-                Text(text = "Question $questionNumber/$totalQuestions")
-                Text(text = "Hints : $totalHints")
+                Text(text = stringResource(id = R.string.score_text) + ": " + "$score")
+                Text(text = stringResource(id = R.string.question_txt) + ": " + "$questionNumber/$totalQuestions")
+                Text(text = stringResource(id = R.string.hint_txt) + ": " + "$totalHints")
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -136,7 +136,7 @@ fun QuestionsScreenContents(
                 TextButton(onClick = {
                     onShowHint()
                 }) {
-                    Text(text = "Show Hint")
+                    Text(text = stringResource(id = R.string.show_hint_txt))
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Icon(painter = painterResource(id = R.drawable.ic_info),
                         contentDescription = "Show Hint")
@@ -178,19 +178,19 @@ fun QuestionsScreenContents(
             ){
                 TextButton(
                     onClick = toggleDialog) {
-                    Text(text = "Quit")
+                    Text(text = stringResource(id = R.string.Quit_Button_Text))
                 }
                 if(isLastQuestion){
                     TextButton(
                         enabled = hasAnswered,
                         onClick = onNavigateToScore) {
-                        Text(text = "Finish")
+                        Text(text = stringResource(id = R.string.finish_btn_txt))
                     }
                 } else {
                     TextButton(
                         enabled = hasAnswered,
                         onClick = onNext ) {
-                        Text(text = "Next")
+                        Text(text = stringResource(id = R.string.next_btn_txt))
                     }
 
                 }

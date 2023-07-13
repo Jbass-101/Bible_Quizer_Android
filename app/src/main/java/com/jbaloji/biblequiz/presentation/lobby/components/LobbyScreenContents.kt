@@ -7,12 +7,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jbaloji.biblequiz.components.FeatureCard
 import com.jbaloji.biblequiz.components.GenericButton
 import com.jbaloji.biblequiz.domain.model.Feature
+import com.jbaloji.biblequiz.R
 
 @Composable
 fun LobbyScreenContents(
@@ -27,14 +29,14 @@ fun LobbyScreenContents(
         Column(
             modifier = Modifier
                 .safeContentPadding()
-                .padding(12.dp,0.dp),
+                .padding(12.dp, 0.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
             Text(
                 modifier = Modifier
                     .weight(0.1f),
-                text = "Select Game Mode",
+                text = stringResource(id = R.string.select_game_mode),
                 fontSize = 20.sp
             )
 
@@ -60,7 +62,7 @@ fun LobbyScreenContents(
             ) {
                 GenericButton(
                     paddingSize = 8.dp,
-                    text ="Home" ,
+                    text = stringResource(id = R.string.home_btn_text) ,
                     action = onNavigateToHome
                 )
             }

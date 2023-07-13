@@ -1,3 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Bible Quiz</string>
+    <string name="Start_Button_Text">Commencer</string>
+    <string name="Quit_Button_Text">Arrêter</string>
+    <string name="Setting_Button_Text">Paramètres</string>
+    <string name="mode_timed_quiz">Quiz Chronométré</string>
+    <string name="level_txt">Niveau</string>
+    <string name="home_btn_text">Menu</string>
+    <string name="select_game_mode">Sélectionnez le mode de jeu</string>
+    <string name="select_level_txt">Choisir Le Niveau</string>
+    <string name="back_btn_text">Retour</string>
+    <string name="score_text">Score</string>
+    <string name="question_txt">Question</string>
+    <string name="hint_txt">"Indice "</string>
+    <string name="show_hint_txt">"Dévoiler un indice "</string>
+    <string name="next_btn_txt">Prochain</string>
+    <string name="finish_btn_txt">Finir</string>
+    <string name="your_score_text">Ton Score</string>
+    <string name="level_unlocked_text">Nouveau Niveau Débloqué</string>
+    <string name="min_score_txt">Marquez Au Moins 9 Points Pour Débloquer Le Niveau Suivant</string>
 </resources>
