@@ -18,6 +18,10 @@
     <string name="Quit_Button_Text">Quit</string>
     <string name="Setting_Button_Text">Settings</string>
 
+    <!-- Quit Alert Dialog-->
+    <string name="confirm_txt">Confirm</string>
+    <string name="cancel_txt">Cancel</string>
+
 
     <!-- Lobby Screen-->
     <string name="select_game_mode">Select Game Mode</string>

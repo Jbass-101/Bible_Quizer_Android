@@ -8,13 +8,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.jbaloji.biblequiz.components.PauseDialogScreen
 import com.jbaloji.biblequiz.presentation.auth.AuthScreen
-import com.jbaloji.biblequiz.presentation.home.HomeScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.levels.LevelsScreen
-import com.jbaloji.biblequiz.presentation.lobby.LobbyScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.QuestionsScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.score.ScoreScreen
+import com.jbaloji.biblequiz.presentation.home.HomeScreen
+import com.jbaloji.biblequiz.presentation.lobby.LobbyScreen
 
 @Composable
 fun InitGraph  (
@@ -34,21 +33,6 @@ fun InitGraph  (
             HomeScreen(
                 onNavigateToLobby = {navController.navigate(Screen.Lobby)}
             )
-        }
-        composable(
-            route = Screen.PauseDialog
-        ){
-            PauseDialogScreen(
-
-                onBack = { navController.navigateUp() } ,
-                onNavigateToLobby = {navController.navigate(Screen.Lobby){
-                    popUpTo(Screen.Lobby)
-                } },
-                onNavigateToLevels = {navController.navigate(Screen.Levels){
-                    popUpTo(Screen.Levels)
-                } }
-            )
-
         }
         composable(
             route = Screen.Question,

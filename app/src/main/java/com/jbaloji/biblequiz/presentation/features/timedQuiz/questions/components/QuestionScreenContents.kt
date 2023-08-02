@@ -150,6 +150,7 @@ fun QuestionsScreenContents(
                         toggleVerseDialog()
                         }) {
                         Text(text = q.hint)
+                        //@Todo Change this to book
 
                     }
                 }

@@ -19,4 +19,6 @@
     <string name="your_score_text">Ton Score</string>
     <string name="level_unlocked_text">Nouveau Niveau Débloqué</string>
     <string name="min_score_txt">Marquez Au Moins 9 Points Pour Débloquer Le Niveau Suivant</string>
+    <string name="confirm_txt">Confirmer</string>
+    <string name="cancel_txt">Annuler</string>
 </resources>
