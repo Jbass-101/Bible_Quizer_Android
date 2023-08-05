@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.jbaloji.biblequiz.presentation.auth.AuthScreen
+import com.jbaloji.biblequiz.presentation.features.firmFoundation.contents.ContentsScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.levels.LevelsScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.QuestionsScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.score.ScoreScreen
@@ -93,7 +94,19 @@ fun InitGraph  (
             }
             LobbyScreen (
                 onNavigateToLevels = { navController.navigate(Screen.Levels)},
-                onNavigateToHome = {navController.navigate(Screen.Home)}
+                onNavigateToHome = {navController.navigate(Screen.Home)},
+                onNavigateToContents = {navController.navigate(Screen.ContentsPage)}
+            )
+        }
+
+        composable(
+            route = Screen.ContentsPage,
+        ){
+            BackHandler(enabled = true) {
+
+            }
+            ContentsScreen(
+
             )
         }
 

@@ -21,4 +21,8 @@
     <string name="min_score_txt">Marquez Au Moins 9 Points Pour Débloquer Le Niveau Suivant</string>
     <string name="confirm_txt">Confirmer</string>
     <string name="cancel_txt">Annuler</string>
+    <string name="mode_study_basics">La doctrine chrétienne</string>
+    <string name="table_of_contents">Table des matières</string>
+    <string name="Lesson">Leçon</string>
+    <string name="Section">Section</string>
 </resources>

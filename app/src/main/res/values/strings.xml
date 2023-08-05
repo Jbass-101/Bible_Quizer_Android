@@ -26,6 +26,7 @@
     <!-- Lobby Screen-->
     <string name="select_game_mode">Select Game Mode</string>
     <string name="mode_timed_quiz">Timed Quiz</string>
+    <string name="mode_study_basics">The Christian doctrine</string>
     <string name="home_btn_text">Home</string>
 
     <!-- Timed Quiz Level Screen-->
@@ -45,6 +46,11 @@
     <string name="your_score_text">Your Score</string>
     <string name="level_unlocked_text">New Level Unlocked!</string>
     <string name="min_score_txt">Score at least 9 to unlock the next level</string>
+
+    <!-- Contents Screen-->
+    <string name="table_of_contents">Table of contents</string>
+    <string name="Lesson">Lesson</string>
+    <string name="Section">Section</string>
 
 
 </resources>

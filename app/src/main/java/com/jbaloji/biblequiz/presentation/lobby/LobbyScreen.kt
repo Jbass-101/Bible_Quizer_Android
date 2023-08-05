@@ -10,6 +10,7 @@ import com.jbaloji.biblequiz.presentation.lobby.components.LobbyScreenContents
 fun LobbyScreen(
     onNavigateToLevels: () -> Unit,
     onNavigateToHome : () -> Unit,
+    onNavigateToContents : () -> Unit,
 ){
 
     LobbyScreenContents(
@@ -19,7 +20,12 @@ fun LobbyScreen(
                 name = stringResource(id = com.jbaloji.biblequiz.R.string.mode_timed_quiz),
                 icon = com.jbaloji.biblequiz.R.drawable.timer_icon_200,
                 onClick = onNavigateToLevels
-            )
+            ),
+            Feature(
+                name = stringResource(id = com.jbaloji.biblequiz.R.string.mode_study_basics),
+                icon = com.jbaloji.biblequiz.R.drawable.baseline_menu_book_24,
+                onClick = onNavigateToContents
+            ),
         )
     )
 
