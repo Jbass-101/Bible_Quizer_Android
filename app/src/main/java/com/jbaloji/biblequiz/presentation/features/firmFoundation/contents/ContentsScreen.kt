@@ -1,53 +1,26 @@
 package com.jbaloji.biblequiz.presentation.features.firmFoundation.contents
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.jbaloji.biblequiz.components.ExpandableCard
 
 @Composable
 fun ContentsScreen(){
-    Column() {
-        Text(text = "Contents Page")
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Chapter 1")
 
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Chapter 2")
+    val titles = arrayOf( "Salvation", "Be Sure of your salvation", "Confessing Christ Publically", "Read the Bible", "Fellowship", "Giving (Tithe and Offerings)")
 
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Chapter 3")
-
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Chapter 4")
-
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Chapter 5")
-
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Chapter 6")
-
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Chapter 7")
-
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Conclusion")
-
+    LazyColumn(
+        content = {
+            items(titles.size){item ->
+                ExpandableCard(titles[item])
+            }
         }
 
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Home")
-
-        }
-    }
+    )
 
 }
 
