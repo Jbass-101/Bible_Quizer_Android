@@ -4,6 +4,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -40,7 +41,9 @@ fun ExpandableCard(
                     durationMillis = 300,
                     easing = LinearOutSlowInEasing
                 )
-            ),
+            )
+            .clickable {expandState = !expandState  },
+
         shape = MaterialTheme.shapes.medium,
 //        onClick = {expandState = !expandState}
     ) {
@@ -58,27 +61,41 @@ fun ExpandableCard(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                IconButton(
+
+                    Icon(
                     modifier = Modifier
                         .alpha(100f)
                         .weight(1f)
                         .rotate(rotateState),
-
-                    onClick = { expandState = !expandState}
-                ) {
-                    Icon(imageVector = Icons.Default.ArrowDropDown,
+                        imageVector = Icons.Default.ArrowDropDown,
                         contentDescription = "Drop Down Arrow" )
-
-                }
 
             }
             if(expandState){
-                Text(
-                    text = description,
-                fontSize = MaterialTheme.typography.bodyMedium.fontSize,
-                fontWeight = FontWeight.Normal,
-                maxLines = 4,
-                overflow = TextOverflow.Ellipsis)
+                Column(
+//                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                    .padding(1.dp)
+                ) {
+                    Text(
+                        text = description,
+                        fontSize = MaterialTheme.typography.bodyMedium.fontSize,
+                        fontWeight = FontWeight.Normal,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Box(
+                        modifier = Modifier.fillMaxWidth(1f),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Button(onClick = { /*TODO*/ }) {
+                            Text(text = "Read more")
+
+                    }
+                        
+                    }
+                    
+                }
             }
 
         }

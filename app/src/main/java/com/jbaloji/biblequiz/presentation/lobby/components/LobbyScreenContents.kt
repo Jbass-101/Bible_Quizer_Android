@@ -78,22 +78,22 @@ fun Lobby_Screen(){
     LobbyScreenContents(feature = listOf(
         Feature(
             name = "Feature 1",
-            icon = com.jbaloji.biblequiz.R.drawable.timer_icon_200,
+            icon = R.drawable.timer_icon_200,
             onClick = { }
         ),
         Feature(
             name = "Feature 2",
-            icon = com.jbaloji.biblequiz.R.drawable.timer_icon_200,
+            icon = R.drawable.timer_icon_200,
             onClick = { }
         ),
         Feature(
             name = "Feature 3",
-            icon = com.jbaloji.biblequiz.R.drawable.timer_icon_200,
+            icon = R.drawable.timer_icon_200,
             onClick = { }
         ),
         Feature(
             name = "Feature 4",
-            icon = com.jbaloji.biblequiz.R.drawable.timer_icon_200,
+            icon = R.drawable.timer_icon_200,
             onClick = { }
         ),
     )) {
