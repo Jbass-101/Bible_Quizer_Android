@@ -47,14 +47,16 @@ fun HomeScreenContents(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                Spacer(modifier = Modifier.height(15.dp))
                 GenericButton(
                     text = stringResource(id = R.string.Start_Button_Text),
-                    action = onNavigateToLobby
+                    action = onNavigateToLobby,
+                    textPadding = 12.dp
                 )
+                Spacer(modifier = Modifier.height(15.dp))
                 GenericButton(
                     text = stringResource(id = R.string.Quit_Button_Text),
-                    action = showDialog
+                    action = showDialog,
+                    textPadding = 12.dp
 //                action = {
 //                    sendNotification(
 //                        context,

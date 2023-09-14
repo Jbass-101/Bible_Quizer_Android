@@ -20,6 +20,7 @@ fun GenericButton (
     action : () -> Unit,
     enabled : Boolean = true,
     paddingSize : Dp = 0.dp,
+    textPadding : Dp = 0.dp
 
 ){
     Button(
@@ -35,6 +36,8 @@ fun GenericButton (
                 contentDescription = "Locked" )
         }
         Text(
+            modifier = Modifier
+                .padding(textPadding),
             text = text,
             style = MaterialTheme.typography.bodyLarge
         )

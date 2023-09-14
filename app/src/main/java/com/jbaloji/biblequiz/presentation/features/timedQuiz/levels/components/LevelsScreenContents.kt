@@ -137,22 +137,19 @@ fun LevelsScreenContents(
                 .safeContentPadding()
                 .padding(12.dp, 0.dp),
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.1f)){
+
                 Text(
+                    modifier = Modifier
+                        .weight(0.1f),
                     text = stringResource(id = com.jbaloji.biblequiz.R.string.select_level_txt),
                     style = MaterialTheme.typography.titleMedium
                 )
-            }
+
             LazyColumn(
 //                verticalArrangement = Arrangement.spacedBy(5.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 userScrollEnabled = true,
-                modifier = Modifier.weight(0.9f),
+                modifier = Modifier.weight(1f),
                 content = {
                     items(list.size) { item ->
                         GenericButton(
@@ -169,20 +166,15 @@ fun LevelsScreenContents(
                     }
                 }
             )
-            Box(
-                modifier = Modifier.weight(0.12f),
-                contentAlignment = Alignment.Center
-            ) {
-                GenericButton(
-                    text = stringResource(id = com.jbaloji.biblequiz.R.string.back_btn_text),
-                    action = {
-                        navController.navigate(Screen.Lobby) {
-                            popUpTo(Screen.Lobby)
-                        }
-                    }
-                )
 
-            }
+            GenericButton(
+                text = stringResource(id = com.jbaloji.biblequiz.R.string.back_btn_text),
+                action = {
+                    navController.navigate(Screen.Lobby) {
+                        popUpTo(Screen.Lobby)
+                    }
+                }
+            )
         }
     }
 

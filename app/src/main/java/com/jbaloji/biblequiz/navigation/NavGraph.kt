@@ -102,10 +102,9 @@ fun InitGraph  (
         composable(
             route = Screen.ContentsPage,
         ){
-            BackHandler(enabled = true) {
 
-            }
             ContentsScreen(
+                onNavigateToLobby = {navController.navigate(Screen.Lobby)}
 
             )
         }

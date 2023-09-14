@@ -44,7 +44,7 @@ fun LobbyScreenContents(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .weight(0.8f),){
+                    .weight(1f),){
 
                 items(feature.size){ index ->
 
@@ -56,16 +56,10 @@ fun LobbyScreenContents(
                 }
             }
 
-            Box(
-                modifier = Modifier
-                    .weight(0.11f)
-            ) {
-                GenericButton(
-                    paddingSize = 8.dp,
-                    text = stringResource(id = R.string.home_btn_text) ,
-                    action = onNavigateToHome
-                )
-            }
+            GenericButton(
+                text = stringResource(id = R.string.home_btn_text) ,
+                action = onNavigateToHome
+            )
 
         }
 
