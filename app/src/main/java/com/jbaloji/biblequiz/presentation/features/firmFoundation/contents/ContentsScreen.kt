@@ -2,7 +2,7 @@ package com.jbaloji.biblequiz.presentation.features.firmFoundation.contents
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +30,12 @@ fun ContentsScreen(
                 .padding(12.dp, 0.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+
+            Text(
+                modifier = Modifier.weight(0.1f),
+                text = "The Christian Doctrine",
+                style = MaterialTheme.typography.titleMedium
+            )
             LazyColumn(
                 modifier = Modifier.weight(1f),
                 content = {
