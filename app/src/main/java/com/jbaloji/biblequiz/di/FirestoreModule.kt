@@ -52,7 +52,7 @@ object FirestoreModule {
     @Provides
     fun providesLessonRef(
         db: FirebaseFirestore
-    ) = db.collection(Foundation)
+    ) = db.collection(Foundation).document(Levels)
 
     @Provides
     fun providesQuestionRepository(

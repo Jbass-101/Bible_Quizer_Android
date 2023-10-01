@@ -5,4 +5,5 @@ object FirestoreModuleConstants {
     const val Levels = "Levels"
     const val Users = "Users"
     const val Foundation = "Foundation"
+    const val Lessons = "Lessons"
 }
