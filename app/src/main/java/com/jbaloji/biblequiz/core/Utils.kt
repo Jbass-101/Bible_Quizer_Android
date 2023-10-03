@@ -20,7 +20,7 @@ class Utils  {
 
 
         private const val TAG = "RepoTAG"
-        private const val LOGGING = false
+        private const val LOGGING = true
 
         fun myLog(logString : String){
             if(LOGGING){

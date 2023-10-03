@@ -16,6 +16,7 @@ import com.jbaloji.biblequiz.components.GenericButton
 @Composable
 fun ContentsScreen(
     onNavigateToLobby : () -> Unit,
+    onNavigateToLesson: () -> Unit
 ){
 
     val titles = arrayOf( "Salvation", "Be Sure of your salvation", "Confessing Christ Publicly", "Read the Bible", "Fellowship", "Giving (Tithe and Offerings)")
@@ -40,7 +41,9 @@ fun ContentsScreen(
                 modifier = Modifier.weight(1f),
                 content = {
                     items(titles.size){item ->
-                        ExpandableCard(titles[item])
+                        ExpandableCard(titles[item]){
+                            onNavigateToLesson()
+                        }
                         Spacer(modifier = Modifier.height(12.dp))
                     }
 
@@ -64,7 +67,8 @@ fun ContentsScreen(
 @Composable
 fun ContentsScreenPreview(){
     ContentsScreen(
-        onNavigateToLobby = {}
+        onNavigateToLobby = {},
+        onNavigateToLesson = {}
     )
 }
 

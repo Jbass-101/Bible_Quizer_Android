@@ -18,6 +18,7 @@ object Screen {
     const val Auth ="auth"
     const val Lobby ="lobby"
     const val ContentsPage = "contents"
+    const val Lesson = "lesson"
 
 
 

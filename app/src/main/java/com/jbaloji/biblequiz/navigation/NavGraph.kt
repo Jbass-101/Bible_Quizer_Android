@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.jbaloji.biblequiz.presentation.auth.AuthScreen
 import com.jbaloji.biblequiz.presentation.features.firmFoundation.contents.ContentsScreen
+import com.jbaloji.biblequiz.presentation.features.firmFoundation.lesson.LessonScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.levels.LevelsScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.questions.QuestionsScreen
 import com.jbaloji.biblequiz.presentation.features.timedQuiz.score.ScoreScreen
@@ -104,9 +105,18 @@ fun InitGraph  (
         ){
 
             ContentsScreen(
-                onNavigateToLobby = {navController.navigate(Screen.Lobby)}
+                onNavigateToLobby = {navController.navigate(Screen.Lobby)},
+                onNavigateToLesson = {navController.navigate(Screen.Lesson)}
 
             )
+        }
+
+
+
+        composable(
+            route = Screen.Lesson,
+        ){
+            LessonScreen()
         }
 
     }

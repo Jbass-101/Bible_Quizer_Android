@@ -5,6 +5,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jbaloji.biblequiz.core.FirestoreModuleConstants.Foundation
+import com.jbaloji.biblequiz.core.FirestoreModuleConstants.Lessons
 import com.jbaloji.biblequiz.core.FirestoreModuleConstants.Levels
 import com.jbaloji.biblequiz.core.FirestoreModuleConstants.Questions
 import com.jbaloji.biblequiz.core.FirestoreModuleConstants.Users
@@ -52,7 +53,7 @@ object FirestoreModule {
     @Provides
     fun providesLessonRef(
         db: FirebaseFirestore
-    ) = db.collection(Foundation).document(Levels)
+    ) = db.collection(Foundation).document(Lessons)
 
     @Provides
     fun providesQuestionRepository(

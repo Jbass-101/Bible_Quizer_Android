@@ -28,7 +28,8 @@ import com.jbaloji.biblequiz.R
 @Composable
 fun ExpandableCard(
     title : String = "My Title",
-    description : String = stringResource(id = R.string.sampleQuestion)
+    description : String = stringResource(id = R.string.sampleQuestion),
+    onReadMore: () -> Unit
 ){
     var expandState by remember { mutableStateOf(false) }
     val rotateState by animateFloatAsState(targetValue = if (expandState) 180f else 0f)
@@ -88,7 +89,7 @@ fun ExpandableCard(
                         modifier = Modifier.fillMaxWidth(1f),
                         contentAlignment = Alignment.Center
                     ) {
-                        Button(onClick = { /*TODO*/ }) {
+                        Button(onClick = onReadMore) {
                             Text(text = "Read more")
 
                     }
@@ -110,9 +111,13 @@ fun ExpandableCardScreen(){
     Column(
         
     ) {
-        ExpandableCard()
+        ExpandableCard(){
+
+        }
         Spacer(modifier = Modifier.height(23.dp))
-        ExpandableCard()
+        ExpandableCard(){
+
+        }
 
     }
 }

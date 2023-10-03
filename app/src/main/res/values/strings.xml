@@ -12,6 +12,9 @@
 
     <string name="sampleQuestion" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. .</string>
 
+
+    <string name="Sample_Ref_1" translatable="false">John 3 : 16</string>
+    <string name="Sample_Ref_2" translatable="false">Luke 7 : 4 - 8</string>
     <!-- Home Screen-->
     <string name="app_name">Bible Quiz</string>
     <string name="Start_Button_Text">Start</string>
