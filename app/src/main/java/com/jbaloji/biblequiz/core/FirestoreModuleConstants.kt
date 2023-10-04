@@ -1,9 +1,19 @@
 package com.jbaloji.biblequiz.core
 
+import androidx.compose.ui.text.intl.Locale
+
 object FirestoreModuleConstants {
-    const val Questions = "Questions"
+    val Questions = if (Locale.current.language == "fr") {
+        "Questions (Fr)"
+    }else {
+        "Questions"
+    }
+    val Foundation = if (Locale.current.language == "fr") {
+        "Foundation (Fr)"
+    }else {
+        "Foundation"
+    }
     const val Levels = "Levels"
     const val Users = "Users"
-    const val Foundation = "Foundation"
     const val Lessons = "Lessons"
 }
