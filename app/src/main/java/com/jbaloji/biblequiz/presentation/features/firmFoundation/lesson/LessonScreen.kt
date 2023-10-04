@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.jbaloji.biblequiz.components.BibleVersePopUp
 import com.jbaloji.biblequiz.core.Constants.TAG
 import com.jbaloji.biblequiz.domain.repository.Lessons
 import com.jbaloji.biblequiz.presentation.features.firmFoundation.lesson.components.LessonScreenContents
@@ -20,7 +21,17 @@ fun LessonScreen(
 ){
     Lessons() {lessons: Lessons ->
 
-        LessonScreenContents(lessons = lessons)
+        LessonScreenContents(
+            lessons = lessons,
+            getVerse = {verse -> vm.getVerse(verse)},
+            toggleVerseDialog = { vm.toggleVerseDialog() }
+        )
     }
+
+    BibleVersePopUp(
+        showDialog = vm.showVerseDialog,
+        verseTitle = vm.verseTitle ,
+        bibleVerse = vm.getVerseResponse,
+        onDismiss = {vm.toggleVerseDialog()})
 
 }

@@ -1,8 +1,10 @@
 package com.jbaloji.biblequiz.presentation.features.firmFoundation.lesson.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -11,15 +13,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.domain.model.Lesson
 import com.jbaloji.biblequiz.domain.repository.Lessons
+import java.sql.RowId
 
 @Composable
 fun LessonScreenContents (
-    lessons : Lessons
+    lessons : Lessons,
+    getVerse : (String) -> Unit,
+    toggleVerseDialog : () -> Unit
 ){
     Surface(modifier = Modifier
         .fillMaxSize()) {
@@ -45,10 +51,23 @@ fun LessonScreenContents (
                             }
                         }
                         Text(text = text)
-                        LazyRow() {
-                            items(lessons[i].ref.size){j ->
-                                Text(text = "Ref: " + lessons[i].ref[j])
-                                Spacer(modifier = Modifier.width(8.dp))                                
+                        Row() {
+                            Text(text = "Refs:")
+                            Spacer(modifier = Modifier.width(8.dp))
+                            LazyRow() {
+                                items(lessons[i].ref.size){j ->
+                                    val ref = lessons[i].ref[j]
+                                    Text(
+                                        text = ref ,
+                                        textDecoration = TextDecoration.Underline,
+                                        color = MaterialTheme.colorScheme.secondary,
+                                        modifier = Modifier.clickable {
+                                            getVerse(ref)
+                                            toggleVerseDialog()
+                                        }
+                                    )
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                }
                             }
                         }
                         Spacer(modifier = Modifier.height(15.dp))
@@ -99,6 +118,12 @@ fun Lesson_Screen(){
                     stringResource(id = com.jbaloji.biblequiz.R.string.Sample_Ref_1)
                 )
             ),
-        )
+        ),
+        getVerse = {
+
+        },
+        toggleVerseDialog = {
+
+        }
     )
 }
