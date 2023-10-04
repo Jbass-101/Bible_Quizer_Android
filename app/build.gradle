@@ -12,12 +12,12 @@ plugins {
 
 android {
     namespace 'com.jbaloji.biblequiz'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.jbaloji.biblequiz"
         minSdk 23
-        targetSdk 33
+        targetSdk 34
         versionCode 13
         versionName "3.0"
 
