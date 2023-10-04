@@ -127,6 +127,7 @@ class QuestionsViewModel @Inject constructor(
 
 
     fun getVerse(verse : String) = viewModelScope.launch {
+        verseTitle = verse
         getVerseResponse = BibleVerse()
         getVerseResponse = apiRepo.getVerse(verse)
     }

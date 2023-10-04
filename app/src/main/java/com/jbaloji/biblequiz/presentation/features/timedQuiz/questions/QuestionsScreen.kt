@@ -19,7 +19,6 @@ fun QuestionsScreen(
         Questions() { questions: Questions ->
 
             vm.totalQuestions = questions.size
-            vm.verseTitle = questions[vm.currentIndex].hint
             QuestionsScreenContents(
                 q = questions[vm.currentIndex],
                 score = vm.currentScore,
