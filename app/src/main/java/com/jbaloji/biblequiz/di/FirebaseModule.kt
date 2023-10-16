@@ -17,7 +17,7 @@ object FirebaseModule {
     @Provides
     @Singleton
     fun provideFirebaseFireStore() = FirebaseFirestore.getInstance().apply {
-        useEmulator("10.10.92.88",9091) }
+        useEmulator("10.10.92.92",9091) }
 
 //    @Provides
 //    @Singleton
@@ -27,7 +27,7 @@ object FirebaseModule {
     @Provides
     @Singleton
     fun providesFirebaseAuth() = Firebase.auth.apply {
-        useEmulator("10.10.92.88",9090)}
+        useEmulator("10.10.92.92",9090)}
 
 //    @Provides
 //    @Singleton

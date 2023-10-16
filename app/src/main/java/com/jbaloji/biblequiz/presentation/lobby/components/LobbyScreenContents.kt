@@ -15,6 +15,8 @@ import com.jbaloji.biblequiz.components.FeatureCard
 import com.jbaloji.biblequiz.components.GenericButton
 import com.jbaloji.biblequiz.domain.model.Feature
 import com.jbaloji.biblequiz.R
+import com.jbaloji.biblequiz.components.BackgroundImage
+import com.jbaloji.biblequiz.theme.BibleQuizTheme
 
 @Composable
 fun LobbyScreenContents(
@@ -26,6 +28,8 @@ fun LobbyScreenContents(
             .fillMaxSize(),
 
     ) {
+
+        BackgroundImage(image = R.drawable.main_bg)
         Column(
             modifier = Modifier
                 .safeContentPadding()
@@ -69,28 +73,31 @@ fun LobbyScreenContents(
 @Preview(name = "Lobby Screen")
 @Composable
 fun Lobby_Screen(){
-    LobbyScreenContents(feature = listOf(
-        Feature(
-            name = "Feature 1",
-            icon = R.drawable.timer_icon_200,
-            onClick = { }
-        ),
-        Feature(
-            name = "Feature 2",
-            icon = R.drawable.timer_icon_200,
-            onClick = { }
-        ),
-        Feature(
-            name = "Feature 3",
-            icon = R.drawable.timer_icon_200,
-            onClick = { }
-        ),
-        Feature(
-            name = "Feature 4",
-            icon = R.drawable.timer_icon_200,
-            onClick = { }
-        ),
-    )) {
+    BibleQuizTheme() {
+        LobbyScreenContents(feature = listOf(
+            Feature(
+                name = "Feature 1",
+                icon = R.drawable.timer_icon_200,
+                onClick = { }
+            ),
+            Feature(
+                name = "Feature 2",
+                icon = R.drawable.timer_icon_200,
+                onClick = { }
+            ),
+            Feature(
+                name = "Feature 3",
+                icon = R.drawable.timer_icon_200,
+                onClick = { }
+            ),
+            Feature(
+                name = "Feature 4",
+                icon = R.drawable.timer_icon_200,
+                onClick = { }
+            ),
+        )) {
 
+        }
+        
     }
 }

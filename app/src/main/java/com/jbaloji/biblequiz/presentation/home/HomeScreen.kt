@@ -1,6 +1,7 @@
 package com.jbaloji.biblequiz.presentation.home
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jbaloji.biblequiz.components.MyAlertDialog
 import com.jbaloji.biblequiz.presentation.home.contents.HomeScreenContents

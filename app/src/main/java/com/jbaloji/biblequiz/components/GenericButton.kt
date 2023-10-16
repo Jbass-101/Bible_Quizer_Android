@@ -1,17 +1,23 @@
 package com.jbaloji.biblequiz.components
 
+import android.content.res.Configuration
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.R
+import com.jbaloji.biblequiz.presentation.home.contents.HomeScreenContents
+import com.jbaloji.biblequiz.theme.BibleQuizTheme
 
 
 @Composable
@@ -20,15 +26,21 @@ fun GenericButton (
     action : () -> Unit,
     enabled : Boolean = true,
     paddingSize : Dp = 0.dp,
-    textPadding : Dp = 0.dp
+    textPadding : Dp = 0.dp,
+    secondary: Boolean = false,
 
 ){
     Button(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = paddingSize),
+        modifier = Modifier.fillMaxWidth(
+            0.33f
+        ),
+        elevation = ButtonDefaults.buttonElevation(
+            defaultElevation = 10.dp
+
+        ),
         onClick = action,
-        enabled = enabled
+        enabled = enabled,
+        shape = RoundedCornerShape(8.dp)
     ) {
         if(!enabled){
             Icon(
@@ -42,6 +54,18 @@ fun GenericButton (
             style = MaterialTheme.typography.bodyLarge
         )
         
+    }
+
+}
+
+
+@Preview(name = "Generic Button", device = Devices.NEXUS_6 )
+@Preview(name = "Generic Button Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun Home_Screen(){
+    BibleQuizTheme() {
+        GenericButton(text = "Hello", action = { /*TODO*/ })
+
     }
 
 }
