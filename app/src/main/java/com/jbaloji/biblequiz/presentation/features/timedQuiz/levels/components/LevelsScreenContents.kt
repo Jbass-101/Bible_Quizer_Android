@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.jbaloji.biblequiz.components.GenericButton
+import com.jbaloji.biblequiz.components.LevelCard
 import com.jbaloji.biblequiz.domain.model.TimedQuizScore
 import com.jbaloji.biblequiz.navigation.Screen
 import com.jbaloji.biblequiz.navigation.Screen.Level_1
@@ -162,7 +163,7 @@ fun LevelsScreenContents(
                 modifier = Modifier.weight(8f,),
                 content = {
                     items(list.size) { item ->
-                        GenericButton(
+                        LevelCard(
 //                            text = list[item]!![text] as String,
                             text = stringResource(id = com.jbaloji.biblequiz.R.string.level_txt) + " " + (item + 1).toString() ,
                             action = {
