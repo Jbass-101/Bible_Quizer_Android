@@ -1,5 +1,7 @@
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -34,6 +36,7 @@ import com.jbaloji.biblequiz.navigation.Screen.Level_6
 import com.jbaloji.biblequiz.navigation.Screen.Level_7
 import com.jbaloji.biblequiz.navigation.Screen.Level_8
 import com.jbaloji.biblequiz.navigation.Screen.Level_9
+import com.jbaloji.biblequiz.theme.BibleQuizTheme
 
 
 @Composable
@@ -129,7 +132,7 @@ fun LevelsScreenContents(
 
     Surface(
         modifier = Modifier
-            .fillMaxSize(1f) ) {
+            .fillMaxSize() ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -137,19 +140,26 @@ fun LevelsScreenContents(
                 .safeContentPadding()
                 .padding(12.dp, 0.dp),
         ) {
-
+            Box(
+                modifier = Modifier
+                    .weight(1f),
+                contentAlignment = Alignment.Center
+            ){
                 Text(
-                    modifier = Modifier
-                        .weight(0.1f),
                     text = stringResource(id = com.jbaloji.biblequiz.R.string.select_level_txt),
                     style = MaterialTheme.typography.titleMedium
                 )
 
-            LazyColumn(
+            }
+
+
+            LazyVerticalGrid(
 //                verticalArrangement = Arrangement.spacedBy(5.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
+                columns = GridCells.Fixed(2),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
                 userScrollEnabled = true,
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(8f,),
                 content = {
                     items(list.size) { item ->
                         GenericButton(
@@ -166,15 +176,22 @@ fun LevelsScreenContents(
                     }
                 }
             )
+            Box(
+                modifier = Modifier
+                    .weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
 
-            GenericButton(
-                text = stringResource(id = com.jbaloji.biblequiz.R.string.back_btn_text),
-                action = {
-                    navController.navigate(Screen.Lobby) {
-                        popUpTo(Screen.Lobby)
+                GenericButton(
+                    text = stringResource(id = com.jbaloji.biblequiz.R.string.back_btn_text),
+                    action = {
+                        navController.navigate(Screen.Lobby) {
+                            popUpTo(Screen.Lobby)
+                        }
                     }
-                }
-            )
+                )
+
+            }
         }
     }
 
@@ -183,5 +200,8 @@ fun LevelsScreenContents(
 @Preview(name = "Levels Screen")
 @Composable
 fun Levels_Screen(){
-    LevelsScreenContents(navController = rememberNavController( ), score = TimedQuizScore())
+    BibleQuizTheme() {
+        LevelsScreenContents(navController = rememberNavController( ), score = TimedQuizScore())
+
+    }
 }
