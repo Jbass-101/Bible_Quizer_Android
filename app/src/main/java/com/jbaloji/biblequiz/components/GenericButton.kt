@@ -1,22 +1,19 @@
 package com.jbaloji.biblequiz.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.R
-import com.jbaloji.biblequiz.presentation.home.contents.HomeScreenContents
 import com.jbaloji.biblequiz.theme.BibleQuizTheme
 
 
@@ -31,9 +28,10 @@ fun GenericButton (
 
 ){
     Button(
-        modifier = Modifier.fillMaxWidth(
-            0.33f
-        ),
+        modifier = Modifier
+            .width(200.dp)
+            .height(50.dp),
+
         elevation = ButtonDefaults.buttonElevation(
             defaultElevation = 10.dp
 
