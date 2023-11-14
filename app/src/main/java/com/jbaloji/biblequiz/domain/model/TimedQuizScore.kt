@@ -21,4 +21,5 @@ data class TimedQuizScore (
     var level_18: Int = 0,
     var level_19: Int = 0,
     var level_20: Int = 0,
+    var score: List<Int> = listOf(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 )

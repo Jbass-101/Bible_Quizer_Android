@@ -17,7 +17,7 @@ fun ScoreData(
         is Success -> scoreData.apply {
             LevelsScreenContents(
                 navController = navController ,
-                score = data )
+                quizScore = data )
         }
         is Failure -> scoreData.apply {
             vm.initScoreData()

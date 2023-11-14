@@ -23,7 +23,7 @@ fun InitTimedQuiz(
             if(data){
                 LevelsScreenContents(
                     navController = navController ,
-                    score = TimedQuizScore() )
+                    quizScore = TimedQuizScore() )
             }
         }
         is Failure -> initQuiz.apply {

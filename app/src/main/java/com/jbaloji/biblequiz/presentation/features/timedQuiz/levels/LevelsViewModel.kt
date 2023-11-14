@@ -26,26 +26,7 @@ class LevelsViewModel @Inject constructor(
     var scoreDataResponse by mutableStateOf<UserDataResponse>(((Loading)))
     var initTimedQuizResponse by mutableStateOf<UserDataResponseBoolean>(Success(false))
 
-    var score1 by mutableStateOf(0)
-    var score2 by mutableStateOf(0)
-    var score3 by mutableStateOf(0)
-    var score4 by mutableStateOf(0)
-    var score5 by mutableStateOf(0)
-    var score6 by mutableStateOf(0)
-    var score7 by mutableStateOf(0)
-    var score8 by mutableStateOf(0)
-    var score9 by mutableStateOf(0)
-    var score10 by mutableStateOf(0)
-    var score11 by mutableStateOf(0)
-    var score12 by mutableStateOf(0)
-    var score13 by mutableStateOf(0)
-    var score14 by mutableStateOf(0)
-    var score15 by mutableStateOf(0)
-    var score16 by mutableStateOf(0)
-    var score17 by mutableStateOf(0)
-    var score18 by mutableStateOf(0)
-    var score19 by mutableStateOf(0)
-    var score20 by mutableStateOf(0)
+
 
         init {
             getScoreData()
