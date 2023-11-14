@@ -14,12 +14,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jbaloji.biblequiz.R
 import com.jbaloji.biblequiz.theme.BibleQuizTheme
+import kotlin.math.floor
+import kotlin.math.roundToInt
 
 @Composable
 fun LevelCard(
     text: String,
     action : () -> Unit,
-    enabled : Boolean = true,){
+    enabled : Boolean = true,
+    score: Int = 2
+    ){
+
+    val stars = floor(((score.toDouble() / 15) * 5)).roundToInt()
+
     Box(
         modifier = Modifier
             .height(62.dp),) {
@@ -60,11 +67,29 @@ fun LevelCard(
 
 
                 ) {
-                    Icon(painter = painterResource(id = R.drawable.baseline_star_rate_24), contentDescription = "Star" )
-                    Icon(painter = painterResource(id = R.drawable.baseline_star_outline_24), contentDescription = "Star" )
-                    Icon(painter = painterResource(id = R.drawable.baseline_star_outline_24), contentDescription = "Star" )
-                    Icon(painter = painterResource(id = R.drawable.baseline_star_outline_24), contentDescription = "Star" )
-                    Icon(painter = painterResource(id = R.drawable.baseline_star_outline_24), contentDescription = "Star" )
+                    if(score > 0){
+                        for (i in 1..stars){
+                            Icon(painter = painterResource(id = R.drawable.baseline_star_rate_24), contentDescription = "Rate Star" )
+                        }
+
+                        for(i in 1..5 - stars){
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_star_outline_24),
+                                contentDescription = "Outline Star"
+                            )
+
+                        }
+
+                    } else {
+                        for (i in 1..5) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_star_outline_24),
+                                contentDescription = "Outline Star"
+                            )
+
+
+                        }
+                    }
 
                 }
             }
@@ -80,7 +105,7 @@ fun LevelCard(
 @Preview(name = "Level Card")
 fun LevelCardPreview(){
     BibleQuizTheme {
-        LevelCard(text = "Hello", action = { /*TODO*/ })
+        LevelCard(text = "Hello", action = { /*TODO*/ }, enabled = true, score = 14)
         
     }
 }

@@ -67,7 +67,8 @@ fun LevelsScreenContents(
                             },
                             enabled = if(item == 0) true else {
                                 quizScore.score[item - 1] > passingScore
-                            }
+                            },
+                            score = quizScore.score[item]
                         )
                     }
                 }
